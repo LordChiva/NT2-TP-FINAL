@@ -3,7 +3,7 @@
 <template>
   <div class="productos-item">
     <ol>     
-        <li v-for="productos in productosBuscadas" :key="productos.nombre">
+        <li v-for="productos in productosBuscados" :key="productos.nombre">
             <span>{{ `El producto ${productos.nombre} (${productos.precio})`}} </span>
             <hr>
             <span>{{ ` ${productos.descripcion} `}} </span>
@@ -32,7 +32,7 @@
                 
             },
             computed: {
-                peliculaBuscadas(){
+                productosBuscados(){
                     return this.productos.filter(productos=> this.buscar == null || productos.nombre.includes(this.buscar))
                 }
             },           
@@ -40,7 +40,7 @@
                const productos = [
                    { nombre: 'Pochoclos', precio: '100', descripcion:' ', imagen:' '},
                    { nombre: 'Gaseosa'  , precio: '80' , descripcion:' ', imagen:' '},
-                   { nombre: 'Agua'     , precio: '60', descripcion:' ', imagen:' '},
+                   { nombre: 'Agua'     , precio: '60' , descripcion:' ', imagen:' '},
                    { nombre: 'Dulces'   , precio: '900', descripcion:' ', imagen:' '},            
                 ]
                 this.productos = productos
