@@ -1,9 +1,10 @@
 <template>
   <div id="app">    
-    
+    <header>
       <!-- <Peliculas /> -->
       <Productos />
       <Usuarios  />
+    </header>
   </div>
 </template>
 
