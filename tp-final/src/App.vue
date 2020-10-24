@@ -13,26 +13,26 @@
  
       <!--  <Home /> -->
   
-      <!-- <Peliculas /> -->
-      <Productos />
-      <Usuarios  />
+       <Peliculas /> 
+    <!--  <Productos /> -->
+     <!-- <Usuarios  /> -->
   </div>
 </template>
 
 <script>
  /* import HelloWorld from './components/HelloWorld.vue'  */
- import Usuarios from './components/Usuarios.vue'  
-/* import Peliculas  from './components/Peliculas.vue' */
-import Productos  from './components/Productos.vue'
+/* import Usuarios from './components/Usuarios.vue'  */
+ import Peliculas  from './components/Peliculas.vue' 
+/* import Productos  from './components/Productos.vue' */
 /* import Productos  from './components/Home.vue'   */  
 
 export default {
   name: 'App',
   components: {
      /* HelloWorld, */
-    Usuarios,
-     /* Peliculas */
-    Productos,
+   /* Usuarios,*/
+      Peliculas,
+    /*Productos,*/
     /* Home   */
   }
 }
@@ -45,6 +45,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
