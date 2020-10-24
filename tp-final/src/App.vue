@@ -5,11 +5,9 @@
     </h1> 
       <img alt="Vue logo" src="./assets/logo.png">
       <HelloWorld msg="Pepe"/>
-    <!-- <Peliculas /> -->
-      <Productos />  
-       
-       <Usuarios  />
-       
+      <Peliculas />
+      <Productos />
+      <Usuarios  />
   </div>
 </template>
 

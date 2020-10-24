@@ -17,10 +17,6 @@
 
 
 <script>
-Vue.component ('peliculas-item',
-{}
-
-)
    export default {
             name: 'peliculas-item',
             props: {
