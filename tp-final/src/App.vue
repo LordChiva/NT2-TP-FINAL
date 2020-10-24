@@ -1,23 +1,26 @@
 <template>
-  <div id="app">
+  <div id="app">     
       <img alt="Vue logo" src="./assets/logo.png">
       <HelloWorld msg="Pepe"/>
-      <!-- <Peliculas /> -->
+      <Peliculas />
       <Productos />
+      <Usuarios  />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue' 
-//import Peliculas  from './components/Peliculas.vue'
-import Productos  from './components/Productos.vue'  
+import Peliculas  from './components/Peliculas.vue'
+import Productos  from './components/Productos.vue' 
+import Usuarios  from './components/Usuarios.vue'  
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-//  Peliculas,
-    Productos 
+    Peliculas,
+    Productos,
+    Usuarios
   }
 }
 </script>

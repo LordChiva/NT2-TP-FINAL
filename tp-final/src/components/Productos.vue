@@ -4,12 +4,12 @@
   <div class="productos-item">
     <ol>     
         <li v-for="productos in productosBuscados" :key="productos.nombre">
-            <span>{{ `El producto ${productos.nombre} (${productos.precio})`}} </span>
+            <span>{{ `Producto: ${productos.nombre} (${productos.precio})`}} </span>
             <hr>
             <span>{{ ` ${productos.descripcion} `}} </span>
             <hr>
         </li>
-    </ol>    
+    </ol>
   </div>
 </template>
 
