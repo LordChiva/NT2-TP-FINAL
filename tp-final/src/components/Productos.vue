@@ -32,7 +32,7 @@
                 
             },
             computed: {
-                peliculaBuscadas(){
+                productosBuscadas(){
                     return this.productos.filter(productos=> this.buscar == null || productos.nombre.includes(this.buscar))
                 }
             },           
