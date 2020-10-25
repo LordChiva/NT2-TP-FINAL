@@ -13,13 +13,11 @@ Vue.use(IconsPlugin);
 
 
 import VueRouter from 'vue-router'
-import Home from './components/Home.vue'
 import User from './components/User.vue'
 import Navegador from './components/Navegador.vue'
 
 
 const routes = [
-{path:'',component:Home},
 {path:'/user',component:User},
 {path:'',component:Navegador}
 ]

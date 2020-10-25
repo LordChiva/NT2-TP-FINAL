@@ -21,7 +21,6 @@
       <!--  -->
      <!-- <router-link to="/">Home <router-link> -->
        <Navegador />
-       <Home />
        <HelloWorld />
        <Peliculas /> 
        <Productos />
@@ -34,8 +33,7 @@
   import Usuarios   from './components/Usuarios.vue' 
   import Peliculas  from './components/Peliculas.vue' 
   import Productos  from './components/Productos.vue'
-  import Home  from './components/Home.vue' 
-  import Navegador from './components/Navegador.vue'
+  import Navegador  from './components/Navegador.vue'
 
 export default {
   name: 'App',
@@ -44,7 +42,6 @@ export default {
       Usuarios,
       Peliculas,
       Productos,
-      Home,
       Navegador
   }
 }
