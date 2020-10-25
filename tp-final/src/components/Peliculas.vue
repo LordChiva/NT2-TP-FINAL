@@ -1,29 +1,26 @@
-<template>    
-    <div class="header">       
-        <table class="container-table">
-            <tr class="trcarta">
-                <td class="tdcarta" v-for="(pelicula,index) in peliculas" :key="index">
-                    <div class="contenedor">
-                        <div class="carta">
-                            <div class="lado frente">
-                                <figure>
-                                    <img alt="Peli foto"  v-bind:src="pelicula.imagen"  class="img-responsive" height="300" width="300"/>	
-                                    <h1>hola</h1>											
-                                </figure>						
-                            </div>    
-                            <div class="lado atras">
-                                <h3>{{pelicula.nombre}} </h3>	
-                                <small>{{pelicula.sinopsis}} </small>	
-                                <hr>                                
-                                <small> Duracion: {{pelicula.duracion}} </small>		
-                            </div>
+ <template>    
+    <div class="contenedorPrincipal">       
+        <table class="tableContainer">
+            <tr>
+                <td v-for="(pelicula,index) in peliculas" :key="index">
+                    <div class="carta">
+                        <div class="lado">
+                            <figure>
+                                <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">												
+                            </figure>						
+                        </div>    
+                        <div class="lado atras">
+                            <h3>{{pelicula.nombre}} </h3>	
+                            <small>{{pelicula.sinopsis}} </small>	
+                            <hr>                                
+                            <small> Duracion: {{pelicula.duracion}} </small>		
                         </div>
                     </div>
                 </td>
             </tr>
         </table>        
     </div>
-</template>
+</template> 
 
 <script>
 /*
@@ -171,34 +168,40 @@ export default {
         }
     },
     methods: {
-        operarTitulo()
-        {
-            return this.titulo + this.valor
-        }
+        
     }
 }
 </script>
 
 <style>
-    /*figura 3d*/
-    .trcarta {
-        width: 90%;
-        background: white;
-        margin: 50px auto;
-        display: grid;
-        grid-template-columns: repeat(4, 25%);
-        grid-auto-rows: 400px 50px;
+    /**AGREGAR BORDE*/
+    .contenedorPrincipal{
+        display: inline-block;
+        width: 95%;
+        height: 100%;
+        margin: 0px;
+        padding: 15px;
     }
 
-    .tdcarta {
-        margin: 0px 20px ;
+    .contenedorPrincipal > table > tr {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 35%);
+        grid-auto-rows: 350px 350px;
+        justify-content: center;
+        margin: 0px 0px 0px 100px;
+    }
+
+    .tableContainer{
+        width: 100%;
+        justify-content: center;
+        display: inline-flex;
     }
 
     .contenedor {
         height: 300px;
         width: 300px;
-        margin: 0px 50px;
-        /*-webkit-perspective: 500; */
+        margin: 5px 25px 5px 25px;
     }
 
     .carta {
@@ -206,28 +209,29 @@ export default {
         width: 300px;
         position: relative;
         transform-style: preserve-3d;
-        transition: 2s;
-        box-shadow: 0px 0px 5px black;       
-        margin: 0px 50px;
+        transition: 0.7s;
+        box-shadow: 0px 0px 5px black;
+    }
+    /**120deg */
+    .carta:hover {
+        transform: rotateY(170deg);
     }
 
-    .carta:hover {
-        transform: rotateY(120deg);
+    .imagen{
+        width: 300px;
+        height: 300px;
     }
 
     .lado {
         height: 100%;
         width: 100%;
         backface-visibility: hidden;
-        position: absolute;        
-    }
-
-    .frente {
-        background: #fff;
+        position: absolute;  
+        background-color: rgb(21, 34, 50);
+        color: #9FADBD;     
     }
 
     .atras {
-        background: #fff;
-        transform: rotateY(180deg);
+        transform: rotateY(200deg);
     }
 </style>

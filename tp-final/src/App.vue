@@ -24,13 +24,13 @@
        <HelloWorld />
        <Peliculas /> 
        <Productos />
-       <Usuarios  />
+       <!-- <Usuarios  /> -->
   </div>
 </template>
 
 <script>
   import HelloWorld from './components/HelloWorld.vue'
-  import Usuarios   from './components/Usuarios.vue' 
+  //import Usuarios   from './components/Usuarios.vue' 
   import Peliculas  from './components/Peliculas.vue' 
   import Productos  from './components/Productos.vue'
   import Navegador  from './components/Navegador.vue'
@@ -39,7 +39,7 @@ export default {
   name: 'App',
   components: {
       HelloWorld,
-      Usuarios,
+      //Usuarios,
       Peliculas,
       Productos,
       Navegador
