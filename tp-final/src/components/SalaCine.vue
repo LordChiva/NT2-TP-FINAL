@@ -29,6 +29,9 @@ export default {
     props:{
         titulo:Number
     },
+
+/** HACER UN MAXIMO DE 120 BUTACAS - Y HACER UN CICLO PARA QUE REPITA LAS BUTACAS, ¡¡NO HACER 120 VECES UNA BUTACA!! */
+
     data: () => {
         return{
             salas:[                

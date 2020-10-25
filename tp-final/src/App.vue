@@ -18,12 +18,12 @@
         </b-col>
       </b-row> -->
       
-      <!--  -->
      <!-- <router-link to="/">Home <router-link> -->
        <Navegador />
        <HelloWorld />
        <Peliculas /> 
        <Productos />
+       <!-- <SalaCine /> -->
        <!-- <Usuarios  /> -->
   </div>
 </template>
@@ -34,6 +34,7 @@
   import Peliculas  from './components/Peliculas.vue' 
   import Productos  from './components/Productos.vue'
   import Navegador  from './components/Navegador.vue'
+  //import SalaCine  from './components/SalaCine.vue'
 
 export default {
   name: 'App',
@@ -42,7 +43,8 @@ export default {
       //Usuarios,
       Peliculas,
       Productos,
-      Navegador
+      Navegador,
+      //SalaCine
   }
 }
 </script>
