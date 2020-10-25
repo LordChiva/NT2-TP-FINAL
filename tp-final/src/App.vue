@@ -2,6 +2,7 @@
   <div id="app">    
     <header>
       <!-- <Peliculas /> -->
+      <HelloWorld />
       <Productos />
       <Usuarios  />
     </header>
