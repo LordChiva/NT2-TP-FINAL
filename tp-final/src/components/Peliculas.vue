@@ -7,7 +7,8 @@
                         <div class="carta">
                             <div class="lado frente">
                                 <figure>
-                                    <img alt="Peli foto"  v-bind:src="pelicula.imagen"  class="img-responsive" height="300" width="300"/>												
+                                    <img alt="Peli foto"  v-bind:src="pelicula.imagen"  class="img-responsive" height="300" width="300"/>	
+                                    <h1>hola</h1>											
                                 </figure>						
                             </div>    
                             <div class="lado atras">
