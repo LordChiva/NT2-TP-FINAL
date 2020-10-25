@@ -33,6 +33,7 @@ import avatar from "../assets/avatar.jpg"
 import jumanji from "../assets/Jumanji.jpg"
 import ryf7 from "../assets/RyF7.jpg"
 import wwz from "../assets/WorldWarZ.jpg"
+import deadpool from "../assets/deadpool.jpg"
 
 export default {
     name:"AppHeader",
@@ -163,8 +164,24 @@ export default {
                 }
 
             ]
+             },
+             {
+                nombre:"Deadpool",
+                sinopsis:"Este personaje es un antihéroe o antisistema que se diferencia de otros superhéroes de las historietas. El nombre del personaje Deadpool deriva de la unión de dos palabras en inglés. Por un lado Dead que es muerto y Pool que es pozo o masacre; por lo que la traducción de Deadpool en español es Masacre o Pozo de muerte.",
+                duracion: "1h 49m",
+                imagen:deadpool,
+                horario: "14:30hs",
+                dias:[
+                    {
+                    dia:"Domingo",
+                    fecha:" 17/10/2020",
+                    fecha2:" 24/10/2020",
+                    fecha3:" 31/10/2020",
+                    fecha4:" 01/11/2020"
+                }
+            ]
              }
-            ,]
+        ]
         }
     },
     methods: {
