@@ -23,7 +23,7 @@
        <HelloWorld />
        <Peliculas /> 
        <Productos />
-       <!-- <SalaCine /> -->
+        <!-- <SalaCine />  -->
        <!-- <Usuarios  /> -->
   </div>
 </template>
@@ -34,7 +34,7 @@
   import Peliculas  from './components/Peliculas.vue' 
   import Productos  from './components/Productos.vue'
   import Navegador  from './components/Navegador.vue'
-  //import SalaCine  from './components/SalaCine.vue'
+  /* import SalaCine  from './components/SalaCine.vue' */
 
 export default {
   name: 'App',
@@ -44,7 +44,7 @@ export default {
       Peliculas,
       Productos,
       Navegador,
-      //SalaCine
+     /*  SalaCine */
   }
 }
 </script>

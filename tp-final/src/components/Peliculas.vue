@@ -36,7 +36,7 @@ import wwz from "../assets/WorldWarZ.jpg"
 import deadpool from "../assets/deadpool.jpg"
 
 export default {
-    name:"AppHeader",
+    name:"peliculas",
     props:{
         titulo:Number
     },
