@@ -34,6 +34,7 @@ import jumanji from "../assets/Jumanji.jpg"
 import ryf7 from "../assets/RyF7.jpg"
 import wwz from "../assets/WorldWarZ.jpg"
 import deadpool from "../assets/deadpool.jpg"
+import jurassicWorld from "../assets/jurassicWorld.jpg"
 
 export default {
     name:"peliculas",
@@ -180,7 +181,24 @@ export default {
                     fecha4:" 01/11/2020"
                 }
             ]
+             },
+             {
+                nombre:"Jurassic World",
+                sinopsis:"Ambientada 22 años después de los acontecimientos de Parque Jurásico, Jurassic World tiene lugar en la misma isla ficticia centroamericana de isla Nublar, frente a la costa del Pacífico de Costa Rica, donde un nuevo parque temático poblado con dinosaurios clonados ha operado durante diez años.",
+                duracion: "2h 4m",
+                imagen:jurassicWorld,
+                horario: "14:30hs",
+                dias:[
+                    {
+                    dia:"Domingo",
+                    fecha:" 17/10/2020",
+                    fecha2:" 24/10/2020",
+                    fecha3:" 31/10/2020",
+                    fecha4:" 01/11/2020"
+                }
+            ]
              }
+             
         ]
         }
     },
