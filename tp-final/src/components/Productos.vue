@@ -1,50 +1,60 @@
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
 <template>
-  <div class="productos-item">
-    <ol>     
-        <li v-for="productos in productosBuscados" :key="productos.nombre">
-            <span>{{ `Producto: ${productos.nombre} (${productos.precio})`}} </span>
-            <hr>
-            <span>{{ ` ${productos.descripcion} `}} </span>
-            <hr>
-        </li>
+  <div class="contenedorPrincipal">
+    <ol class="olContainer">     
+        <table class="tableContainer">
+           <tr>
+                <td v-for="(producto,index) in productos" :key="index">
+                    <li> 
+                        <figure>
+                            <img alt="imagen"  v-bind:src="producto.imagen"  class="img-responsive" height="80" width="80">											
+                        </figure>
+                        <span>{{ producto.nombre}} </span>
+                        <span>Precio: {{ producto.precio}} </span>
+                        <hr>   
+                    </li>  
+                </td>
+            </tr>
+        </table>        
     </ol>
   </div>
 </template>
 
 
 <script>
+import nachos from "../assets/nachos.jpg"
+import agua from "../assets/agua.jpg"
+import gaseosa from "../assets/gaseosa.jpg"
+import pochoclos from "../assets/pochoclos.jpg"
 
-   export default {
-            name: 'productos-item',
-            props: {
-               buscar:null, 
-                    form:{
-                        nombre:' ', 
-                        precio:' ',
-                        descripcion:' ',
-                        imagen:' ',                          
-                    },
-                    peliculas:[]  
-            },
-            methods:{
-                
-            },
-            computed: {
-                productosBuscados(){
-                    return this.productos.filter(productos=> this.buscar == null || productos.nombre.includes(this.buscar))
-                }
-            },           
-            created() {
-               const productos = [
-                   { nombre: 'Pochoclos', precio: '100', descripcion:' ', imagen:' '},
-                   { nombre: 'Gaseosa'  , precio: '80' , descripcion:' ', imagen:' '},
-                   { nombre: 'Agua'     , precio: '60' , descripcion:' ', imagen:' '},
-                   { nombre: 'Dulces'   , precio: '900', descripcion:' ', imagen:' '},            
-                ]
-                this.productos = productos
-            }    
+export default {
+    name:"AppHeader",
+    props:{
+        titulo:Number
+    },
+    data: () => {
+        return{
+            productos:[
+                { nombre: 'Pochoclos', precio: '150', descripcion:' ', imagen:pochoclos},
+                { nombre: 'Gaseosa'  , precio: '80' , descripcion:' ', imagen:gaseosa},
+                { nombre: 'Agua'     , precio: '60' , descripcion:' ', imagen:agua},
+                { nombre: 'Nachos'   , precio: '100', descripcion:' ', imagen:nachos}   
+            ]
         }
-    
+    },
+    methods: {
+        
+    }
+}
 </script>
+
+<style>
+    .contenedorPrincipal > ol > table > tr {
+        width: 100%;
+        display: grid;
+        margin: 0px 0px 0px 100px;
+    }
+
+    .tableContainer  tr  td {
+        margin:  0px 10px 10px 1px;
+    }
+</style>
