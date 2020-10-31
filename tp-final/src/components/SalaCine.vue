@@ -3,18 +3,22 @@
         <table class="container-table">            
             <tr class="tr">        
                 <div class="numeros" v-for="(numero,index) in numeros" :key="index" >	
-                    {{numero.numero}}
+                
+                        {{numero}}
+                    
                 </div>    
-                <td class="td" v-for="(sala,index) in salas" :key="index"> 
-                    <div class="contenedor">                                                                        
-                        <img v-bind:src="sala.imagen"  class="img-responsive" height="50" width="50">	
+                <td class="td" v-for="i in 160" :key="i"> 
+                <div class="contenedor">                                                                        
+                        <img v-bind:src="salas[0]"  class="img-responsive" height="50" width="50">	
                     </div>                                                       
                 </td>                     
-            </tr>                    
-        </table>   
-        <div class="pantalla" v-for="(pantalla,index) in pantalla" :key="index" >	
+            </tr>
+        <div class="pantalla" >	
             <img alt="Pantalla"  v-bind:src="pantalla.imagen"  class="img-responsive" height="80" width="1000">
-        </div>   
+        </div>                       
+        </table> 
+        
+         
         
         <div class="letras" v-for="(letra,index) in letras" :key="index" >	
             {{letra.letra}}
@@ -26,8 +30,8 @@
 /*
 <app-item :title="pelicula.nombre" :sub="pelicula.sinopsis" ></app-item>
 */
-import asientoLibre from "../assets/asientoLibre.jpg"
-//import asientoOcupado from "../assets/asientoOcupado.jpg"
+/* import asientoLibre from "../assets/asientoLibre.jpg" */
+/* import asientoOcupado from "../assets/asientoOcupado.jpg" */
 import asientoVip from "../assets/asientoVip.jpg"
 import pantalla from "../assets/pantalla.jpg"
 
@@ -42,190 +46,12 @@ export default {
     data: () => {
         return{
             salas:[  
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip },
-                {imagen:asientoVip }, 
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre }, 
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre }, 
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
-                {imagen:asientoLibre },
+                asientoVip 
             ],
-            pantalla: [{imagen:pantalla } ],
-            numeros:[          
-                {numero:1 },
-                {numero:2 },
-                {numero:3 },
-                {numero:4 },
-                {numero:5 },
-                {numero:6 },
-                {numero:7 },
-                {numero:8 },
-                {numero:9 },
-                {numero:10 },
-                {numero:11 },
-                {numero:12 },
-                {numero:13 },
-                {numero:14 },
-                {numero:15 },
-                {numero:16 },
-                {numero:17 },
-                {numero:18 },
-                {numero:19 },
-                {numero:20 },
-            ],
+
+            pantalla: {imagen:pantalla },
+            numeros:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+
             letras:[                    
                 {letra:"A" },
                 {letra:"B" },
@@ -243,8 +69,15 @@ export default {
         {
             return this.titulo + this.valor
         }
+       /*  setearImagen(asiento)
+        {
+            if asiento.imagen==asientoLibre
+            return
+        } */
     }
+    
 }
+
 </script>
 
 

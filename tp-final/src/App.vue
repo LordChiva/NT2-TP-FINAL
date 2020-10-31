@@ -20,31 +20,31 @@
       
      <!-- <router-link to="/">Home <router-link> -->
        <Navegador />
-       <HelloWorld />
        <Peliculas /> 
-       <Productos />
-        <!-- <SalaCine />  -->
+       <!-- <Productos /> -->
+        <SalaCine /> 
        <!-- <Usuarios  /> -->
   </div>
+  
 </template>
 
+
+
 <script>
-  import HelloWorld from './components/HelloWorld.vue'
   //import Usuarios   from './components/Usuarios.vue' 
   import Peliculas  from './components/Peliculas.vue' 
-  import Productos  from './components/Productos.vue'
+  /* import Productos  from './components/Productos.vue' */
   import Navegador  from './components/Navegador.vue'
-  /* import SalaCine  from './components/SalaCine.vue' */
+  import SalaCine  from './components/SalaCine.vue'
 
 export default {
   name: 'App',
   components: {
-      HelloWorld,
       //Usuarios,
       Peliculas,
-      Productos,
+     /*  Productos, */
       Navegador,
-     /*  SalaCine */
+      SalaCine
   }
 }
 </script>
