@@ -1,5 +1,5 @@
  <template>    
-    <div class="contenedorPrincipal">       
+    <div class="contenedorPeliculas">       
         <table class="tableContainer">
             <tr>
                 <td v-for="(pelicula,index) in peliculas" :key="index">
@@ -209,19 +209,20 @@ export default {
 </script>
 
 <style>
-    /**AGREGAR BORDE*/
-    .contenedorPrincipal{
+    /**El display cambia el tamaño del background*/
+    .contenedorPeliculas{
         display: inline-block;
         width: 95%;
         height: 100%;
         margin: 0px;
         padding: 15px;
+        background-color: rgb(11, 22, 34);
     }
 
-    .contenedorPrincipal > table > tr {
+    .contenedorPeliculas > table > tr {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 35%);
+        grid-template-columns: repeat(3, 80%);
         grid-auto-rows: 350px 350px;
         justify-content: center;
         margin: 0px 0px 0px 100px;

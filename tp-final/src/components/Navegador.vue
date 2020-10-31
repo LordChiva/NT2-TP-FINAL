@@ -3,10 +3,15 @@
         <div class="pestaniaNavegacion">
             <table>
                 <tr>
-                    <td><input type="button" value="Inicio"></td>
-                    <td><input type="button" value="Peliculas"></td>
-                    <td><input type="button" value="Productos"></td>
-                </tr>
+                    <div id="nav">
+                        <b-input-group-append class="contenedorB">
+                            <b-button class="boton" variant="outline-primary"><router-link to="/">Inicio</router-link></b-button>
+                            <b-button class="boton" variant="outline-primary"><router-link to="/about">Productos</router-link></b-button>
+                            <b-button class="boton" variant="outline-primary"><router-link to="/about">Cuenta</router-link></b-button>
+                        </b-input-group-append>
+                    </div>
+                    <router-view/>
+                </tr>      
             </table>
         </div>
     </div>
@@ -38,25 +43,42 @@
     text-align: center;
 }
 
-.pestaniaNavegacion > table > tr > td{
-    padding: 5px;
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
 }
 
-.pestaniaNavegacion > table > tr > td > input{
+#nav a.router-link-exact-active {
+  color: #DA4127;
+}
+
+.contenedorB{
+    padding: 5px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.boton{
     padding: 5px;
     border: 1px solid rgba(21, 34, 50, 0.7);
     border-radius: 10px;
-    margin: 0px 10px 0px 10px;
-    width: 150px;
+    margin: 0px 20px 0px 20px;
+    width: 100px;
     color: #9FADBD;
-    background-color: rgba(21, 34, 50, 0.7);
+    background-color: rgb(21, 34, 50, 0.3);
     font-weight: bold;
 }
 
-.pestaniaNavegacion > table > tr > td > input:hover{
-    color: #C7D5E5;
-    
+/*bootstrap/dist/css
+    .btn-outline-primary:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+    }
+*/
+
+.boton :hover{ 
+    color: #C7D5E5 !important;
 }
-
-
 </style>

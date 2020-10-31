@@ -30,9 +30,9 @@
 /*
 <app-item :title="pelicula.nombre" :sub="pelicula.sinopsis" ></app-item>
 */
-/* import asientoLibre from "../assets/asientoLibre.jpg" */
+/* import asientoNodisp from "../assets/asientoNodisp.jpg" */
 /* import asientoOcupado from "../assets/asientoOcupado.jpg" */
-import asientoVip from "../assets/asientoVip.jpg"
+import asientoLibre from "../assets/asientoLibre.jpg"
 import pantalla from "../assets/pantalla.jpg"
 
 export default {
@@ -46,7 +46,7 @@ export default {
     data: () => {
         return{
             salas:[  
-                asientoVip 
+                asientoLibre 
             ],
 
             pantalla: {imagen:pantalla },
