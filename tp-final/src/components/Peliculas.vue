@@ -6,10 +6,14 @@
                     <div class="carta">
                         <div class="lado">
                             <figure>
-                                <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">												
+                                <b-button > <router-link to="/Productos"></router-link><img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen"></b-button>											
                             </figure>						
                         </div>    
                         <div class="lado atras">
+                            <figure>
+                                <b-button ><router-link to="/Productos">Peli</router-link></b-button>											
+                            </figure>
+                            <router-view/>
                             <h3>{{pelicula.nombre}} </h3>	
                             <small>{{pelicula.sinopsis}} </small>	
                             <hr>                                

@@ -6,7 +6,7 @@
                     <div id="nav">
                         <b-input-group-append class="contenedorB">
                             <b-button class="boton" variant="outline-primary"><router-link to="/">Inicio</router-link></b-button>
-                            <b-button class="boton" variant="outline-primary"><router-link to="/about">Productos</router-link></b-button>
+                            <b-button class="boton" variant="outline-primary"><router-link to="/Productos">Productos</router-link></b-button>
                             <b-button class="boton" variant="outline-primary"><router-link to="/about">Cuenta</router-link></b-button>
                         </b-input-group-append>
                     </div>
@@ -14,8 +14,14 @@
                 </tr>      
             </table>
         </div>
+       
     </div>
+     
 </template>
+
+<script>
+
+</script>
 
 <style scoped>
 #contenedorNavegacion{

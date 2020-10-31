@@ -10,16 +10,27 @@
       <div class="login">
         <p>Login/Registro</p>
       </div>
+      
     </div>
 
-    <Navegador />
+  
+   <Navegador />
+    <!-- <SalaCine /> -->
     
-
+   
+  
+   
     <div class="contenedorGeneral">
       <div class="contenedorFooter">
-        <h1>footer</h1>
+        <h1>footer pepe</h1>
       </div>
     </div>
+   
+   <!-- <Productos />  -->
+  
+     
+
+   
 
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -37,18 +48,18 @@ import Navegador  from './components/Navegador.vue'
  /*  import Usuarios   from './components/Usuarios.vue'  */
   /* import Peliculas  from './components/Peliculas.vue'  */
   /* import Publicidad  from './components/Publicidad.vue' */
-  /* import Productos  from './components/Productos.vue'  
-  import SalaCine  from './components/SalaCine.vue' */
+  /* import Productos  from './components/Productos.vue'  */ 
+  /* import SalaCine  from './components/SalaCine.vue' */
 
 export default {
   name: 'App',
   components: {
      /*   Usuarios, */
-     /*  Peliculas, */
+      /* Peliculas, */
       /* Publicidad, */
-      //Productos,
+      /* Productos, */
       Navegador,
-    /*   SalaCine */
+      /* SalaCine */
   }
 }
 </script>
