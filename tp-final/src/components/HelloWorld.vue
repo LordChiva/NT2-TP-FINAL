@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ "pagina de inicio" }}</h1>
-    
+    <h1>{{ "ESTO ES LA PAGINA PRINCIPAL SEBA POR FAVOR REVIVI Y PASAME APP.VUE PORQUE ME PEGO UN TIRO" }}</h1>
   </div>
 </template>
 
