@@ -1,7 +1,16 @@
 <template>
   <div class="hello">
     <h1>{{ "ESTO ES LA PAGINA PRINCIPAL SEBA POR FAVOR REVIVI Y PASAME APP.VUE PORQUE ME PEGO UN TIRO" }}</h1>
+     <div>
+            <b-button > <router-link to="/">Volver</router-link></b-button>	
+    </div>
+    <div>
+            <b-button > <router-link to="/SalaCine">Siguiente</router-link></b-button>	
+    </div>
   </div>
+  
+
+
 </template>
 
 <script>

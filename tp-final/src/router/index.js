@@ -27,6 +27,13 @@ const routes = [
     name: 'PantallaPelicula',
     component: () => import('../components/PantallaPelicula.vue')
   },
+  {
+    path: '/SalaCine',
+    name: 'SalaCine',
+    component: () => import('../components/SalaCine.vue')
+  },
+
+ 
 ]
 
 const router = new VueRouter({

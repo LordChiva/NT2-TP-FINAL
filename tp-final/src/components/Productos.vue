@@ -16,6 +16,9 @@
             </tr>
         </table>        
     </ol>
+    <div>
+            <b-button > <router-link to="/SalaCine">Volver</router-link></b-button>	
+    </div>
   </div>
 </template>
 

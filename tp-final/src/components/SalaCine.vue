@@ -21,6 +21,13 @@
         <div class="letras" v-for="(letra,index) in letras" :key="index" >	
             {{letra.letra}}
         </div>  
+
+        <div>
+            <b-button > <router-link to="/Productos">Siguiente</router-link></b-button>	
+        </div>
+        <div>
+            <b-button > <router-link to="/PantallaPelicula">Volver</router-link></b-button>	
+        </div>
         
          
         
