@@ -39,7 +39,6 @@ import Navegador  from './components/Navegador.vue'
   /* import Publicidad  from './components/Publicidad.vue' */
   /* import Productos  from './components/Productos.vue'  
   import SalaCine  from './components/SalaCine.vue' */
-
 export default {
   name: 'App',
   components: {
@@ -67,7 +66,6 @@ export default {
   color: #2c3e50;
   background-color: rgb(11, 22, 34);
 }
-
 .contenedorGeneral{
   display: inline-flex;
   width: 100%;
@@ -77,29 +75,24 @@ export default {
   text-align: center;
   align-items: center;
 }
-
 .logo{
   display: inline-block;
   width: 13%;
 }
-
 .logo > img{
   display: inline-block;
   width: 110px;
 }
-
 .titulo{
   display: inline-flex;
   width: 67%;
   justify-content: start;
 }
-
 .titulo > h1{
   display: inline-block;
   font-size: 70px;
   color: #9FADBD;
 }
-
 .login{
   display: inline-flex;
   width: 20%;
