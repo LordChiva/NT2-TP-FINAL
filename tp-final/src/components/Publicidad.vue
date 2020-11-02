@@ -11,6 +11,8 @@
   </div>
 </template>
 
+<!--CONFIGURACION SIN SOBREPASAR 100% O QUE NO ESTE POR DEBAJO DEL 0% -- USAR px PARA ALGUNOS ELEMENTOS-->
+
 <style>
     * {
         margin: 0;

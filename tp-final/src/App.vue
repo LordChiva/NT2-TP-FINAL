@@ -10,56 +10,30 @@
       <div class="login">
         <p>Login/Registro</p>
       </div>
-      
     </div>
-
-  
-   <Navegador />
-    <!-- <SalaCine /> -->
-    
-   
-  
-   
-    <div class="contenedorGeneral">
-      <div class="contenedorFooter">
+    <Navegador />
+    <Publicidad />
+    <div class="contenedorFooter">
         <h1>footer pepe</h1>
-      </div>
     </div>
-   
-   <!-- <Productos />  -->
   
-     
-
-   
-
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
-      <!--aca iría la barra de navegación-->
-    <!-- </div> -->
-    <!-- <router-view/> -->
   </div>
-
 
 </template>
 
+<!--FIJENSE LOS COMENTARIOS QUE DEJE, TAMBIEN FIJARSE PARA QUÉ SE ESTA USANDO EL COMPONENTE DE USER Y USUARIOS!!!!-->
+
+<!--DEPENDIENDO DE LA RESPUESTA QUE ME DE EL PROFESOR ME FIJO DE SACAR O NO LAS VIEWS CON ABOUT Y HOME-->
+
 <script>
-import Navegador  from './components/Navegador.vue'
- /*  import Usuarios   from './components/Usuarios.vue'  */
-  /* import Peliculas  from './components/Peliculas.vue'  */
-  /* import Publicidad  from './components/Publicidad.vue' */
-  /* import Productos  from './components/Productos.vue'  */ 
-  /* import SalaCine  from './components/SalaCine.vue' */
+import Navegador from './components/Navegador.vue'
+import Publicidad from './components/Publicidad.vue'
 
 export default {
   name: 'App',
   components: {
-     /*   Usuarios, */
-      /* Peliculas, */
-      /* Publicidad, */
-      /* Productos, */
       Navegador,
-      /* SalaCine */
+      Publicidad
   }
 }
 </script>

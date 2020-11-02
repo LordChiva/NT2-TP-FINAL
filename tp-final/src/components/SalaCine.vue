@@ -8,14 +8,16 @@
                     
                 </div>    
                 <td class="td" v-for="(asiento,index) in salas" :key="index"> 
-                <div class="contenedor" >                                                                        
+                <div class="contenedor" >     
+                        <!--AGREGAR AUNQUE SEA VALOR TEMPORAL AL HEIGHT Y WIDTH CON px O %-->                                                                   
                         <img v-bind:src="asiento.Imagen"  class="img-responsive" height="50" width="50" v-on:click="setearOcupado(asiento)" >	
                     </div>                                                       
                 </td>                     
             </tr>
-        <div class="pantalla" >	
-            <img alt="Pantalla"  v-bind:src="pantalla.imagen"  class="img-responsive" height="80" width="1000">
-        </div>  
+            <div class="pantalla" >	
+                <!--AGREGAR AUNQUE SEA VALOR TEMPORAL AL HEIGHT Y WIDTH CON px O % y medio dudoso ese width="1000"-->
+                <img alt="Pantalla"  v-bind:src="pantalla.imagen"  class="img-responsive" height="80" width="1000">
+            </div>  
                              
         </table> 
         <div class="letras" v-for="(letra,index) in letras" :key="index" >	
@@ -45,6 +47,8 @@ import asientoLibre from "../assets/asientoLibre.jpg"
 import pantalla from "../assets/pantalla.jpg"
 
 export default {
+    /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
+     *  el título devuelve un número? */
     name:"AppHeader",
     props:{
         titulo:Number
@@ -75,6 +79,7 @@ export default {
         }        
     },
     methods: {
+        /**OPERAR TÍTULO DEVUELVE EL TÍTULO MÁS UN VALOR NUMERICO SUPONGO, VAYA UNO A SABER PARA QUÉ*/
         operarTitulo()
         {
             return this.titulo + this.valor

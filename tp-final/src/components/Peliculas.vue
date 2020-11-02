@@ -42,6 +42,8 @@ import jurassicWorld from "../assets/jurassicWorld.jpg"
 
 export default {
     name:"peliculas",
+    /**cambienle el tipo de la prop. Esa prop esta para algo?
+     *  el título devuelve un número? Tiene metodos? */
     props:{
         titulo:Number
     },
@@ -220,7 +222,8 @@ export default {
         height: 100%;
         margin: 0px;
         padding: 15px;
-        background-color: rgb(11, 22, 34);
+        background-color: green;
+        /* background-color: rgb(11, 22, 34); */
     }
 
     .contenedorPeliculas > table > tr {

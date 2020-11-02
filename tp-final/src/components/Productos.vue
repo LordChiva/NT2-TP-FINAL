@@ -30,6 +30,8 @@ import gaseosa from "../assets/gaseosa.jpg"
 import pochoclos from "../assets/pochoclos.jpg"
 
 export default {
+    /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
+     *  el título devuelve un número? Tiene metodos? */
     name:"AppHeader",
     props:{
         titulo:Number

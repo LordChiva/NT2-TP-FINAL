@@ -19,11 +19,7 @@
      
 </template>
 
-<script>
-
-</script>
-
-<style scoped>
+<style>
 #contenedorNavegacion{
     display: inline-flex;
     width: 100%;
@@ -75,6 +71,13 @@
     background-color: rgb(21, 34, 50, 0.3);
     font-weight: bold;
 }
+
+/**NO BORRAR LOS COMENTARIOS DE ABAJO*/
+
+/* .btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+} */
 
 /*bootstrap/dist/css
     .btn-outline-primary:hover {

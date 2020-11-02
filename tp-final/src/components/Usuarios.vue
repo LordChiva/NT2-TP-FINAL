@@ -15,10 +15,13 @@
                             
 
                </tr>
-               <!--  <hr>
-                <h1>{{pelicula.nombre}} </h1> 
-                <hr>
-                <h1>{{pelicula.sinopsis}} </h1> -->
+               <!-- CLASE 7
+                    2:20:00 EN ADELANTE
+                    COMO USAR EL ROUTE PARA TENER Y DIFERENCIAR
+                    DIFERENTES USUARIOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    
+                    también pensaba en que si se puede usar de la manera en la que muestra en la clase,
+                    hacer un slide con los diferentes usuarios pre-cargados. -->
                 
                 
 

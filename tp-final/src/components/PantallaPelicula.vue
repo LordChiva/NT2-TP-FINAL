@@ -1,8 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ "ESTO ES LA PAGINA PRINCIPAL SEBA POR FAVOR REVIVI Y PASAME APP.VUE PORQUE ME PEGO UN TIRO" }}</h1>
+    <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>
      <div>
-            <b-button > <router-link to="/">Volver</router-link></b-button>	
+          <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
+              ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! -->
+          <b-button > <router-link to="/">Volver</router-link></b-button>	
     </div>
     <div>
             <b-button > <router-link to="/SalaCine">Siguiente</router-link></b-button>	
@@ -17,6 +19,8 @@
 /* import Peliculas  from "../components/Peliculas.vue" */
 
 export default {
+  /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
+     *  el título devuelve un número? Tiene metodos? esta para algo el script?*/
   name: 'HelloWorld',
   props: {
     msg: String
