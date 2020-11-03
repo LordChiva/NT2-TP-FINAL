@@ -21,7 +21,11 @@ const routes = [
     name: 'Navegador',
     component: () => import(/* webpackChunkName: "Navegador" */ '../components/Navegador.vue')
   },
-
+  {
+    path: '/PantallaProductos',
+    name: 'PantallaProductos',
+    component: () => import('../components/PantallaProductos.vue')
+  },
   {
     path: '/PantallaPelicula/:id',
     name: 'PantallaPelicula',
@@ -31,6 +35,11 @@ const routes = [
     path: '/SalaCine',
     name: 'SalaCine',
     component: () => import('../components/SalaCine.vue')
+  },
+  {
+    path: '/Confirmar',
+    name: 'Confirmar',
+    component: () => import('../components/Confirmar.vue')
   },
 
  
