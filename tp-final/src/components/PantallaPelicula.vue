@@ -26,12 +26,14 @@
     <div>
       <b-button > <router-link to="/SalaCine">Siguiente</router-link></b-button>	
     </div>
-  </div>
+    <Publicidad /> 
+  </div>  
 </template>
 
 <script>
 /* import Peliculas  from "../components/Peliculas.vue" */
 import reyleon from "../assets/reyLeon.jpg"
+import Publicidad from "../components/Publicidad.vue"
 
 export default {
   /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
@@ -39,6 +41,9 @@ export default {
   name: 'pantallaPelicula',
   props: {
     msg: String
+  },
+  components: {
+      Publicidad
   },
   data: () => {
     return{

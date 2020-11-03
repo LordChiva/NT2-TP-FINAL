@@ -5,25 +5,22 @@
                 <td v-for="(pelicula,index) in peliculas" :key="index">
                     <div class="carta">
                         <div class="lado">
-                            <figure>
-                                <b-button > <router-link to="/SalaCine"></router-link><img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen"></b-button>											
-                            </figure>						
+                                <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">		
                         </div>    
-                        <div class="lado atras">
-                            <figure>
-                                <b-button ><router-link to="/PantallaPelicula">Peli</router-link></b-button>											
-                            </figure>
+                        <div class="lado atras">                           
                             <router-view/>
                             <h3>{{pelicula.nombre}} </h3>	
                             <small>{{pelicula.sinopsis}} </small>	
                             <hr>                                
-                            <small> Duracion: {{pelicula.duracion}} </small>		
+                            <small> Duracion: {{pelicula.duracion}} </small>
+                            <b-button><router-link :to="`/PantallaPelicula/${pelicula.id}`">Peli</router-link></b-button>	
                         </div>
                     </div>
                 </td>
-            </tr>
-        </table>        
-    </div>
+            </tr>            
+        </table>     
+        <Publicidad />  
+    </div>    
 </template> 
 
 <script>
@@ -39,18 +36,23 @@ import ryf7 from "../assets/RyF7.jpg"
 import wwz from "../assets/WorldWarZ.jpg"
 import deadpool from "../assets/deadpool.jpg"
 import jurassicWorld from "../assets/jurassicWorld.jpg"
+import Publicidad from "../components/Publicidad.vue"
 
 export default {
     name:"peliculas",
     /**cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? Tiene metodos? */
+    components: {
+      Publicidad
+  },
     props:{
         titulo:Number
     },
     data: () => {
         return{
             peliculas:[
-            {nombre: "El Rey León",
+            {id: 1,
+            nombre: "El Rey León",
             sinopsis: "Trata del Reinado de Mufasa el Rey León en una selva de Africa que gobierna con justicia en su territorio,con su leona Sarabi tienen un pequeño cachorro llamado Simba, siempre libra una batalla con su hermano Scar quien no podrá ser rey más aún con el nacimiento de su sobrino.",
             duracion: "1h 29m",
             imagen:reyleon,
@@ -67,7 +69,8 @@ export default {
             ]
              
             },
-            {nombre: "El origen", 
+            {id: 2,
+            nombre: "El origen", 
             sinopsis: "Inception, también conocida como El origen en español, es una película de ciencia ficción que relata la historia de un grupo de ladrones que utilizan una máquina que invade los sueños para conquistar sus objetivos más audaces.",
             duracion: "2h 42m",
             imagen:elorigen, 
@@ -85,6 +88,7 @@ export default {
 
             },
             {
+            id: 3,
             nombre: "Star Wars: Episodio IX", 
             sinopsis: "La Resistencia sobreviviente se enfrenta a la Primera Orden, y Rey, Finn, Poe y el resto de los héroes encararán nuevos retos y una batalla final con la sabiduría de las generaciones anteriores.",  
             duracion: "2h 22m", 
@@ -102,7 +106,8 @@ export default {
             ]
             },
 
-           { nombre: "Avatar",
+           {id: 4,
+             nombre: "Avatar",
              sinopsis: "Jake Sully es un ex-marine confinado en una silla de ruedas que, a pesar de su cuerpo tullido, todavía es un guerrero de corazón. Jake ha sido reclutado para viajar a Pandora, donde las corporaciones están extrayendo un mineral extraño que es la clave para resolver los problemas de la crisis energética de la Tierra.",
              duracion: "2h 42m",
              imagen:avatar,
@@ -119,7 +124,7 @@ export default {
             ]
              },
 
-             {
+             {id: 5,
                  nombre:"Jumanji",
                  sinopsis:"Spencer regresa al fantástico mundo de Jumanji. Sus amigos, Martha, Fridge y Bethany vuelven a entrar al juego para llevarlo de vuelta a casa, pero todo sobre Jumanji está a punto de cambiar, ya que descubren más obstáculos y peligros que superar.",
                  duracion: "2h 3m",
@@ -138,7 +143,7 @@ export default {
 
              },
 
-             {
+             {id: 6,
                  nombre:"Rapidos y Furiosos",
                  sinopsis:"Ha pasado un año desde que Dominic y Brian fueron indultados y pudieron regresar a Estados Unidos. Aunque desean adaptarse a su nueva vida dentro de la legalidad, las cosas no son tan fáciles. Además, un asesino británico va a entrar en sus vidas.",
                  duracion: "2h 20m",
@@ -155,7 +160,7 @@ export default {
 
             ]
              },
-             {
+             {id: 7,
                  nombre:"Guerra Mundial Z",
                  sinopsis:"Gerry Lane (Brad Pitt), antiguo trabajador de las Naciones Unidas, está en el coche con su familia, en Filadelfia, cuando de repente se desata el caos en la ciudad. Gerry ve cómo las personas saltan unas sobre otras, y ocurre algo que lo deja atónito: las personas se están mordiendo unas a otras y desarrollan una gran violencia",
                  duracion: "1h 56m",
@@ -172,7 +177,7 @@ export default {
 
             ]
              },
-             {
+             {id: 8,
                 nombre:"Deadpool",
                 sinopsis:"Este personaje es un antihéroe o antisistema que se diferencia de otros superhéroes de las historietas. El nombre del personaje Deadpool deriva de la unión de dos palabras en inglés. Por un lado Dead que es muerto y Pool que es pozo o masacre; por lo que la traducción de Deadpool en español es Masacre o Pozo de muerte.",
                 duracion: "1h 49m",
@@ -188,7 +193,7 @@ export default {
                 }
             ]
              },
-             {
+             {id: 9,
                 nombre:"Jurassic World",
                 sinopsis:"Ambientada 22 años después de los acontecimientos de Parque Jurásico, Jurassic World tiene lugar en la misma isla ficticia centroamericana de isla Nublar, frente a la costa del Pacífico de Costa Rica, donde un nuevo parque temático poblado con dinosaurios clonados ha operado durante diez años.",
                 duracion: "2h 4m",
@@ -222,8 +227,7 @@ export default {
         height: 100%;
         margin: 0px;
         padding: 15px;
-        background-color: green;
-        /* background-color: rgb(11, 22, 34); */
+        background-color: rgb(11, 22, 34); 
     }
 
     .contenedorPeliculas > table > tr {

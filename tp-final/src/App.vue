@@ -12,10 +12,9 @@
       </div>
     </div>
     <Navegador />
-    <Publicidad />
-    <div class="contenedorFooter">
-        <h1>footer pepe</h1>
-    </div>
+    <router-view/>
+    <h1>footer</h1>
+    
   
   </div>
 
@@ -27,13 +26,13 @@
 
 <script>
 import Navegador from './components/Navegador.vue'
-import Publicidad from './components/Publicidad.vue'
+//import Publicidad from './components/Publicidad.vue'
 
 export default {
   name: 'App',
   components: {
       Navegador,
-      Publicidad
+      //Publicidad
   }
 }
 </script>

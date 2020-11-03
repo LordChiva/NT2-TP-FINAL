@@ -23,7 +23,7 @@ const routes = [
   },
 
   {
-    path: '/PantallaPelicula',
+    path: '/PantallaPelicula/:id',
     name: 'PantallaPelicula',
     component: () => import('../components/PantallaPelicula.vue')
   },
