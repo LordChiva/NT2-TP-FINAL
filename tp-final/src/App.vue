@@ -12,28 +12,22 @@
       </div>
     </div>
     <Navegador />
-    <Publicidad />
-    <div class="contenedorFooter">
-        <h1>footer pepe</h1>
-    </div>
-  
+    <router-view/>
+    <Footer />
   </div>
-
 </template>
 
 <!--FIJENSE LOS COMENTARIOS QUE DEJE, TAMBIEN FIJARSE PARA QUÉ SE ESTA USANDO EL COMPONENTE DE USER Y USUARIOS!!!!-->
 
-<!--DEPENDIENDO DE LA RESPUESTA QUE ME DE EL PROFESOR ME FIJO DE SACAR O NO LAS VIEWS CON ABOUT Y HOME-->
-
 <script>
 import Navegador from './components/Navegador.vue'
-import Publicidad from './components/Publicidad.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
       Navegador,
-      Publicidad
+      Footer
   }
 }
 </script>
@@ -61,24 +55,29 @@ export default {
   text-align: center;
   align-items: center;
 }
+
 .logo{
   display: inline-block;
   width: 13%;
 }
+
 .logo > img{
   display: inline-block;
   width: 110px;
 }
+
 .titulo{
   display: inline-flex;
   width: 67%;
   justify-content: start;
 }
+
 .titulo > h1{
   display: inline-block;
   font-size: 70px;
   color: #9FADBD;
 }
+
 .login{
   display: inline-flex;
   width: 20%;

@@ -1,22 +1,17 @@
 <template>
   <div class="hello">
-    <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>
-     <div>
+     <!-- <div class="botonVolver"> -->
           <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
               ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! -->
-          <b-button > <router-link to="/">Volver</router-link></b-button>	
-    </div>
-    <div>
-            <b-button > <router-link to="/SalaCine">Siguiente</router-link></b-button>	
-    </div>
+        <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>
+        <b-input-group-append class="contenedorB">
+            <b-button class="boton Volver"> <router-link to="/">Volver</router-link></b-button>	
+            <b-button class="boton Siguiente"> <router-link to="/SalaCine">Siguiente</router-link></b-button>
+        </b-input-group-append> 
   </div>
-  
-
-
 </template>
 
 <script>
-/* import Peliculas  from "../components/Peliculas.vue" */
 
 export default {
   /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
@@ -45,22 +40,35 @@ methods:
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-/**<!--CARRUCEL O SLIDER PARA MOSTRAR UNA PRE-VIEW DE PELICULAS-->
-<!--PENSAR ALGO PARA PROMOS-->
-<!--PENSAR FOOTER, PELICULAS HOY, NOSOTROS, ETC...-> */
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 a {
-  color: #42b983;
+    color: #9FADBD;
+    text-decoration: none;
+}
+
+a :hover {
+    text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+    padding: 5px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.boton {
+    padding: 5px;
+    border: 1px solid rgba(21, 34, 50, 0.7);
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    width: 100px;
+    color: #9FADBD;
+    background-color: rgb(21, 34, 50, 0.3);
+    font-weight: bold;
 }
 </style>

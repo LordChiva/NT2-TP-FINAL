@@ -5,18 +5,13 @@
                 <td v-for="(pelicula,index) in peliculas" :key="index">
                     <div class="carta">
                         <div class="lado">
-                            <figure>
-                                <b-button > <router-link to="/SalaCine"></router-link><img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen"></b-button>											
-                            </figure>						
+                            <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">						
                         </div>    
                         <div class="lado atras">
-                            <figure>
-                                <b-button ><router-link to="/PantallaPelicula">Peli</router-link></b-button>											
-                            </figure>
-                            <router-view/>
+                                <!-- <b-button><router-link to="/PantallaPelicula">Peli</router-link></b-button> -->
                             <h3>{{pelicula.nombre}} </h3>	
                             <small>{{pelicula.sinopsis}} </small>	
-                            <hr>                                
+                            <br>                                
                             <small> Duracion: {{pelicula.duracion}} </small>		
                         </div>
                     </div>
@@ -218,18 +213,17 @@ export default {
     /**El display cambia el tamaño del background*/
     .contenedorPeliculas{
         display: inline-block;
-        width: 95%;
+        width: 91%;
         height: 100%;
         margin: 0px;
         padding: 15px;
-        background-color: green;
         /* background-color: rgb(11, 22, 34); */
     }
 
     .contenedorPeliculas > table > tr {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, 80%);
+        grid-template-columns: repeat(3, 37%);
         grid-auto-rows: 350px 350px;
         justify-content: center;
         margin: 0px 0px 0px 100px;
@@ -276,5 +270,13 @@ export default {
 
     .atras {
         transform: rotateY(200deg);
+    }
+
+    .btn {
+        margin: 0px 0px 0px 0px;
+    }
+
+    .btn-secondary {
+        margin: 0px 0px 0px 0px;
     }
 </style>

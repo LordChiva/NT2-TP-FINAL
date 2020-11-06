@@ -10,7 +10,6 @@
                             <b-button class="boton" variant="outline-primary"><router-link to="/about">Cuenta</router-link></b-button>
                         </b-input-group-append>
                     </div>
-                    <router-view/>
                 </tr>      
             </table>
         </div>
