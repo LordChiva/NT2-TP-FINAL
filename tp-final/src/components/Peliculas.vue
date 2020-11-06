@@ -223,7 +223,8 @@ export default {
         margin: 0px;
         padding: 15px;
         background-color: green;
-        /* background-color: rgb(11, 22, 34); */
+      /*   background-color: rgb(11, 22, 34); */
+ 
     }
 
     .contenedorPeliculas > table > tr {
@@ -233,6 +234,7 @@ export default {
         grid-auto-rows: 350px 350px;
         justify-content: center;
         margin: 0px 0px 0px 100px;
+        
     }
 
     .tableContainer{

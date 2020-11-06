@@ -11,6 +11,9 @@ const routes = [
     name: 'Peliculas',
     component: () => import(/* webpackChunkName: "Peliculas" */ '../components/Peliculas.vue')
   },
+  
+
+
   {
     path: '/Productos',
     name: 'Productos',
@@ -32,7 +35,12 @@ const routes = [
     name: 'SalaCine',
     component: () => import('../components/SalaCine.vue')
   },
-
+  {
+    path: '/',
+    name: 'Publicidad',
+    component: () => import('../components/Publicidad.vue')
+  }
+ 
  
 ]
 
