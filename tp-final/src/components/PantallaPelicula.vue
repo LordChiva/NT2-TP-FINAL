@@ -1,19 +1,29 @@
 <template>
   <div class="pantallaPelicula">
+    <h1>Pelicula ID: {{id}} </h1>
+    <h1>{{$store.getters.mensaje}}</h1>
+    <h4>{{$store.getters.nombreCompleto}}</h4>
+    <h2>Amigos</h2>
+      <ul>
+        <li  v-for="(amigo,index) in $store.state.amigos" :key="index">
+          {{amigo}}
+        </li>
+      </ul>            
+            
     <table class="tableContainer">
-      <tr v-for="(pelicula,index) in peliculas" :key="index">
-        <td>
+      <tr>
+        <!-- <td v-for="(pelicula,index) in peliculas" :key="index">
             <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen" width="50%" height="50%">
-            <h1>{{pelicula.nombre}} </h1>
-        </td>
+            
+        </td> -->
         <td class="dias">
-          <h1>{{pelicula.dia}} {{pelicula.horario}}</h1>  
+       <!--    <h1>{{pelicula.dia}} {{pelicula.horario}}</h1>  
           <ul v-for="(dia,index) in dias" :key="index">
             <li class="boton">{{dia.fecha}} </li>
             <li class="boton">{{dia.fecha2}} </li>
             <li class="boton">{{dia.fecha3}} </li>
             <li class="boton">{{dia.fecha4}} </li>
-          </ul> 
+          </ul>  -->
         </td>
       </tr>
     </table> 
@@ -26,42 +36,49 @@
     <div>
       <b-button > <router-link to="/SalaCine">Siguiente</router-link></b-button>	
     </div>
-  </div>
+    <Publicidad /> 
+  </div>  
 </template>
 
 <script>
-/* import Peliculas  from "../components/Peliculas.vue" */
-import reyleon from "../assets/reyLeon.jpg"
+ /* import Peliculas  from "../components/Peliculas.vue"  */
+/* import reyleon from "../assets/reyLeon.jpg" */
+import Publicidad from "../components/Publicidad.vue"
+/* import Peliculas from "../components/Peliculas.vue" */
 
 export default {
-  /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
+  
+  watch:{
+    $route(to)
+    {
+      this.id=to.params.id
+    }
+  },
+
+
+
+
+  /**cambienle el name
+   * , cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? Tiene metodos? esta para algo el script?*/
   name: 'pantallaPelicula',
-  props: {
-    msg: String
+  
+  components: {
+      Publicidad,
+      /*  Peliculas  */
+
   },
-  data: () => {
+  data() {
     return{
-      peliculas:[
-        {nombre: "El Rey León",
-          imagen:reyleon,
-          dia:"Sabado",
-        horario: "20:00hs",}
-      ],
-      dias:[
-        {
-          fecha:" 17/10/2020",
-          fecha2:" 24/10/2020",
-          fecha3:" 31/10/2020",
-          fecha4:" 01/11/2020"
-        }
-      ]
+       id:this.$route.params.id, 
     }
+
   },
   methods: {
     
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

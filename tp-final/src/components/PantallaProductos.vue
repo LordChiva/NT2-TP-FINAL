@@ -1,29 +1,24 @@
 <template>
-
   <div class="contenedorPrincipal">
-      <h1>{{id}}</h1>
-      <h1>Hola {{id}} </h1>
     <ol class="olContainer">     
         <table class="tableContainer">
-           <tr>
-                <td v-for="(producto,index) in productos" :key="index">
-                    
+           <tr>                            
+                <td input type="button" v-for="(producto,index) in productos" :key="index">
                     <li> 
-                        <figure>
-                            <img alt="imagen"  v-bind:src="producto.imagen"  class="img-responsive" height="80" width="80">											
-                        </figure>
+                        <input type="checkbox" /> 
+                        <img alt="imagen"  v-bind:src="producto.imagen"  class="img-responsive" height="80" width="80">		
                         <span>{{ producto.nombre}} </span>
                         <span>Precio: {{ producto.precio}} </span>
                         <hr>   
                     </li>  
                 </td>
             </tr>
-        </table>        
+        </table> 
+        <h1>Total: </h1>
+        <div>
+            <b-button class="botton"> <router-link to="/Confirmar">Confirmar</router-link></b-button>	<b-button class="botton"> <router-link to="/SalaCine">Volver</router-link></b-button>
+        </div>       
     </ol>
-    <div>
-        
-            <b-button > <router-link to="/SalaCine">Volver</router-link></b-button>	
-    </div>
   </div>
 </template>
 
@@ -35,7 +30,6 @@ import gaseosa from "../assets/gaseosa.jpg"
 import pochoclos from "../assets/pochoclos.jpg"
 
 export default {
-
     /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? Tiene metodos? */
     name:"AppHeader",
@@ -44,8 +38,6 @@ export default {
     },
     data: () => {
         return{
-            id:this.$route.params.id,
-            
             productos:[
                 { nombre: 'Pochoclos', precio: '150', descripcion:' ', imagen:pochoclos},
                 { nombre: 'Gaseosa'  , precio: '80' , descripcion:' ', imagen:gaseosa},
@@ -68,6 +60,30 @@ export default {
     }
 
     .tableContainer  tr  td {
-        margin:  0px 10px 10px 1px;
+        margin:  0px 1000px 10px 100px;
+    }
+
+    .botton {
+        padding: 5px;
+        border: 1px solid rgba(21, 34, 50, 0.7);
+        border-radius: 10px;
+        margin: 0px 20px 0px 20px;
+        width: 100px;
+        color: #fff;
+        background-color: rgb(21, 34, 50, 0.3);
+        font-weight: bold;
+    }
+
+    .botton:hover {
+        list-style: none;
+        color: #fff !important;
+        background-color: #007bff;
+        cursor: pointer;
+    }
+
+    .botton a {
+        font-weight: bold;
+        color: #9FADBD;
+        text-decoration: none;
     }
 </style>

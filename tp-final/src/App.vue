@@ -10,8 +10,12 @@
       <div class="login">
         <p>Login/Registro</p>
       </div>
+      
+     
     </div>
     <Navegador />
+    <router-view></router-view>
+    
     <!-- <Publicidad /> -->
     <div class="contenedorFooter">
         <h1>footer pepe</h1>
