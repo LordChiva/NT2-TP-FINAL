@@ -3,8 +3,7 @@
         <div class="pestaniaFooter">
             <table>
                 <tr>
-                    <div class="logo">  
-                        <img alt="Cine logo" src="./assets/LogoPochoclos.png">
+                    <div class="logo">
                     </div>
                     <h1>footer</h1>
                 </tr>      
