@@ -33,13 +33,12 @@
      <div>
           <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
               ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! -->
-      <b-button > <router-link to="/">Volver</router-link></b-button>	
-    </div>
-    <div>
-      <b-button > <router-link to="/SalaCine">Siguiente</router-link></b-button>	
-    </div>
-    <Publicidad /> 
-  </div>  
+        <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>
+        <b-input-group-append class="contenedorB">
+            <b-button class="boton Volver"> <router-link to="/">Volver</router-link></b-button>	
+            <b-button class="boton Siguiente"> <router-link to="/SalaCine">Siguiente</router-link></b-button>
+        </b-input-group-append> 
+  </div>
 </template>
 
 <script>
@@ -94,25 +93,35 @@ data() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/**<!--CARRUCEL O SLIDER PARA MOSTRAR UNA PRE-VIEW DE PELICULAS-->
-<!--PENSAR ALGO PARA PROMOS-->
-<!--PENSAR FOOTER, PELICULAS HOY, NOSOTROS, ETC...-> */
-.pantallaPelicula {
-  color: red;
-}
-.tableContainer > tr {
-        display: grid;
-        grid-template-columns: repeat(3, 50%);
-    }
-.dias ul li {
-  list-style: none;
-  margin: 5%;
+a {
+    color: #9FADBD;
+    text-decoration: none;
 }
 
-.dias ul li:hover {
-  list-style: none;
-  color: #fff !important;
-   background-color: #007bff;
-   cursor: pointer;
+a :hover {
+    text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+    padding: 5px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.boton {
+    padding: 5px;
+    border: 1px solid rgba(21, 34, 50, 0.7);
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    width: 100px;
+    color: #9FADBD;
+    background-color: rgb(21, 34, 50, 0.3);
+    font-weight: bold;
 }
 </style>

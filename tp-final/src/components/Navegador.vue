@@ -18,7 +18,7 @@
 
 <style>
 #contenedorNavegacion{
-    display: inline-flex;
+    display: inline-grid;
     width: 100%;
     height: 45px;
     background-color: rgba(21, 34, 50, 0.7);
