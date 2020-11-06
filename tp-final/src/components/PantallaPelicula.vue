@@ -4,6 +4,8 @@
     <h1>{{$store.getters.mensaje}}</h1>
     <h4>{{$store.getters.nombreCompleto}}</h4>
     <h2>Amigos</h2>
+    <input type="text" v-model="amigo">
+    <button @click="addAmigo">Agregar</button>
       <ul>
         <li  v-for="(amigo,index) in $store.state.amigos" :key="index">
           {{amigo}}
@@ -47,6 +49,21 @@ import Publicidad from "../components/Publicidad.vue"
 /* import Peliculas from "../components/Peliculas.vue" */
 
 export default {
+data() {
+    return{
+       id:this.$route.params.id, 
+       amigo:''
+    }
+},
+  methods:{
+
+    addAmigo()
+    {
+      this.$store.state.amigo=this.amigo;
+      this.$store.dispatch('addAmigoAction');
+      this.amigo= '';
+    }
+  },
   
   watch:{
     $route(to)
@@ -68,16 +85,10 @@ export default {
       /*  Peliculas  */
 
   },
-  data() {
-    return{
-       id:this.$route.params.id, 
-    }
+  
 
-  },
-  methods: {
-    
   }
-}
+
 
 </script>
 

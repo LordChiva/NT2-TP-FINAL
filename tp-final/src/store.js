@@ -24,7 +24,7 @@ export default new Vuex.Store(
         actions:{
                 addAmigoAction(context)
                 {
-                    context.commit
+                    context.commit('addAmigo');
                 }
         },
         getters:

@@ -1,8 +1,8 @@
 <template>
 
   <div class="contenedorPrincipal">
-      <h1>{{id}}</h1>
-      <h1>Hola {{id}} </h1>
+      
+      <h1>Hola </h1>
     <ol class="olContainer">     
         <table class="tableContainer">
            <tr>
@@ -44,7 +44,6 @@ export default {
     },
     data: () => {
         return{
-            id:this.$route.params.id,
             
             productos:[
                 { nombre: 'Pochoclos', precio: '150', descripcion:' ', imagen:pochoclos},

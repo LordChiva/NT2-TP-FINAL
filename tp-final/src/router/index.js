@@ -34,11 +34,7 @@ const routes = [
     name: 'PantallaPelicula',
     component: () => import('../components/PantallaPelicula.vue')
   },
-  {
-    path: '/Productos/2',
-    name: 'Productos2',
-    component: () => import('../components/Productos.vue')
-  },
+
   {
     path: '/SalaCine',
     name: 'SalaCine',
