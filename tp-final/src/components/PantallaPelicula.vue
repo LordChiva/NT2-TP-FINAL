@@ -16,26 +16,35 @@
 export default {
   /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? Tiene metodos? esta para algo el script?*/
-  name: 'HelloWorld',
+  name: 'pantallaPelicula',
   props: {
     msg: String
   },
+  components: {
 
-
-  data: () =>
-{
-  return{
-
+  },
+  data: () => {
+    return{
+      peliculas:[
+        {nombre: "El Rey León",
+          /* imagen:reyleon, */
+          dia:"Sabado",
+        horario: "20:00hs",}
+      ],
+      dias:[
+        {
+          fecha:" 17/10/2020",
+          fecha2:" 24/10/2020",
+          fecha3:" 31/10/2020",
+          fecha4:" 01/11/2020"
+        }
+      ]
+    }
+  },
+  methods: {
+    
   }
-},
-methods:
-{
-
 }
-}
-
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

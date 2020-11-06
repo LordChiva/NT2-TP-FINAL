@@ -23,7 +23,7 @@
     body {
         display: flex;
         min-height: 100vh;
-        background: #EFC076;
+        background-color: rgb(11, 22, 34);
     }
 
     #c-silder {

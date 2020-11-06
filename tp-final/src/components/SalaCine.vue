@@ -25,7 +25,7 @@
         </div>  
 
         <div>
-            <b-button > <router-link to="/Productos">Siguiente</router-link></b-button>	
+            <b-button > <router-link to="/PantallaProductos">Siguiente</router-link></b-button>	
         </div>
         <div>
             <b-button > <router-link to="/PantallaPelicula">Volver</router-link></b-button>	

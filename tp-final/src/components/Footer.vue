@@ -33,14 +33,13 @@
 }
 
 .pestaniaFooter > table , tr{
-    display: inline-block;
+    display: inline-flex;
     width: 100%;
     text-align: center;
 }
 
 .logo{
   display: inline-block;
-  width: 13%;
 }
 
 .logo > img{
