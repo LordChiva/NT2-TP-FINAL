@@ -28,7 +28,8 @@
             <b-button > <router-link to="/PantallaProductos">Siguiente</router-link></b-button>	
         </div>
         <div>
-            <b-button > <router-link to="/PantallaPelicula">Volver</router-link></b-button>	
+            
+        <b-button><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button> 
         </div>
         
          
@@ -49,7 +50,7 @@ import pantalla from "../assets/pantalla.jpg"
 export default {
     /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? */
-    name:"AppHeader",
+    name:"SalaCine",
     props:{
         titulo:Number
     },
@@ -59,8 +60,11 @@ export default {
 
 /** HACER UN MAXIMO DE 120 BUTACAS - Y HACER UN CICLO PARA QUE REPITA LAS BUTACAS, ¡¡NO HACER 120 VECES UNA BUTACA!! */
 
-    data: () => {
+    data ()  {
         return{
+            id:this.$route.params.id, 
+            
+           
             salas:  crearAsientos(asientoLibre),
 
             pantalla: {imagen:pantalla },
