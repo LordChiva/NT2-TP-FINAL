@@ -4,22 +4,20 @@
       <div class="logo">  
         <img alt="Cine logo" src="./assets/LogoPochoclos.png">
       </div>
+
       <div class="titulo">
         <h1>CinePOP</h1>
       </div>
+
       <div class="login">
         <p>Login/Registro</p>
       </div>
-      
-     
     </div>
     <Navegador />
     <router-view/>
     <Footer />
   </div>
 </template>
-
-<!--FIJENSE LOS COMENTARIOS QUE DEJE, TAMBIEN FIJARSE PARA QUÉ SE ESTA USANDO EL COMPONENTE DE USER Y USUARIOS!!!!-->
 
 <script>
 import Navegador from './components/Navegador.vue'

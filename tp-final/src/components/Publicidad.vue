@@ -13,7 +13,7 @@
 
 <!--CONFIGURACION SIN SOBREPASAR 100% O QUE NO ESTE POR DEBAJO DEL 0% -- USAR px PARA ALGUNOS ELEMENTOS-->
 
-<style>
+<style scoped>
     * {
         margin: 0;
         padding: 0;
