@@ -18,13 +18,12 @@
                 </div>
             </div>
         </div>
-        <hr>
         <div class="pantalla">
             <img alt="Pantalla"  v-bind:src="pantalla.imagen"  class="imagenPantalla">
         </div>
         <b-input-group-append class="contenedorB">
-            <b-button class="boton Volver"> <router-link to="/PantallaPelicula">Volver</router-link></b-button>	
-            <b-button class="boton Siguiente"> <router-link to="/PantallaProductos">Siguiente</router-link></b-button>
+            <b-button class="boton"> <router-link to="/PantallaPelicula">Volver</router-link></b-button>	
+            <b-button class="boton"> <router-link to="/PantallaProductos">Siguiente</router-link></b-button>
         </b-input-group-append>
     </div>
     <!--    <i class="fas fa-couch" style="color: #DA4127;"></i>
@@ -38,7 +37,8 @@
 </template>
 
 <script>
-import pantalla from "../assets/pantalla.jpg"
+import pantallaPng from "../assets/pantallaPng.png"
+
 
 var pepe = document.getElementsByClassName("fa-couch")
 
@@ -53,7 +53,7 @@ export default {
     data: () => {
         return{
             salas:  crearAsientos(),
-            pantalla: {imagen:pantalla},
+            pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
             evento: {pepe},
             letras:[                    
@@ -139,7 +139,7 @@ export default {
     display: inline-grid;
     grid-template-columns: repeat(10, 4%);
     justify-content: center;
-    margin: 0px 0px 0px 0px;      
+    margin: 15px;      
 }
 
 .asiento > td {
@@ -174,8 +174,18 @@ a :hover {
   text-decoration: none;
 }
 
+.pantalla {
+    display: inline-block;
+    width: 100%;
+}
+
+.imagenPantalla {
+    width: 600px;
+    height: 400px;
+}
+
 .contenedorB{
-    padding: 5px;
+    padding: 20px;
     display: inline-flex;
     justify-content: center;
 }
