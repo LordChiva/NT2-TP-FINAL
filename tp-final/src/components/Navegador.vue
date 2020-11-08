@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 #contenedorNavegacion{
     display: inline-grid;
     width: 100%;

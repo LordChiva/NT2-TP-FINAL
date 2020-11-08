@@ -18,7 +18,7 @@
             <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen" width="50%" height="50%">
             
         </td> -->
-        <td class="dias">
+        <!-- <td class="dias"> -->
        <!--    <h1>{{pelicula.dia}} {{pelicula.horario}}</h1>  
           <ul v-for="(dia,index) in dias" :key="index">
             <li class="boton">{{dia.fecha}} </li>
@@ -26,9 +26,9 @@
             <li class="boton">{{dia.fecha3}} </li>
             <li class="boton">{{dia.fecha4}} </li>
           </ul>  -->
-        </td>
       </tr>
     </table> 
+    
     <!--<h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>-->
     
           <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
@@ -125,5 +125,9 @@ a :hover {
     color: #9FADBD;
     background-color: rgb(21, 34, 50, 0.3);
     font-weight: bold;
+}
+
+.boton :hover{ 
+    color: #C7D5E5;
 }
 </style>

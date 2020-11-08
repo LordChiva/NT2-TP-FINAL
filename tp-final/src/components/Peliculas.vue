@@ -6,21 +6,19 @@
                     <div class="carta">
                         <div class="lado">
                             <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">						
-                        </div>    
-                        <div class="lado atras">                           
+                        </div>  
+                        <router-link :to="`/PantallaPelicula/${pelicula.id}`"><div class="lado atras">                           
                             
                             <h3>{{pelicula.nombre}} </h3>	
                             <small>{{pelicula.sinopsis}} </small>	
                             <hr>                                
                             <small> Duracion: {{pelicula.duracion}} </small>
-                            <b-button><router-link :to="`/PantallaPelicula/${pelicula.id}`">Peli</router-link></b-button>
                             
-                        </div>
+                        </div></router-link>
                     </div>
                 </td>
             </tr>            
         </table>     
-        <Publicidad />  
     </div>    
 </template> 
 
@@ -37,14 +35,13 @@ import ryf7 from "../assets/RyF7.jpg"
 import wwz from "../assets/WorldWarZ.jpg"
 import deadpool from "../assets/deadpool.jpg"
 import jurassicWorld from "../assets/jurassicWorld.jpg"
-import Publicidad from "../components/Publicidad.vue"
+
 
 export default {
     name:"peliculas",
     /**cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? Tiene metodos? */
     components: {
-      Publicidad
   },
     props:{
         titulo:Number
@@ -221,14 +218,12 @@ export default {
 </script>
 
 <style>
-    /**El display cambia el tamaño del background*/
     .contenedorPeliculas{
         display: inline-block;
         width: 91%;
         height: 100%;
         margin: 0px;
         padding: 15px;
-        /* background-color: rgb(11, 22, 34); */
     }
 
     .contenedorPeliculas > table > tr {
