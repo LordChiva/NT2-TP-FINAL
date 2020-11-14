@@ -1,6 +1,6 @@
 <template>
   <div class="pantallaPelicula">
-    <h1>Pelicula ID: {{id}} </h1>
+   <!--     <h1>Pelicula ID: {{id}} </h1>
     <h1>{{$store.getters.mensaje}}</h1>
     <h4>{{$store.getters.nombreCompleto}}</h4>
     <h2>Amigos</h2>
@@ -10,30 +10,28 @@
         <li  v-for="(amigo,index) in $store.state.amigos" :key="index">
           {{amigo}}
         </li>
-      </ul>            
+      </ul>           -->  
             
     <table class="tableContainer">
-      <tr>
-        <!-- <td v-for="(pelicula,index) in peliculas" :key="index">
-            <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen" width="50%" height="50%">
-            
-        </td> -->
-        <!-- <td class="dias"> -->
-       <!--    <h1>{{pelicula.dia}} {{pelicula.horario}}</h1>  
-          <ul v-for="(dia,index) in dias" :key="index">
-            <li class="boton">{{dia.fecha}} </li>
-            <li class="boton">{{dia.fecha2}} </li>
-            <li class="boton">{{dia.fecha3}} </li>
-            <li class="boton">{{dia.fecha4}} </li>
-          </ul>  -->
+      <tr class="tr">
+        <td>
+          <img alt="Peli foto"  v-bind:src="$store.getters.pelicula.imagen" class="imagen">
+          <h1>{{$store.getters.pelicula.nombre}}</h1>
+        </td> 
+        <td v-for="(fecha,index) in $store.getters.pelicula.fechas" :key="index"> 
+          <h1>{{$store.getters.pelicula.dia}} {{$store.getters.pelicula.horario}}</h1>           
+          <button class="boton" @click="fechaSeleccionada(fecha.fecha)">{{fecha.fecha}} </button>
+          <button class="boton" @click="fechaSeleccionada(fecha.fecha2)">{{fecha.fecha2}} </button>
+          <button class="boton" @click="fechaSeleccionada(fecha.fecha3)">{{fecha.fecha3}} </button>
+          <button class="boton" @click="fechaSeleccionada(fecha.fecha4)">{{fecha.fecha4}} </button>  
+        </td>  
       </tr>
     </table> 
     
     <!--<h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>-->
-    
           <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
-              ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! -->
-        <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>
+              ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! 
+        <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1> -->
         <b-input-group-append class="contenedorB">
             <b-button class="boton Volver"> <router-link to="/">Volver</router-link></b-button>	
             <b-button class="boton Siguiente"> <router-link to="/SalaCine">Siguiente</router-link></b-button>
@@ -43,17 +41,15 @@
 
 <script>
  /* import Peliculas  from "../components/Peliculas.vue"  */
-/* import reyleon from "../assets/reyLeon.jpg" */
-/* import Publicidad from "../components/Publicidad.vue" */
+ /*import reyleon from "../assets/reyLeon.jpg" */
+/* mport Publicidad from "../components/Publicidad.vue" */
 /* import Peliculas from "../components/Peliculas.vue" */
 
 export default {
 data() {
     return{
        id:this.$route.params.id, 
-       amigo:'',
-       
-       
+       amigo:''
     }
 },
   methods:{
@@ -63,6 +59,10 @@ data() {
       this.$store.state.amigo=this.amigo;
       this.$store.dispatch('addAmigoAction');
       this.amigo= '';
+    },
+    fechaSeleccionada (fecha) {  
+      this.$store.state.fecha=fecha;           
+      this.$store.dispatch('arregarFecha(fecha)');
     }
   },
   
@@ -82,7 +82,6 @@ data() {
   name: 'pantallaPelicula',
   
   components: {
-      /* Publicidad, */
       /*  Peliculas  */
 
   },
@@ -95,6 +94,10 @@ data() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.tr {
+  justify-content: center;
+}
+
 a {
     color: #9FADBD;
     text-decoration: none;
