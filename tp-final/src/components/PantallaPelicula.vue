@@ -30,6 +30,7 @@
     </table> 
     
     <!--<h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>-->
+    
           <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
               ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! -->
         <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>
@@ -43,14 +44,16 @@
 <script>
  /* import Peliculas  from "../components/Peliculas.vue"  */
 /* import reyleon from "../assets/reyLeon.jpg" */
-/* mport Publicidad from "../components/Publicidad.vue" */
+/* import Publicidad from "../components/Publicidad.vue" */
 /* import Peliculas from "../components/Peliculas.vue" */
 
 export default {
 data() {
     return{
        id:this.$route.params.id, 
-       amigo:''
+       amigo:'',
+       
+       
     }
 },
   methods:{
@@ -79,6 +82,7 @@ data() {
   name: 'pantallaPelicula',
   
   components: {
+      /* Publicidad, */
       /*  Peliculas  */
 
   },

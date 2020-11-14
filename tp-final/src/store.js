@@ -10,7 +10,8 @@ export default new Vuex.Store(
             nombre:'seba',
             apellido: 'Felice',
             amigos: [],
-            amigo:null
+            amigo:null,
+           
 
         },
 

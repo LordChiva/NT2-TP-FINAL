@@ -21,7 +21,10 @@
                 </b-form-group>
 
 
-                <td v-for="(options,index) in options" :key="index">
+                <!-- <td v-for="(producto,index) in productos" :key="index"
+
+           @click="calcularTotal(index)":id='producto'+index">
+
                     <li>
                         <img alt="imagen"  v-bind:src="options.imagen"  class="imagenProducto">
                         <div class="descripcion">
@@ -32,9 +35,9 @@
                             <h6>Precio: ${{options.precio}}</h6>
                         </div>
                     </li>  
-                </td>
+                </td>-->
 
-                <!-- <div>Seleccionados: <strong>{{ seleccionados }}</strong></div> -->
+                 <div>Seleccionados: <strong>{{ seleccionados }}</strong></div>
             </div>
         </div>
 
@@ -88,9 +91,16 @@ export default {
             ]
         }
     },
-    methods: {
+   /*  methods: {
+        calcularTotal(id)
+        {
+            
+            var elemento =document.getElementById("producto"+id)
+            total=elemento.precio+total
+
+        }
         
-    }
+    } */
 }
 </script>
 
