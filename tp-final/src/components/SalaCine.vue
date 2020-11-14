@@ -1,7 +1,7 @@
 <template>
     <div class="contenedorSalaPelicula">
         <div class="contenedorSala">
-            <div>
+            <!-- <div>
                 <div class="numeros" v-for="(numero,index) in numeros" :key="index" >
                     {{numero}}
                 </div> 
@@ -10,14 +10,61 @@
                 </div>  
                 <div class="asiento">
                     <td v-for="(asiento,index) in salas" :key="index">
-                        <!-- queda buscar la manera de que funcione el click
+                         queda buscar la manera de que funcione el click
                              y con el tema de vuex hacer que registre el lugar
                              que elegimos -->
-                        <i class="fas fa-couch" @click="setearOcupado()"></i>
+                       <!--  <i class="fas fa-couch" @click="setearOcupado()"></i>
                     </td>	
                 </div>
-            </div>
+            </div>  -->
+            <table>
+                <tbody class="tBodyContenedor">
+                    <tr class="contenedorNum">
+                        <td> | </td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                    </tr>
+                    <!-- <tr>
+                        <td>A</td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                        <td><i class="fas fa-couch"></i></td>
+                    </tr> -->
+                    <tr class="contenedorAsientos">
+                        <td>A</td>
+                        <td v-for="(asiento,index) in salas" :key="index">
+                            <i class="fas fa-couch" @click="setearOcupado()"></i>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
+        <!-- <div class="asiento">
+                            <td v-for="(asiento,index) in salas" :key="index">
+                                 queda buscar la manera de que funcione el click
+                                    y con el tema de vuex hacer que registre el lugar
+                                    que elegimos
+                            <i class="fas fa-couch" @click="setearOcupado()"></i>
+                            </td>	
+                        </div> -->
+
+
         <div class="pantalla">
             <img alt="Pantalla"  v-bind:src="pantalla.imagen"  class="imagenPantalla">
         </div>
@@ -54,7 +101,7 @@ export default {
         return{
             salas:  crearAsientos(),
             pantalla: {imagen:pantallaPng},
-            numeros:[1,2,3,4,5,6,7,8,9,10],
+            /* numeros:[1,2,3,4,5,6,7,8,9,10], */
             evento: {pepe},
             letras:[                    
                 {letra:"A" },
@@ -112,6 +159,10 @@ export default {
 
 
 <style>
+td {
+    color: white;
+}
+
 .contenedorSalaPelicula {
     display: inline-block;
     width: 100%;
@@ -123,6 +174,19 @@ export default {
 .contenedorSala {
     display: inline-block;
     width: 100%;
+}
+
+.contenedorNum > td {
+    margin: 0px 5px 0px 5px;
+}
+
+.contenedorAsientos > td{
+    grid-template-columns: repeat(10, 4%);
+}
+
+.tBodyContenedor {
+    width: 70%;
+    display: inline-block;
 }
 
 .numeros {
@@ -150,13 +214,14 @@ export default {
 .fa-couch {
     border: 1px solid rgba(21, 34, 50, 0.7);
     border-radius: 10px;
-    margin: 0px 50px 0px 50px;
+    /* margin: 0px 50px 0px 50px; */
     width: 100%;
     color: #409EFF;
 }
 
 .fa-couch:hover {
     color: #54D0FF;
+    cursor: pointer;
 }
 
 a {

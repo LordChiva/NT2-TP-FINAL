@@ -16,25 +16,25 @@
                         id="checkbox-group-1"
                         v-model="seleccionados"
                         :options="options"
-                    ></b-form-checkbox-group>
+                        style="columns: 2" >
+                    </b-form-checkbox-group>
                 </b-form-group>
 
 
-                <!-- <td v-for="(producto,index) in productos" :key="index">
+                <td v-for="(options,index) in options" :key="index">
                     <li>
-                        <b-input type="checkbox">
-                        <img alt="imagen"  v-bind:src="producto.imagen"  class="imagenProducto">
+                        <img alt="imagen"  v-bind:src="options.imagen"  class="imagenProducto">
                         <div class="descripcion">
-                            <h3>{{producto.nombre}}</h3>
+                            <h3>{{options.text}}</h3>
                             <br>
-                            <h5>{{producto.descripcion}}</h5>
+                            <h5>{{options.descripcion}}</h5>
                             <br>
-                            <h6>Precio: ${{producto.precio}}</h6>
+                            <h6>Precio: ${{options.precio}}</h6>
                         </div>
                     </li>  
-                </td> -->
+                </td>
 
-                <div>Seleccionados: <strong>{{ seleccionados }}</strong></div>
+                <!-- <div>Seleccionados: <strong>{{ seleccionados }}</strong></div> -->
             </div>
         </div>
 
@@ -50,10 +50,10 @@
 
 
 <script>
-/* import comboNacho from "../assets/comboNacho.png"
+import comboNacho from "../assets/comboNacho.png"
 import comboPancho from "../assets/comboPancho.png"
 import comboSuper from "../assets/comboSuper.png"
-import comboTeriyaqui from "../assets/comboTeriyaqui.png" */
+import comboTeriyaqui from "../assets/comboTeriyaqui.png"
 
 
 export default {
@@ -64,26 +64,26 @@ export default {
                 { text: 'Combo Nacho',
                   value: 'Combo Nacho',
                   precio: 379,
-                  descripcion:'El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.'/* , */
-                  /* imagen:comboNacho */
+                  descripcion:'El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.',
+                  imagen:comboNacho
                 },
                 { text: 'Combo Pancho',
                   value: 'Combo Pancho',
                   precio: 459.99,
-                  descripcion:'El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.'/* , */
-                  /* imagen:comboPancho */
+                  descripcion:'El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.',
+                  imagen:comboPancho
                 },
                 { text: 'Combo Super',
                   value: 'Combo Super',
                   precio: 699.99,
-                  descripcion:'El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).'/* , */
-                  /* imagen:comboSuper */
+                  descripcion:'El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).',
+                  imagen:comboSuper
                 },
                 { text: 'Combo Teriyaki',
                   value: 'Combo Teriyaki',
                   precio: 549,
-                  descripcion:'El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.'/* , */
-                  /* imagen:comboTeriyaqui */
+                  descripcion:'El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.',
+                  imagen:comboTeriyaqui
                 }   
             ]
         }
@@ -112,7 +112,7 @@ export default {
     width: 100%;
     display: inline-grid;
     grid-template-columns: repeat(2, 35%);
-    justify-content: center;  
+    justify-content: center;
 }
 
 .combos > td {
