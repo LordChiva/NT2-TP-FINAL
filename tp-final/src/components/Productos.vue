@@ -1,55 +1,60 @@
 <template>
-
-  <div class="contenedorPrincipal">
-      
-      <h1>Hola </h1>
-    <ol class="olContainer">     
-        <table class="tableContainer">
-           <tr>
+    <div class="contenedorProductos">
+        <div class="contenedorCombos">     
+            <div class="combos">
                 <td v-for="(producto,index) in productos" :key="index">
-                    
-                    <li> 
-                        <figure>
-                            <img alt="imagen"  v-bind:src="producto.imagen"  class="img-responsive" height="80" width="80">											
-                        </figure>
-                        <span>{{ producto.nombre}} </span>
-                        <span>Precio: {{ producto.precio}} </span>
-                        <hr>   
+                    <li>
+                        <img alt="imagen"  v-bind:src="producto.imagen"  class="imagenProducto">
+                        <div class="descripcion">
+                            <h3>{{producto.nombre}}</h3>
+                            <br>
+                            <h5>{{producto.descripcion}}</h5>
+                            <br>
+                            <h6>Precio: {{producto.precio}}</h6>
+                        </div>  
                     </li>  
                 </td>
-            </tr>
-        </table>        
-    </ol>
-    <div>
-        
-            <b-button > <router-link to="/SalaCine">Volver</router-link></b-button>	
+            </div>        
+        </div>
+        <b-input-group-append class="contenedorB">
+            <b-button class="boton"> <router-link to="/">Volver</router-link></b-button>
+        </b-input-group-append>
     </div>
-  </div>
 </template>
 
 
 <script>
-import nachos from "../assets/nachos.jpg"
-import agua from "../assets/agua.jpg"
-import gaseosa from "../assets/gaseosa.jpg"
-import pochoclos from "../assets/pochoclos.jpg"
+import comboNacho from "../assets/comboNacho.png"
+import comboPancho from "../assets/comboPancho.png"
+import comboSuper from "../assets/comboSuper.png"
+import comboTeriyaqui from "../assets/comboTeriyaqui.png"
 
 export default {
 
-    /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
-     *  el título devuelve un número? Tiene metodos? */
-    name:"AppHeader",
-    props:{
-        titulo:Number
-    },
     data: () => {
         return{
             
             productos:[
-                { nombre: 'Pochoclos', precio: '150', descripcion:' ', imagen:pochoclos},
-                { nombre: 'Gaseosa'  , precio: '80' , descripcion:' ', imagen:gaseosa},
-                { nombre: 'Agua'     , precio: '60' , descripcion:' ', imagen:agua},
-                { nombre: 'Nachos'   , precio: '100', descripcion:' ', imagen:nachos}   
+                { nombre: "Combo Nacho",
+                  precio: "$379.99",
+                  descripcion:"El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.",
+                  imagen:comboNacho
+                },
+                { nombre: "Combo Pancho",
+                  precio: "$459.99",
+                  descripcion:"El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.",
+                  imagen:comboPancho
+                },
+                { nombre: "Combo Super",
+                  precio: "$699.99",
+                  descripcion:"El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).",
+                  imagen:comboSuper
+                },
+                { nombre: "Combo Teriyaki",
+                  precio: "$549.99",
+                  descripcion:"El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.",
+                  imagen:comboTeriyaqui
+                }   
             ]
         }
     },
@@ -60,13 +65,96 @@ export default {
 </script>
 
 <style>
-    .contenedorPrincipal > ol > table > tr {
-        width: 100%;
-        display: grid;
-        margin: 0px 0px 0px 100px;
-    }
+.contenedorProductos {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 
-    .tableContainer  tr  td {
-        margin:  0px 10px 10px 1px;
-    }
+.contenedorCombos {
+    display: inline-block;
+    width: 100%;
+}
+
+.combos {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: repeat(2, 35%);
+    justify-content: center;  
+}
+
+.combos > td {
+    display: inline-flex;
+    justify-content: center;
+    margin: 35px;    
+}
+
+.imagenProducto {
+    width: 340px;
+    height: 180px;
+}
+
+.descripcion {
+    display: inline-block;
+    justify-content: center;
+    width: 85%;
+    margin: 10px 0px 0px 20px;
+}
+
+.descripcion > h3{
+  font-size: 30px;
+  color: #9FADBD;
+  text-align: center;
+}
+
+.descripcion > h5{
+  font-size: 20px;
+  color: #9FADBD;
+  text-align: justify;
+}
+
+.descripcion > h6{
+  font-size: 20px;
+  color: #9FADBD;
+  text-align: center;
+}
+
+a {
+    color: #9FADBD;
+    text-decoration: none;
+}
+
+a :hover {
+    text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+    padding: 20px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.boton {
+    padding: 5px;
+    border: 1px solid rgba(21, 34, 50, 0.7);
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    width: 100px;
+    color: #9FADBD;
+    background-color: rgba(21, 34, 50, 0.3);
+    font-weight: bold;
+}
+
+.boton :hover{ 
+    color: #C7D5E5;
+    background-color: none;
+}
 </style>

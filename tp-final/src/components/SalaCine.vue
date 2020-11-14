@@ -2,25 +2,26 @@
     <div class="contenedorSalaPelicula">
         <div class="contenedorSala">
             <div>
-                <div class="numeros" v-for="(numero,index) in numeros" :key="index" >
+                <div class="numeros" v-for="(numero,i) in numeros" :key="'numeros'+i" >
                     {{numero}}
                 </div> 
-                <div class="letras" v-for="(letra,index) in letras" :key="index" >	
-                    {{letra.letra}}
+                <div class="letras" v-for="(letra,x) in letras" :key="'letras'+x" >	
+                    {{letra}}
                 </div>  
                 <div class="asiento">
-                    <td v-for="(asiento,index) in salas" :key="index">
+                    <td v-for="(asiento,p) in salas" :key="'asientos'+p">
                         <!-- queda buscar la manera de que funcione el click
                              y con el tema de vuex hacer que registre el lugar
                              que elegimos -->
-                        <i class="fas fa-couch" @click="setearOcupado()"></i>
+                        <span :ref="'asiento'+asiento.id" @click="setearOcupado(asiento)" :id="asiento.id" >
+                        <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
+                        </span>
                     </td>	
                 </div>
             </div>
         </div>
-        <hr>
         <div class="pantalla">
-            <img alt="Pantalla"  v-bind:src="pantalla.imagen"  class="imagenPantalla">
+            <img alt="Pantalla"  :src="pantalla.imagen"  class="imagenPantalla">
         </div>
         <b-input-group-append class="contenedorB">
             <b-button><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
@@ -38,18 +39,19 @@
 </template>
 
 <script>
-import pantalla from "../assets/pantalla.jpg"
+import pantallaPng from "../assets/pantallaPng.png"
 
-var pepe = document.getElementsByClassName("fa-couch")
+
+/* var pepe = document.getElementsByClassName("fa-couch") */
 
 export default {
     /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? */
-    name:"SalaCine",
+ /*    name:"SalaCine",
     props:{
         titulo:Number
         
-    },
+    }, */
 
 
     data ()  {
@@ -57,18 +59,11 @@ export default {
             id:this.$route.params.id, 
             
             salas:  crearAsientos(),
-            pantalla: {imagen:pantalla},
+            pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
-            evento: {pepe},
+            /* evento: {pepe}, */
             letras:[                    
-                {letra:"A" },
-                {letra:"B" },
-                {letra:"C" },
-                {letra:"D" },
-                {letra:"E" },
-                {letra:"F" },
-                {letra:"G" },
-                {letra:"H" }
+                'A','B','C','D','E','F','G','H'
             ]
         }        
     },
@@ -85,18 +80,44 @@ export default {
                 elmnt.style.color = 'red';
             }
         } */
-
-        setearOcupado()
-            {
-                
-                if(this.evento.style.color=="color: #409EFF")
+         /* var elemento =document.getElementById("asiento"+id)
+                //hacer un boolean 
+                console.log(elemento);
+                console.log("Pepe")
+                if(elemento.ocupado==false)
                 {
-                    this.evento.style.color="color: #DA4127;"
+                    elemento.ocupado=true
+                    elemento.style.color="color: #DA4127;"
                 }
                 else
                 {
-                    this.evento.style.color="color: #409EFF;"
-                }        
+                    elemento.style.color="color: #409EFF;" */
+
+        setearOcupado(asiento)
+            {
+                 console.log(this.$refs['asiento'+asiento.id])
+                 console.log(asiento.id)
+                 
+             if(asiento.ocupado)
+              {
+                 asiento.ocupado=false 
+                 /* asiento.color='blue' */
+                 this.$refs['asiento'+asiento.id][0].children[0].style.color='blue'
+                 
+              }
+              else
+              {
+                  asiento.ocupado=true
+                  /* asiento.color='red' */
+                  this.$refs['asiento'+asiento.id][0].children[0].style.color='red'
+                  
+              }
+              console.log(asiento.ocupado)
+            /* this.$refs.asiento1.style.color='red' */
+          
+           
+           /*  console.log(asiento) */
+
             } 
         
     }
@@ -104,11 +125,23 @@ export default {
 }
  function crearAsientos ()
         {
+            
             var asientos =[];
-            for (var i =0;i<50;i++)
-            {
-                asientos.push({id:i});
-            }
+            var letras=['A','B','C','D','E','F','G','H'];
+           
+             var id=0;
+                letras.forEach(letra => {
+                    
+                    for (var i =1;i<=10;i++)
+                    {
+                            asientos.push({id:id,ocupado:false,color:'blue',fila:letra,columna:i});
+                            id++;
+                    }
+                }); 
+            
+
+            
+            console.log(asientos[12].fila)
             return asientos;
         }
 
@@ -143,12 +176,14 @@ export default {
     display: inline-grid;
     grid-template-columns: repeat(10, 4%);
     justify-content: center;
-    margin: 0px 0px 0px 0px;      
+    margin: 15px;  
+        
 }
 
 .asiento > td {
     display: inline-flex;
     justify-content: center;
+    
 }
 
 .fa-couch {
@@ -178,8 +213,18 @@ a :hover {
   text-decoration: none;
 }
 
+.pantalla {
+    display: inline-block;
+    width: 100%;
+}
+
+.imagenPantalla {
+    width: 600px;
+    height: 400px;
+}
+
 .contenedorB{
-    padding: 5px;
+    padding: 20px;
     display: inline-flex;
     justify-content: center;
 }
