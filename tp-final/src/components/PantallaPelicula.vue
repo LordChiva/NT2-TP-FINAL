@@ -62,7 +62,7 @@ data() {
     },
     fechaSeleccionada (fecha) {  
       this.$store.state.fecha=fecha;           
-      this.$store.dispatch('arregarFecha(fecha)');
+      this.$store.dispatch('arregarFecha',fecha);
     }
   },
   

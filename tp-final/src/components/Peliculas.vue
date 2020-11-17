@@ -46,9 +46,22 @@ export default {
     props:{
         titulo:Number
     },
+    mounted() {
+        //console.log("mounted")
+        this.peliculas = this.getPeliculas()
+    },
     data: () => {
         return{
-            peliculas:[
+            peliculas: []
+        }
+    },
+    methods: {
+         peliculaSeleccionada (pelicula) {  
+           this.$store.state.pelicula=pelicula;           
+           this.$store.dispatch('arregarPelicula',pelicula);
+        },
+        getPeliculas() {
+            const peliculas = [
             {id: 1,
             nombre: "El Rey León",
             sinopsis: "Trata del Reinado de Mufasa el Rey León en una selva de Africa que gobierna con justicia en su territorio,con su leona Sarabi tienen un pequeño cachorro llamado Simba, siempre libra una batalla con su hermano Scar quien no podrá ser rey más aún con el nacimiento de su sobrino.",
@@ -202,12 +215,7 @@ export default {
                 ]
             }             
         ]
-        }
-    },
-    methods: {
-         peliculaSeleccionada (pelicula) {  
-           this.$store.state.pelicula=pelicula;           
-           this.$store.dispatch('arregarPelicula(pelicula)');
+        return peliculas
         }
     }
 }

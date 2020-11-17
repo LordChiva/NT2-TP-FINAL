@@ -46,7 +46,7 @@
 
         <b-input-group-append class="contenedorB">
             <b-button class="boton"><router-link to="/SalaCine">Volver</router-link></b-button>
-            <b-button class="boton"><router-link to="/Confirmar">Confirmar</router-link></b-button>
+            <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Confirmar</router-link></b-button>
         </b-input-group-append>
     </div>
 </template>
@@ -63,7 +63,24 @@ export default {
     data: () => {
         return{
             seleccionados: [],
-            options:[
+            options:[ ]
+        }
+    },
+    mounted() {
+         this.options = this.getOptions()
+    },
+     methods: {
+       /* calcularTotal(id)
+        {
+            var elemento =document.getElementById("producto"+id)
+            total=elemento.precio+total
+        },*/
+          productosSeleccionada (seleccionados) {  
+           this.$store.state.combos=seleccionados;           
+           this.$store.dispatch('arregarCombos',seleccionados);
+        },
+        getOptions () {
+            const options = [
                 { text: 'Combo Nacho',
                   value: 'Combo Nacho',
                   precio: 379,
@@ -89,18 +106,11 @@ export default {
                   imagen:comboTeriyaqui
                 }   
             ]
-        }
-    },
-   /*  methods: {
-        calcularTotal(id)
-        {
-            
-            var elemento =document.getElementById("producto"+id)
-            total=elemento.precio+total
-
+            return options
         }
         
-    } */
+        
+    } 
 }
 </script>
 

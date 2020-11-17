@@ -13,9 +13,13 @@
           <h3>Horario: </h3>
           <h4>{{$store.getters.pelicula.horario}}</h4>
           <h3>Butacas Seleccionadas: </h3>
-          <h4>{{$store.getters.butacas}}</h4>
+          <div v-for="(butaca,index) in $store.getters.butacas" :key="index">
+            <h4>{{butaca.fila}}{{butaca.columna}}</h4>
+          </div>          
           <h3>Combos Seleccionados: </h3>
-          <h4>{{$store.getters.combos}}</h4>
+           <div v-for="(combo) in $store.getters.combos" :key="combo">
+            <h4>{{combo}}</h4>
+          </div>
         </td>  
       </tr>
     </table> 
