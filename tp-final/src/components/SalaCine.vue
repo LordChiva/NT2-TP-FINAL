@@ -81,7 +81,7 @@
         </div>
         <b-input-group-append class="contenedorB">
             <b-button class="boton"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
-            <b-button class="boton"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
+            <b-button class="boton"  @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
         </b-input-group-append>
     </div>
     <!--    <i class="fas fa-couch" style="color: #DA4127;"></i>
@@ -113,7 +113,7 @@ export default {
     data ()  {
         return{
             id:this.$route.params.id, 
-            butacasSeleccionadas:[],
+            butacasSeleccionados: [],
             salas:  crearAsientos(),
             pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
@@ -169,6 +169,7 @@ export default {
                  asiento.ocupado=false 
                  /* asiento.color='blue' */
                  this.$refs['asiento'+asiento.id][0].children[0].style.color='#409EFF'
+                 this.butacasSeleccionados.pop(asiento);
                  
               }
               else
@@ -176,6 +177,7 @@ export default {
                   asiento.ocupado=true
                   /* asiento.color='red' */
                   this.$refs['asiento'+asiento.id][0].children[0].style.color='#DA4127'
+                  this.butacasSeleccionados.push(asiento);
                   
               }
               console.log(asiento.ocupado)
@@ -184,7 +186,11 @@ export default {
            
            /*  console.log(asiento) */
 
-            } 
+            } ,
+            asientoSeleccion(butacasSeleccionados) {
+                this.$store.state.butacas=butacasSeleccionados;           
+           this.$store.dispatch('arregarButacas',butacasSeleccionados);
+            }
         
     }
     

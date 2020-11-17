@@ -30,10 +30,10 @@ export default new Vuex.Store(
                 state.fecha = payload;                        
             },
             arregarButaca(state, payload) {
-                state.fecha = payload;                        
+                state.butacas = payload;                        
             },
             arregarCombo(state, payload) {
-                state.fecha = payload;                        
+                state.combos = payload;                        
             },
         },
 
@@ -51,7 +51,7 @@ export default new Vuex.Store(
                 commit('arregarButaca', payload);
             },
             arregarCombos({ commit }, payload) {
-                commit('arregarButaca', payload);
+                commit('arregarCombo', payload);
             },
         },
         
