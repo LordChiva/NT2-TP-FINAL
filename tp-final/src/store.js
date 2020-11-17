@@ -15,6 +15,8 @@ export default new Vuex.Store(
             fecha: null,
             butacas:null,
             combos: null,
+            butacasSeleccionadas:[]
+
         },
 
         mutations: {

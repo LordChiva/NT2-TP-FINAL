@@ -50,7 +50,12 @@ const routes = [
     path: '/Confirmar',
     name: 'Confirmar',
     component: () => import('../components/Confirmar.vue')
-  }
+  },
+  {
+  path: '/Usuarios',
+  name: 'Usuarios',
+  component: () => import('../components/Usuarios.vue')
+},
 
  
 ]

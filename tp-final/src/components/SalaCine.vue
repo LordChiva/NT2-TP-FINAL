@@ -103,17 +103,17 @@ import pantallaPng from "../assets/pantallaPng.png"
 export default {
     /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
      *  el título devuelve un número? */
- /*    name:"SalaCine",
-    props:{
+ name:"SalaCine",
+    /* props:{
         titulo:Number
         
-    }, */
+    },  */
 
 
     data ()  {
         return{
             id:this.$route.params.id, 
-            
+            butacasSeleccionadas:[],
             salas:  crearAsientos(),
             pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
@@ -148,6 +148,16 @@ export default {
                 else
                 {
                     elemento.style.color="color: #409EFF;" */
+/*
+        agregarAsiento(asiento)
+        {
+            var butacasSeleccionadas =[]
+            butacasSeleccionadas.push(asiento)
+            console.log('Agregadon '+butacasSeleccionadas)
+            console.log('Contador '+butacasSeleccionadas.length)
+            
+        },
+        */
 
         setearOcupado(asiento)
             {

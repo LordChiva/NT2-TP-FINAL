@@ -10,7 +10,7 @@
       </div>
 
       <div class="login">
-        <p>Login/Registro</p>
+        <b-button variant="outline-primary"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
       </div>
     </div>
     <Navegador />
