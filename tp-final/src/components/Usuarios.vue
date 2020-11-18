@@ -33,38 +33,34 @@
             usuarios:[
             {
                 usuario:'admin',
-                contraseña:'admin'
+                contraseña:'admin',
+                vip: true
             },
             {
                 usuario:'seba',
-                contraseña:'pirulo' 
-            }]
-            
+                contraseña:'pirulo',
+                vip: true
+            },
+            {
+                usuario:'vip',
+                contraseña:'vip',
+                vip: false
+            },
+            ],            
         }        
     },
     methods:
     {
-             verificarUsuario (usu,cont)
-        {
-            if(usu=='admin' && cont =='admin')
-            {
-                console.log("Bienvenido Admin")
-            }
-            else
-            {
-                if(usu=='seba' && cont=='pirulo' )
-            {
-                console.log("Buenas "+usu)
-            }
-            else
-            {
-                console.log("Usuario incorrecto")
-            }
-            }           
-            
+             verificarUsuario (usu,cont) {
+                 
+                 for (var i =0;i<this.usuarios.length;i++) {                     
+                    if((this.usuarios[i] = usu) && (this.usuarios[i] = cont)) {
+                    this.$store.state.usuario=this.usuarios[i];           
+                    this.$store.dispatch('arregarUsuario',this.usuarios[i]);
+                    this.usuarios.length = i;
+                } 
+                }
         }
-
-
     }
 }
     

@@ -10,7 +10,12 @@
       </div>
 
       <div class="login">
-        <b-button variant="outline-primary"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+        <div v-if="$store.getters.usuario == null">
+          <b-button variant="outline-primary"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+        </div> 
+        <div v-if="$store.getters.usuario != null">
+          <h4>{{$store.getters.usuario}}</h4><b-button variant="outline-primary" @click="cerrar()"><router-link to="/">Cerrar seccion</router-link></b-button>
+        </div>
       </div>
     </div>
     <Navegador />
@@ -31,7 +36,13 @@ export default {
       Navegador,
       Footer/* ,
       Publicidad */
-  }
+  },
+  methods: {
+    cerrar() {
+      this.$store.state.usuario=null;           
+      this.$store.dispatch('arregarUsuario',null);
+    }
+  },
 }
 </script>
 

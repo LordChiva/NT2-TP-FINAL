@@ -30,11 +30,17 @@ import comboSuper from "../assets/comboSuper.png"
 import comboTeriyaqui from "../assets/comboTeriyaqui.png"
 
 export default {
-
     data: () => {
         return{
-            
-            productos:[
+            productos: []
+        }
+    },
+    mounted() {
+        this.productos = this.getProductos()
+    },
+    methods: {
+        getProductos() {
+             const Productos = [
                 { nombre: "Combo Nacho",
                   precio: "$379.99",
                   descripcion:"El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.",
@@ -56,10 +62,8 @@ export default {
                   imagen:comboTeriyaqui
                 }   
             ]
+            return Productos
         }
-    },
-    methods: {
-        
     }
 }
 </script>

@@ -15,7 +15,8 @@ export default new Vuex.Store(
             fecha: null,
             butacas:null,
             combos: null,
-            butacasSeleccionadas:[]
+            usuario: null,
+            
 
         },
 
@@ -35,6 +36,9 @@ export default new Vuex.Store(
             arregarCombo(state, payload) {
                 state.combos = payload;                        
             },
+            arregarUsuario(state, payload) {
+                state.usuario = payload;                        
+            },
         },
 
         actions: {
@@ -52,6 +56,9 @@ export default new Vuex.Store(
             },
             arregarCombos({ commit }, payload) {
                 commit('arregarCombo', payload);
+            },
+            arregarUsuario({ commit }, payload) {
+                commit('arregarUsuario', payload);
             },
         },
         
@@ -73,6 +80,9 @@ export default new Vuex.Store(
             },
             combos(state) {
                 return state.combos;
+            },
+            usuario(state) {
+                return state.usuario;
             }
         }        
     }

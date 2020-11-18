@@ -20,7 +20,6 @@
                     </b-form-checkbox-group>
                 </b-form-group>
 
-
                 <!-- <td v-for="(producto,index) in productos" :key="index"
 
            @click="calcularTotal(index)":id='producto'+index">
@@ -38,6 +37,12 @@
                 </td>-->
 
                  <div>Seleccionados: <strong>{{ seleccionados }}</strong></div>
+                  
+
+                <div v-if="$store.getters.usuario == 'vip'">
+                    <h3>Descuento</h3>
+                </div>
+
             </div>
         </div>
 
