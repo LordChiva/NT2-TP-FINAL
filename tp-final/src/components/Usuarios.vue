@@ -7,15 +7,15 @@
     <h1>
     Ingrese Usuario
     </h1>
-    <input type="text" id="usuario"  >
+    <input type="text" v-model="usuarioCargado" id="usuario"  >
     
 </div>
 <div class ="contraseña"> 
     <h1>Ingrese Contraseña</h1>
-    <input type="text" id="usuario"  >
+    <input type="text" v-model="contraseñaCargada" id="contraseña"  >
    
 </div>
- <button @click="verificarUsuario()">Ingresar</button>
+ <button @click="verificarUsuario(usuarioCargado,contraseñaCargada)">Ingresar</button>
 </div>
 
               
@@ -28,6 +28,8 @@
      data ()  
      {
         return{
+            usuarioCargado:'',
+            contraseñaCargada:'',
             usuarios:[
             {
                 usuario:'admin',
@@ -42,18 +44,24 @@
     },
     methods:
     {
-             verificarUsuario()
+             verificarUsuario (usu,cont)
         {
-            var usuario =document.getElementById("usuario")
-            console.log(usuario)
-            if(usuario=='Carlos')
+            if(usu=='admin' && cont =='admin')
             {
-                console.log("Buenas")
+                console.log("Bienvenido Admin")
             }
             else
             {
-                console.log("Chau")
+                if(usu=='seba' && cont=='pirulo' )
+            {
+                console.log("Buenas "+usu)
             }
+            else
+            {
+                console.log("Usuario incorrecto")
+            }
+            }           
+            
         }
 
 
