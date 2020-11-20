@@ -14,7 +14,11 @@
           <b-button variant="outline-primary"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
         </div> 
         <div v-if="$store.getters.usuario != null">
-          <h4>{{$store.getters.usuario}}</h4><b-button variant="outline-primary" @click="cerrar()"><router-link to="/">Cerrar seccion</router-link></b-button>
+          <h4>{{$store.getters.usuario.usuario}}</h4>
+          <div v-if="$store.getters.usuario.vip == true">
+            <i class="fas fa-star" style="color:#E5FF07;" ></i>
+          </div>
+          <b-button variant="outline-primary" @click="cerrar()"><router-link to="/">Cerrar seccion</router-link></b-button>
         </div>
       </div>
     </div>

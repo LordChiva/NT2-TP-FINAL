@@ -39,7 +39,7 @@
                  <div>Seleccionados: <strong>{{ seleccionados }}</strong></div>
                   
 
-                <div v-if="$store.getters.usuario == 'vip'">
+                <div v-if="$store.getters.usuario.vip == true">
                     <h3>Descuento</h3>
                 </div>
 

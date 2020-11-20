@@ -1,0 +1,24 @@
+<template>
+  <div class="cuenta">
+    <!--<h1>This is an about page</h1>-->
+    <div class="login">
+      <div v-if="usuario == null">
+        <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+      </div> 
+      <div v-if="usuario != null">
+        <h3>Usuario: {{usuario.usuario}}</h3>
+        <h3>Vip: {{usuario.vip}}</h3>
+      </div>    
+    </div> 
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      usuario: this.$store.getters.usuario,
+    }
+  },
+}
+</script>

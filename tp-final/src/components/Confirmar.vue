@@ -4,20 +4,20 @@
     <table class="tableContainer">
       <tr class="tr">
         <td>
-          <img alt="Peli foto"  :src="$store.getters.pelicula.imagen" class="imagen">
-          <h1>{{$store.getters.pelicula.nombre}}</h1>
+          <img alt="Peli foto"  :src="pelicula.imagen" class="imagen">
+          <h1>{{pelicula.nombre}}</h1>
         </td> 
-        <td v-for="(fecha,index) in $store.getters.pelicula.fechas" :key="index"> 
+        <td> 
           <h3>Dia: </h3>
-          <h4>{{$store.getters.pelicula.dia}} {{$store.getters.fecha}}</h4>
+          <h4>{{pelicula.dia}} {{fecha}}</h4>
           <h3>Horario: </h3>
-          <h4>{{$store.getters.pelicula.horario}}</h4>
+          <h4>{{pelicula.horario}}</h4>
           <h3>Butacas Seleccionadas: </h3>
-          <div v-for="(butaca,index) in $store.getters.butacas" :key="index">
+          <div v-for="(butaca,index) in butacas" :key="index">
             <h4>{{butaca.fila}}{{butaca.columna}}</h4>
           </div>          
           <h3>Combos Seleccionados: </h3>
-           <div v-for="(combo) in $store.getters.combos" :key="combo">
+           <div v-for="(combo) in combos" :key="combo">
             <h4>{{combo}}</h4>
           </div>
         </td>  
@@ -25,10 +25,24 @@
     </table> 
       <div>
         <b-button class="botton"> <router-link to="/PantallaProductos">Volver</router-link></b-button>
-        <b-button class="botton">  <router-link to="/QrCode">Confirmar</router-link></b-button>
-      </div>   
+        <b-button class="botton">  <router-link to="/QrCode">Confirmar</router-link></b-button>   
+      </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      pelicula: this.$store.getters.pelicula,
+      fecha: this.$store.getters.fecha,
+      butacas: this.$store.getters.butacas,
+      combos: this.$store.getters.combos
+    }
+  },
+ 
+}
+</script>
 
 <style>
 
