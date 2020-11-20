@@ -189,7 +189,7 @@ export default {
             } ,
             asientoSeleccion(butacasSeleccionados) {
                 this.$store.state.butacas=butacasSeleccionados;           
-           this.$store.dispatch('arregarButacas',butacasSeleccionados);
+           this.$store.dispatch('agregarButacas',butacasSeleccionados);
             }
         
     }

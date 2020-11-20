@@ -58,7 +58,7 @@ export default {
     methods: {
          peliculaSeleccionada (pelicula) {  
            this.$store.state.pelicula=pelicula;           
-           this.$store.dispatch('arregarPelicula',pelicula);
+           this.$store.dispatch('agregarPelicula',pelicula);
         },
         getPeliculas() {
             const peliculas = [

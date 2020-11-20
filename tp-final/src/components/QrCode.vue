@@ -1,16 +1,19 @@
 <template>
-  <vue-qrcode value="https://www.1stg.me" />
+<div>
+  <vue-qrcode :value="$store.getters.pelicula.nombre"/>
+  <h1>Hola QR</h1>
+  </div>
 </template>
 <script>
 import VueQrcode from 'vue-qrcode'
-import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
+/* import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader' */
  
 export default {
   components: {
     VueQrcode,
-    QrcodeStream,
+    /* QrcodeStream,
     QrcodeDropZone,
-    QrcodeCapture
+    QrcodeCapture */
   },
 }
 </script>

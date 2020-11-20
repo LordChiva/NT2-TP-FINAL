@@ -52,13 +52,20 @@
     methods:
     {
              verificarUsuario (usu,cont) {
-                 
+                 console.log(this.usuarios[1].usuario)
+            
                  for (var i =0;i<this.usuarios.length;i++) {                     
-                    if((this.usuarios[i] = usu) && (this.usuarios[i] = cont)) {
+                    if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contraseña == cont)) {
+                        console.log(usu)
+                        console.log("for "+this.usuarios[i].usuario)
                     this.$store.state.usuario=this.usuarios[i];           
-                    this.$store.dispatch('arregarUsuario',this.usuarios[i]);
+                    this.$store.dispatch('agregarUsuario',this.usuarios[i]);
                     this.usuarios.length = i;
                 } 
+                else
+                {
+                    console.log("No esta")
+                }
                 }
         }
     }

@@ -24,19 +24,19 @@ export default new Vuex.Store(
             //addAmigo(state) {
             //    state.amigos =[state.amigo,...state.amigos]
             //},
-            arregarPeli(state, payload) {
+            agregarPeli(state, payload) {
                 state.pelicula = payload;                        
             },
-            arregarF(state, payload) {
+            agregarF(state, payload) {
                 state.fecha = payload;                        
             },
-            arregarButaca(state, payload) {
+            agregarButaca(state, payload) {
                 state.butacas = payload;                        
             },
-            arregarCombo(state, payload) {
+            agregarCombo(state, payload) {
                 state.combos = payload;                        
             },
-            arregarUsuario(state, payload) {
+            agregarUsuario(state, payload) {
                 state.usuario = payload;                        
             },
         },
@@ -45,20 +45,20 @@ export default new Vuex.Store(
             //addAmigoAction(context) {
            //    context.commit('addAmigo');
            // },
-            arregarPelicula({ commit }, payload) {
-                commit('arregarPeli', payload);
+            agregarPelicula({ commit }, payload) {
+                commit('agregarPeli', payload);
             },
-            arregarFecha({ commit }, payload) {
-                commit('arregarF', payload);
+            agregarFecha({ commit }, payload) {
+                commit('agregarF', payload);
             },
-            arregarButacas({ commit }, payload) {
-                commit('arregarButaca', payload);
+            agregarButacas({ commit }, payload) {
+                commit('agregarButaca', payload);
             },
-            arregarCombos({ commit }, payload) {
-                commit('arregarCombo', payload);
+            agregarCombos({ commit }, payload) {
+                commit('agregarCombo', payload);
             },
-            arregarUsuario({ commit }, payload) {
-                commit('arregarUsuario', payload);
+            agregarUsuario({ commit }, payload) {
+                commit('agregarUsuario', payload);
             },
         },
         

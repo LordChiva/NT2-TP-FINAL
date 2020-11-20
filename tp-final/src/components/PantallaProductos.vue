@@ -51,7 +51,7 @@
 
         <b-input-group-append class="contenedorB">
             <b-button class="boton"><router-link to="/SalaCine">Volver</router-link></b-button>
-            <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Confirmar</router-link></b-button>
+            <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
         </b-input-group-append>
     </div>
 </template>
@@ -82,7 +82,7 @@ export default {
         },*/
           productosSeleccionada (seleccionados) {  
            this.$store.state.combos=seleccionados;           
-           this.$store.dispatch('arregarCombos',seleccionados);
+           this.$store.dispatch('agregarCombos',seleccionados);
         },
         getOptions () {
             const options = [
