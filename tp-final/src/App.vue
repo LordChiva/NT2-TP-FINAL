@@ -40,7 +40,7 @@ export default {
   methods: {
     cerrar() {
       this.$store.state.usuario=null;           
-      this.$store.dispatch('arregarUsuario',null);
+      this.$store.dispatch('agregarUsuario',null);
     }
   },
 }

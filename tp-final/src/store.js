@@ -16,6 +16,7 @@ export default new Vuex.Store(
             butacas:null,
             combos: null,
             usuario: null,
+            datosQr:null,
             
 
         },

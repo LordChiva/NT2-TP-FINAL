@@ -1,6 +1,6 @@
 <template>
 <div>
-  <vue-qrcode :value="$store.getters.pelicula.nombre"/>
+  <vue-qrcode :value="$store.getters.pelicula.nombre" />
   <h1>Hola QR</h1>
   </div>
 </template>
