@@ -11,14 +11,14 @@
 
       <div class="login">
         <div v-if="$store.getters.usuario == null">
-          <b-button variant="outline-primary"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+          <b-button class="boton" variant="outline-primary"><router-link to="/Usuarios">SignIn</router-link></b-button>
         </div> 
         <div v-if="$store.getters.usuario != null">
           <h4>{{$store.getters.usuario.usuario}}</h4>
           <div v-if="$store.getters.usuario.vip == true">
             <i class="fas fa-star" style="color:#E5FF07;" ></i>
           </div>
-          <b-button variant="outline-primary" @click="cerrar()"><router-link to="/">Cerrar seccion</router-link></b-button>
+          <b-button class="boton" variant="outline-primary" @click="cerrar()"><router-link to="/">Log Out</router-link></b-button>
         </div>
       </div>
     </div>
@@ -96,9 +96,24 @@ export default {
   color: #9FADBD;
 }
 
-.login{
+/* .login{
   display: inline-flex;
   width: 20%;
   color: #9FADBD;
+} */
+
+.btn{
+  padding: 5px;
+  border: 1px solid rgba(21, 34, 50, 0.7);
+  border-radius: 10px;
+  margin: 0px 20px 0px 20px;
+  width: 100px;
+  color: #9FADBD;
+  background-color: rgb(21, 34, 50, 0.3);
+  font-weight: bold;
+}
+
+.boton :hover{ 
+  color: #C7D5E5;
 }
 </style>

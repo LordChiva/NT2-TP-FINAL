@@ -13,7 +13,7 @@ export default new Vuex.Store(
             //amigo:null,
             pelicula:null,
             fecha: null,
-            butacas:null,
+            butacas: null,
             combos: null,
             usuario: null,
             

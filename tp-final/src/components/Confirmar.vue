@@ -23,10 +23,10 @@
         </td>  
       </tr>
     </table> 
-      <div>
-        <b-button class="botton"> <router-link to="/PantallaProductos">Volver</router-link></b-button>
-        <b-button class="botton">  <router-link to="/QrCode">Confirmar</router-link></b-button>   
-      </div>
+      <b-input-group-append class="contenedorB">
+        <b-button class="boton"><router-link to="/PantallaProductos">Volver</router-link></b-button>
+        <b-button class="boton"><router-link to="/QrCode">Confirmar</router-link></b-button>   
+      </b-input-group-append>
   </div>
 </template>
 
@@ -54,4 +54,40 @@ export default {
   margin-left: 50px;
 }
 
+a {
+    color: #9FADBD;
+    text-decoration: none;
+}
+
+a :hover {
+    text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+    padding: 20px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.boton {
+    padding: 5px;
+    border: 1px solid rgba(21, 34, 50, 0.7);
+    border-radius: 10px;
+    margin: 0px 50px 0px 50px;
+    width: 100px;
+    color: #9FADBD;
+    background-color: rgba(21, 34, 50, 0.3);
+    font-weight: bold;
+}
+
+.boton :hover{ 
+    color: #C7D5E5;
+    background-color: none;
+}
 </style>

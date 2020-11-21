@@ -16,13 +16,14 @@
                         id="checkbox-group-1"
                         v-model="seleccionados"
                         :options="options"
-                        style="columns: 2" >
+                        style="columns: 2">
                     </b-form-checkbox-group>
                 </b-form-group>
+                
 
                 <!-- <td v-for="(producto,index) in productos" :key="index"
 
-           @click="calcularTotal(index)":id='producto'+index">
+            @click="calcularTotal(index)":id='producto'+index">
 
                     <li>
                         <img alt="imagen"  v-bind:src="options.imagen"  class="imagenProducto">
@@ -36,7 +37,7 @@
                     </li>  
                 </td>-->
 
-                 <div>Seleccionados: <strong>{{ seleccionados }}</strong></div>
+                 
                   
 
                 <div v-if="$store.getters.usuario.vip == true">
@@ -44,6 +45,7 @@
                 </div>
 
             </div>
+            <div>Total: <strong>{{ getPrecioTotal(seleccionados) }}</strong></div>
         </div>
 
             <!-- buscar de hacer un metodo para que devuelva un total de lo acumulado
@@ -63,16 +65,24 @@ import comboPancho from "../assets/comboPancho.png"
 import comboSuper from "../assets/comboSuper.png"
 import comboTeriyaqui from "../assets/comboTeriyaqui.png"
 
-
 export default {
     data: () => {
         return{
             seleccionados: [],
-            options:[ ]
+            options:[],
+            posts: []
+            
         }
     },
     mounted() {
-         this.options = this.getOptions()
+         this.options = this.getOptions();
+         
+         let axios = require('axios').default;
+         console.log("pepe");
+         axios.get('http://localhost:8080/#/PantallaProductos')
+         .then(function ( response) {
+             console.log(response)
+         })
     },
      methods: {
        /* calcularTotal(id)
@@ -80,41 +90,46 @@ export default {
             var elemento =document.getElementById("producto"+id)
             total=elemento.precio+total
         },*/
-          productosSeleccionada (seleccionados) {  
-           this.$store.state.combos=seleccionados;           
-           this.$store.dispatch('agregarCombos',seleccionados);
+        productosSeleccionada (seleccionados) {  
+            this.$store.state.combos=seleccionados;           
+            this.$store.dispatch('agregarCombos',seleccionados);
         },
         getOptions () {
             const options = [
                 { text: 'Combo Nacho',
-                  value: 'Combo Nacho',
-                  precio: 379,
+                  value: 379.99,
                   descripcion:'El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.',
                   imagen:comboNacho
                 },
                 { text: 'Combo Pancho',
-                  value: 'Combo Pancho',
+                  value: 459.99,
                   precio: 459.99,
                   descripcion:'El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.',
                   imagen:comboPancho
                 },
                 { text: 'Combo Super',
-                  value: 'Combo Super',
+                  value: 699.99,
                   precio: 699.99,
                   descripcion:'El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).',
                   imagen:comboSuper
                 },
                 { text: 'Combo Teriyaki',
-                  value: 'Combo Teriyaki',
+                  value: 549.99,
                   precio: 549,
                   descripcion:'El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.',
                   imagen:comboTeriyaqui
                 }   
             ]
             return options
-        }
-        
-        
+        },
+        getPrecioTotal(seleccionados) {
+            var total = 0;
+            for (let index = 0; index < seleccionados.length; index++) {
+                total = total + seleccionados[index];
+            }
+            return total;
+        },
+            
     } 
 }
 </script>
