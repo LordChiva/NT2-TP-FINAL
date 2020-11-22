@@ -1,10 +1,7 @@
 <template>
 <div>
   <vue-qrcode :value="compra" />
-  <h1>Hola QR</h1>
-  {{compra}}
-  
-  </div>
+</div>
 </template>
 <script>
 import VueQrcode from 'vue-qrcode'
@@ -14,13 +11,14 @@ export default {
   data() {
     return {
       compra: [
-        " Pelicula: ", this.$store.getters.pelicula.nombre, 
+      "Pelicula: ", this.$store.getters.pelicula.nombre, 
       " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
       " Horario: ", this.$store.getters.pelicula.horario,
-      " Butacas: ", this.$store.getters.butacas,
-      " Combos: ", this.$store.getters.combos,
-      " Total Combo: $", this.$store.getters.precioTotalcombos],
-      butaca: []
+      " Butacas: ", this.butacas(),
+      " Combos: ", this.combos(),
+      " Total Combo: $", JSON.stringify(this.$store.getters.precioTotalcombos).replace('[','').replace(']','')],
+      combo: null,
+      butaca: null
     }
   },
   components: {
@@ -31,11 +29,24 @@ export default {
   },
   methods: {
     butacas() {
-      
       for (let index = 0; index < this.$store.getters.butacas.length; index++) {
-          this.butaca.push(this.$store.getters.butacas[index].fila, this.$store.getters.butacas[index].columna);
+        if (index == 0) {
+          this.butaca = this.$store.getters.butacas[index].columna + this.$store.getters.butacas[index].fila + ", ";
+        } else {
+          this.butaca = this.butaca + this.$store.getters.butacas[index].columna + this.$store.getters.butacas[index].fila + ", ";
+        }
       }
       return this.butaca;
+    },
+    combos() {      
+      for (let index = 0; index < this.$store.getters.combos.length; index++) {
+        if (index == 0) {
+          this.combo = this.$store.getters.combos[index].nombre + " (Precio: " + this.$store.getters.combos[index].precio + " Cant: " + this.$store.getters.combos[index].cant + " Total: $" + this.$store.getters.combos[index].precio*this.$store.getters.combos[index].cant + "), ";
+        } else {
+          this.combo = this.combo + this.$store.getters.combos[index].nombre + " (Precio: " + this.$store.getters.combos[index].precio + " Cant: " + this.$store.getters.combos[index].cant + " Total: $" + this.$store.getters.combos[index].precio*this.$store.getters.combos[index].cant + "), ";
+        }
+      }
+      return this.combo;
     }
   },
 }
