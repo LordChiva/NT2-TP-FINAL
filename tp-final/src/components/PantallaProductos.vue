@@ -19,7 +19,7 @@
                         style="columns: 2">
                     </b-form-checkbox-group>
                 </b-form-group>
-                
+
 
                 <!-- <td v-for="(producto,index) in productos" :key="index"
 
@@ -46,10 +46,8 @@
 
             </div>
             <div>Total: <strong>{{ getPrecioTotal(seleccionados) }}</strong></div>
+           <!--  <div>asda: <strong>{{ options }}</strong></div> -->
         </div>
-
-            <!-- buscar de hacer un metodo para que devuelva un total de lo acumulado
-                 deberia ser con un += y producto.precio -->
 
         <b-input-group-append class="contenedorB">
             <b-button class="boton"><router-link to="/SalaCine">Volver</router-link></b-button>
@@ -69,14 +67,13 @@ export default {
     data: () => {
         return{
             seleccionados: [],
-            options:[],
-            posts: []
+            options:[]
             
         }
     },
     mounted() {
          this.options = this.getOptions();
-         
+
          let axios = require('axios').default;
          console.log("pepe");
          axios.get('http://localhost:8080/#/PantallaProductos')
@@ -129,6 +126,13 @@ export default {
             }
             return total;
         },
+        getNombres(options) {
+            var nombres = " "
+            for (let index = 0; index < options.length; index++) {
+                nombres = nombres + options[index].text;
+            }
+            return nombres;
+        }
             
     } 
 }
