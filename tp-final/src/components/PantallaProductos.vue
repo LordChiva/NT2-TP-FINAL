@@ -3,14 +3,7 @@
         <div class="contenedorCombos">     
             <div class="combos">
 
-                <!--  ESTE ES EL ORIGINAL
-                <b-form-checkbox-group
-                    id="checkbox-group-1"
-                    v-model="selected"
-                    :options="options"
-                    name="flavour-1"
-                ></b-form-checkbox-group> 
-
+                <!--
                 <b-form-group label="Using options array:">
                     <b-form-checkbox-group
                         id="checkbox-group-1"
@@ -20,24 +13,28 @@
                     </b-form-checkbox-group>
                 </b-form-group>-->
 
-                <div v-for="(option,index) in options" :key="index">
-                    <h3>{{option.nombre}}</h3>
-                    <img alt="imagen"  v-bind:src="option.imagen"  class="imagenProducto">
-                    <div class="descripcion">
-                        <h3>{{option.text}}</h3>
-                        
-                        <h6>Precio: ${{option.precio}}</h6><button @click="agregarASeleccionados(option)">Agregar</button>  
-                        <div v-if="option.cant > 0">
-                            <button @click="sacarASeleccionados(option)">Quitar</button>
-                            <h6>{{option.cant}}</h6>
-                        </div> 
-                    </div>               
-                </div>
-                
+                <td v-for="(option,index) in options" :key="index">
+                    <li>
+                        <img alt="imagen"  v-bind:src="option.imagen"  class="imagenProducto">
+                        <div class="descripcion">
+                            <h3>{{option.nombre}}</h3>
+                            <br>
+                            <h5>{{option.descripcion}}</h5>
+                            <br>
+                            <h6>Precio: ${{option.precio}}</h6>
+                            <br>
+                            <b-button class="boton" @click="agregarASeleccionados(option)">Agregar</b-button>
+                            <div class="sacarBoton" v-if="option.cant > 0">
+                                <b-button class="boton" @click="sacarASeleccionados(option)">Quitar</b-button>
+                                <h6>{{option.cant}}</h6>
+                            </div> 
+                        </div>  
+                    </li>
+                </td>
 
                 <!-- <td v-for="(producto,index) in productos" :key="index"
 
-            @click="calcularTotal(index)":id='producto'+index">
+                     @click="calcularTotal(index)":id='producto'+index">
 
                     <li>
                         <img alt="imagen"  v-bind:src="options.imagen"  class="imagenProducto">
@@ -51,26 +48,23 @@
                     </li>  
                 </td>-->
 
-                 
-                  
-
-                <div v-if="$store.getters.usuario.vip == true">
+                <!-- <div v-if="$store.getters.usuario.vip == true">
                     <h3>Descuento</h3>
-                </div>
+                </div> -->
+
             </div>           
-            <div><h1>Total: <strong>${{ getPrecioTotal(seleccionados) }}</strong> </h1></div>
+            <div class="precio">
+                <h6>Total: <strong>${{ getPrecioTotal(seleccionados) }}</strong> </h6>
+            </div>
         </div>
 
-            <!-- buscar de hacer un metodo para que devuelva un total de lo acumulado
-                 deberia ser con un += y producto.precio -->
-
         <b-input-group-append class="contenedorB">
-            <b-button class="boton" @click="salaCineenNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
+            <b-button class="boton" @click="salaCineEnNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
             <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
         </b-input-group-append>
 
-         <b-button class="boton" @click="getExchangeValue(dolar)">U$S</b-button>
-         <h1>{{dolar}}</h1>
+         <b-button class="boton" @click="getExchangeValue(dolar,seleccionados)">U$S</b-button>
+         <h1>Dolar {{dolar}}</h1>
     </div>
 </template>
 
@@ -99,6 +93,7 @@ export default {
 
     },
     mounted() {
+    this.options = this.getOptions();
       console.log("Aca esta el mounted")
     axios.get('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then((response)=> {
@@ -129,10 +124,10 @@ export default {
         productosSeleccionada (seleccionados) {  
             this.$store.state.combos=seleccionados;           
             this.$store.dispatch('agregarCombos',seleccionados);
-            this.$store.state.precioTotalcombos=this.getPrecioTotal(seleccionados);           
+            this.$store.state.precioTotalcombos = this.getPrecioTotal(seleccionados);           
             this.$store.dispatch('agregarPrecioTotalcombos',this.getPrecioTotal(seleccionados));            
         },
-        salaCineenNull() {
+        salaCineEnNull() {
             this.$store.state.butacas=null;           
             this.$store.dispatch('agregarButacas',null);
         },
@@ -176,9 +171,8 @@ export default {
             }
             return total;
         },        
-        agregarASeleccionados(option) { 
-            console.log("Que es esto "+option)
-            option.cant=option.cant+1
+        agregarASeleccionados(option) {                    
+            option.cant = option.cant + 1;
             if (this.seleccionados.length == 0) {
                 this.seleccionados.push(option)
             } else {
@@ -198,10 +192,15 @@ export default {
                 this.seleccionados.pop(option)
             }
         },
-        getExchangeValue(dolar)
+        getExchangeValue(dolar,seleccionados)
         {
-            dolar=dolar+100
-            console.log("Es coca papi "+dolar)
+            var total = 0;
+            for (let index = 0; index < seleccionados.length; index++) {
+                total = total + (seleccionados[index].precio * seleccionados[index].cant);
+            }
+            total=total*dolar
+            console.log("Es coca papi "+total)
+            return total;
         }
    
          
@@ -270,6 +269,19 @@ export default {
 
 .descripcion > h6{
   font-size: 20px;
+  color: #9FADBD;
+  text-align: center;
+}
+
+.sacarBoton {
+    display: inline-block;
+    justify-content: center;
+    width: 85%;
+    margin: 10px;
+}
+
+.precio > h6 {
+  font-size: 25px;
   color: #9FADBD;
   text-align: center;
 }

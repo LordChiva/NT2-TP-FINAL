@@ -15,28 +15,27 @@
     <table class="tableContainer">
       <tr class="tr">
         <td>
-          <img alt="Peli foto"  v-bind:src="$store.getters.pelicula.imagen" class="imagen">
-          <h1>{{$store.getters.pelicula.nombre}}</h1>
+          <img alt="Peli foto" v-bind:src="$store.getters.pelicula.imagen" class="imagen">
+          <br>
+          <h3>{{$store.getters.pelicula.nombre}}</h3>
         </td> 
         <td v-for="(fecha,index) in $store.getters.pelicula.fechas" :key="index"> 
-          <h1>{{$store.getters.pelicula.dia}} {{$store.getters.pelicula.horario}}</h1>           
-          <button class="boton" @click="fechaSeleccionada(fecha.fecha)">{{fecha.fecha}} </button>
-          <button class="boton" @click="fechaSeleccionada(fecha.fecha2)">{{fecha.fecha2}} </button>
-          <button class="boton" @click="fechaSeleccionada(fecha.fecha3)">{{fecha.fecha3}} </button>
-          <button class="boton" @click="fechaSeleccionada(fecha.fecha4)">{{fecha.fecha4}} </button>  
+          <h3>{{$store.getters.pelicula.dia}} {{$store.getters.pelicula.horario}}</h3>           
+          <b-button class="boton" @click="fechaSeleccionada(fecha.fecha)">{{fecha.fecha}}</b-button>
+          <b-button class="boton" @click="fechaSeleccionada(fecha.fecha2)">{{fecha.fecha2}}</b-button>
+          <b-button class="boton" @click="fechaSeleccionada(fecha.fecha3)">{{fecha.fecha3}}</b-button>
+          <b-button class="boton" @click="fechaSeleccionada(fecha.fecha4)">{{fecha.fecha4}}</b-button>  
         </td>  
       </tr>
     </table> 
     <b-input-group-append class="contenedorB">
-      <b-button class="boton Volver" @click="peliculaenNull()"> <router-link to="/">Volver</router-link></b-button>	
-      <div class="login">
+      <b-button class="boton Volver" @click="peliculaenNull()"><router-link to="/">Volver</router-link></b-button>	
         <div v-if="$store.getters.usuario == null">
-          <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+          <b-button class="boton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
         </div> 
         <div v-if="$store.getters.usuario != null">
-          <b-button class="boton Siguiente"> <router-link to="/SalaCine">Siguiente</router-link></b-button>
-        </div>    
-      </div>            
+          <b-button class="boton"><router-link to="/SalaCine">Siguiente</router-link></b-button>
+        </div>         
     </b-input-group-append> 
   </div>
 </template>
@@ -93,17 +92,45 @@ data() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.tr {
+.pantallaPelicula{
+  display: inline-block;
   justify-content: center;
+  width: 100%;
+  margin: 5px;
+  padding: 15px;
+}
+
+.pantallaPelicula > table > tr {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  margin: 5px 0px 0px 0px;
+}
+
+.tableContainer {
+  display: table-caption;
+  justify-content: center;
+  width: 100%;
+}
+
+.tableContainer > tr > td > h3{
+  font-size: 30px;
+  color: #9FADBD;
+  text-align: center;
+}
+
+.imagen{
+  width: 300px;
+  height: 300px;
 }
 
 a {
-    color: #9FADBD;
-    text-decoration: none;
+  color: #9FADBD;
+  text-decoration: none;
 }
 
 a :hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #nav a {
