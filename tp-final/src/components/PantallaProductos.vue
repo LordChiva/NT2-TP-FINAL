@@ -52,19 +52,24 @@
                     <h3>Descuento</h3>
                 </div> -->
 
-            </div>           
-            <div class="precio">
-                <h6>Total: <strong>${{ getPrecioTotal(seleccionados) }}</strong> </h6>
-            </div>
+            </div> 
+            <div v-if="this.seleccionados.length > 0">
+                <b-button class="boton" @click="getExchangeValue(dolar)">Pagar U$S</b-button>                                
+            <div class="precio" v-if="this.totalEnDolar == 0">
+                <h1>Total <strong>${{ getPrecioTotal(seleccionados) }}</strong> </h1>
+            </div> 
+            <div v-if="this.totalEnDolar > 0">
+                <h1>Dolar {{dolar}}</h1> 
+                <h1>Total {{totalEnDolar}}U$S</h1>
+            </div>            
+            </div>          
+            
         </div>
 
         <b-input-group-append class="contenedorB">
             <b-button class="boton" @click="salaCineEnNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
             <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
         </b-input-group-append>
-
-         <b-button class="boton" @click="getExchangeValue(dolar,seleccionados)">U$S</b-button>
-         <h1>Dolar {{dolar}}</h1>
     </div>
 </template>
 
@@ -84,8 +89,8 @@ export default {
             seleccionados: [],
             options:[],
             posts: [],
-            dolar:0
-              
+            dolar:0,
+            totalEnDolar:0             
         }
     },
     components:
@@ -124,8 +129,15 @@ export default {
         productosSeleccionada (seleccionados) {  
             this.$store.state.combos=seleccionados;           
             this.$store.dispatch('agregarCombos',seleccionados);
-            this.$store.state.precioTotalcombos = this.getPrecioTotal(seleccionados);           
-            this.$store.dispatch('agregarPrecioTotalcombos',this.getPrecioTotal(seleccionados));            
+            if (this.totalEnDolar > 0)  {
+                this.$store.state.precioTotalcombos = this.totalEnDolar;           
+                this.$store.dispatch('agregarPrecioTotalcombos',this.totalEnDolar); 
+                this.$store.state.dolar = 1;           
+                this.$store.dispatch('agregarDolar',1); 
+            } else {
+                this.$store.state.precioTotalcombos = this.getPrecioTotal(seleccionados);           
+                this.$store.dispatch('agregarPrecioTotalcombos',this.getPrecioTotal(seleccionados));
+            }                       
         },
         salaCineEnNull() {
             this.$store.state.butacas=null;           
@@ -168,8 +180,12 @@ export default {
             var total = 0;
             for (let index = 0; index < seleccionados.length; index++) {
                 total = total + (seleccionados[index].precio * seleccionados[index].cant);
+                this.totalSinDolar = total;
             }
-            return total;
+            if (this.$store.getters.usuario.vip == true) {
+                this.totalSinDolar = total - total * 0.1;
+            }
+            return this.totalSinDolar;
         },        
         agregarASeleccionados(option) {                    
             option.cant = option.cant + 1;
@@ -184,23 +200,27 @@ export default {
                         index == this.seleccionados.length
                     }
                 }
-            }     
+            }
+            if (this.totalEnDolar > 0) {
+                this.getExchangeValue(this.dolar)
+            }                       
         },
         sacarASeleccionados(option) {
             option.cant=option.cant-1
             if (option.cant == 0) {
                 this.seleccionados.pop(option)
             }
+            if (this.seleccionados.length == 0) {
+                this.totalEnDolar = 0
+            } 
+            if (this.totalEnDolar > 0) {
+                this.getExchangeValue(this.dolar)
+            }             
         },
-        getExchangeValue(dolar,seleccionados)
+        getExchangeValue(dolar)
         {
-            var total = 0;
-            for (let index = 0; index < seleccionados.length; index++) {
-                total = total + (seleccionados[index].precio * seleccionados[index].cant);
-            }
-            total=total*dolar
-            console.log("Es coca papi "+total)
-            return total;
+            this.totalEnDolar = this.getPrecioTotal(this.seleccionados) / dolar
+            return this.totalEnDolar;
         }
    
          
