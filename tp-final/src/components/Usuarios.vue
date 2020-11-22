@@ -8,7 +8,7 @@
             <h1>Ingrese Contraseña</h1>
             <input type="text" v-model="contraseñaCargada" id="contraseña"  >
         </div>
-        <button @click="verificarUsuario(usuarioCargado,contraseñaCargada)">Ingresar</button>
+        <button @click="verificarUsuario(usuarioCargado,contraseñaCargada)" >Ingresar</button>
         <div v-if="this.error == false">
             <h3>Has introducido mal el usuario o la contraseña.</h3>
         </div>
@@ -30,12 +30,12 @@
                 {
                     usuario:'seba',
                     contraseña:'pirulo',
-                    vip: true
+                    vip: false
                 },
                 {
                     usuario:'vip',
                     contraseña:'vip',
-                    vip: false
+                    vip: true
                 },
                 ],  
                 error: null,

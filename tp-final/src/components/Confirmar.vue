@@ -40,8 +40,9 @@ export default {
       combos: this.$store.getters.combos
     }
   },
- 
+
 }
+
 </script>
 
 <style>

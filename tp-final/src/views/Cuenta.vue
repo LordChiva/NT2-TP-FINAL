@@ -7,7 +7,9 @@
       </div> 
       <div v-if="usuario != null">
         <h3>Usuario: {{usuario.usuario}}</h3>
-        <h3>Vip: {{usuario.vip}}</h3>
+        <div v-if="this.usuario.vip == true">
+        <h3>Es Vip</h3>
+        </div>
       </div>    
     </div> 
   </div>

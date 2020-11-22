@@ -13,12 +13,23 @@ import VueQrcode from 'vue-qrcode'
 export default {
   data() {
     return {
-      compra: ["Pelicula: ", this.$store.getters.pelicula.nombre, 
-      " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
-      " Horario: ", this.$store.getters.pelicula.horario,
-      " Butacas: ", this.$store.getters.butacas,
-      " Combos: ", this.$store.getters.combos],
+        pepe:'',
+        /* butacas:this.$store.getters.butacas, */
+       compra: (["Pelicula: ", this.$store.getters.pelicula.nombre, 
+       " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
+       "Horario: ", this.$store.getters.pelicula.horario, 
+       /* " Butacas: ", guardarButacas(this.butacas), */
+      " Combos: ", JSON.stringify(this.$store.getters.combos).replace('[','').replace(']','')]),
+      
+
     }
+   
+
+  },
+  methods:
+  {
+
+      
   },
   components: {
     VueQrcode,
@@ -27,4 +38,15 @@ export default {
     QrcodeCapture */
   },
 }
+/* function guardarButacas(butacas)
+      {
+        let butacasFila='';
+        console.log("guardar Butacas "+butacasFila.length)
+        for (var i =0;i<butacas.length;i++)
+        {
+            butacasFila=butacas[i].fila
+            console.log(butacasFila)
+        }
+        return butacasFila;
+      } */
 </script>
