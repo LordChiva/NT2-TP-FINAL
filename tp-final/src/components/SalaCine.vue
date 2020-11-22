@@ -66,21 +66,13 @@
                 </tbody>
             </table>
         </div>
-        <!-- <div class="asiento">
-                            <td v-for="(asiento,index) in salas" :key="index">
-                                 queda buscar la manera de que funcione el click
-                                    y con el tema de vuex hacer que registre el lugar
-                                    que elegimos
-                            <i class="fas fa-couch" @click="setearOcupado()"></i>
-                            </td>	
-                        </div> -->
 
 
         <div class="pantalla">
             <img alt="Pantalla"  :src="pantalla.imagen"  class="imagenPantalla">
         </div>
         <b-input-group-append class="contenedorB">
-            <b-button class="boton"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
+            <b-button class="boton" @click="pantallaPeliculaenNull()"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
             <b-button class="boton"  @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
         </b-input-group-append>
     </div>
@@ -101,13 +93,9 @@ import pantallaPng from "../assets/pantallaPng.png"
 /* var pepe = document.getElementsByClassName("fa-couch") */
 
 export default {
-    /**cambienle el name, cambienle el tipo de la prop. Esa prop esta para algo?
-     *  el título devuelve un número? */
+
  name:"SalaCine",
-    /* props:{
-        titulo:Number
-        
-    },  */
+
 
 
     data ()  {
@@ -117,7 +105,7 @@ export default {
             salas:  crearAsientos(),
             pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
-            /* evento: {pepe}, */
+
             letras:[                    
                 'A','B','C','D','E','F','G','H'
             ]
@@ -190,6 +178,10 @@ export default {
             asientoSeleccion(butacasSeleccionados) {
                 this.$store.state.butacas=butacasSeleccionados;           
            this.$store.dispatch('agregarButacas',butacasSeleccionados);
+            },
+            pantallaPeliculaenNull() {
+                this.$store.state.fecha=null;           
+                this.$store.dispatch('agregarFecha',null);
             }
         
     }

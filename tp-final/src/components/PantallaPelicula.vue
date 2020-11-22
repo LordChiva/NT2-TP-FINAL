@@ -27,28 +27,23 @@
         </td>  
       </tr>
     </table> 
-    
-    <!--<h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1>-->
-          <!--LA PREGUNTA ES: DE VERDAD ES FACIL HACER UN "VOLVER"?
-              ACTUALMENTE ESTO TE LLEVA AL INICIO -- ¡PREGUNTAR! 
-        <h1>{{ "aca hay que buscar la manera de vincular la pelicula a la cual clickeamos" }}</h1> -->
-        <b-input-group-append class="contenedorB">
-          <b-button class="boton Volver"> <router-link to="/">Volver</router-link></b-button>	
-          <div class="login">
-            <div v-if="$store.getters.usuario == null">
-              <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
-            </div> 
-            <div v-if="$store.getters.usuario != null">
-              <b-button class="boton Siguiente"> <router-link to="/SalaCine">Siguiente</router-link></b-button>
-            </div>    
-          </div>            
-        </b-input-group-append> 
+    <b-input-group-append class="contenedorB">
+      <b-button class="boton Volver" @click="peliculaenNull()"> <router-link to="/">Volver</router-link></b-button>	
+      <div class="login">
+        <div v-if="$store.getters.usuario == null">
+          <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+        </div> 
+        <div v-if="$store.getters.usuario != null">
+          <b-button class="boton Siguiente"> <router-link to="/SalaCine">Siguiente</router-link></b-button>
+        </div>    
+      </div>            
+    </b-input-group-append> 
   </div>
 </template>
 
 <script>
- /* import Peliculas  from "../components/Peliculas.vue"  */
- /*import reyleon from "../assets/reyLeon.jpg" */
+/* import Peliculas  from "../components/Peliculas.vue"  */
+/*import reyleon from "../assets/reyLeon.jpg" */
 /* mport Publicidad from "../components/Publicidad.vue" */
 /* import Peliculas from "../components/Peliculas.vue" */
 
@@ -70,6 +65,10 @@ data() {
     fechaSeleccionada (fecha) {  
       this.$store.state.fecha=fecha;           
       this.$store.dispatch('agregarFecha',fecha);
+    },
+    peliculaenNull() {
+      this.$store.state.pelicula=null;           
+      this.$store.dispatch('agregarPelicula',null);
     }
   },
   
@@ -79,13 +78,6 @@ data() {
       this.id=to.params.id
     }
   },
-
-
-
-
-  /**cambienle el name
-   * , cambienle el tipo de la prop. Esa prop esta para algo?
-     *  el título devuelve un número? Tiene metodos? esta para algo el script?*/
   name: 'pantallaPelicula',
   
   components: {

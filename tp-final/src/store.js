@@ -6,24 +6,17 @@ Vue.use(Vuex)
 export default new Vuex.Store(
     {
         state: {
-            //msg: 'Archivo store.js Holi',
-            //nombre:'seba',
-            //apellido: 'Felice',
-           // amigos: [],
-            //amigo:null,
             pelicula:null,
             fecha: null,
-            butacas:null,
+            butacas: null,
             combos: null,
+            precioTotalcombos: null,
             usuario: null,
             
 
         },
 
         mutations: {
-            //addAmigo(state) {
-            //    state.amigos =[state.amigo,...state.amigos]
-            //},
             agregarPeli(state, payload) {
                 state.pelicula = payload;                        
             },
@@ -39,12 +32,12 @@ export default new Vuex.Store(
             agregarUsuario(state, payload) {
                 state.usuario = payload;                        
             },
+            agregarPrecioTotalcombos(state, payload) {
+                state.precioTotalcombos = payload;                        
+            },
         },
 
         actions: {
-            //addAmigoAction(context) {
-           //    context.commit('addAmigo');
-           // },
             agregarPelicula({ commit }, payload) {
                 commit('agregarPeli', payload);
             },
@@ -60,15 +53,12 @@ export default new Vuex.Store(
             agregarUsuario({ commit }, payload) {
                 commit('agregarUsuario', payload);
             },
+            agregarPrecioTotalcombos({ commit }, payload) {
+                commit('agregarPrecioTotalcombos', payload);
+            },
         },
         
         getters: {            
-           // mensaje(state) {
-          //      return state.msg;
-          //  },
-          //  nombreCompleto(state) {
-         //       return`${state.nombre} ${state.apellido}`
-          //  },
             pelicula(state) {
                 return state.pelicula;
             },
@@ -83,6 +73,9 @@ export default new Vuex.Store(
             },
             usuario(state) {
                 return state.usuario;
+            },
+            precioTotalcombos(state) {
+                return state.precioTotalcombos;
             },
         }        
     }

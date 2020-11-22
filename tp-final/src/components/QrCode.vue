@@ -13,29 +13,32 @@ import VueQrcode from 'vue-qrcode'
 export default {
   data() {
     return {
-        pepe:'',
-        /* butacas:this.$store.getters.butacas, */
-       compra: (["Pelicula: ", this.$store.getters.pelicula.nombre, 
-       " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
-       "Horario: ", this.$store.getters.pelicula.horario, 
-       /* " Butacas: ", guardarButacas(this.butacas), */
-      " Combos: ", JSON.stringify(this.$store.getters.combos).replace('[','').replace(']','')]),
-      
-
+      compra: [
+      " Pelicula: ", this.$store.getters.pelicula.nombre, 
+      " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
+      " Horario: ", this.$store.getters.pelicula.horario,
+      /* " Butacas: ", this.$store.getters.butacas, */
+      " Combos: ", JSON.stringify(this.$store.getters.combos).replace('[','').replace(']',''),
+      " Total Combo: $", this.$store.getters.precioTotalcombos],
+      butaca: []
     }
    
 
-  },
-  methods:
-  {
-
-      
   },
   components: {
     VueQrcode,
     /* QrcodeStream,
     QrcodeDropZone,
     QrcodeCapture */
+  },
+  methods: {
+    butacas() {
+      
+      for (let index = 0; index < this.$store.getters.butacas.length; index++) {
+          this.butaca.push(this.$store.getters.butacas[index].fila, this.$store.getters.butacas[index].columna);
+      }
+      return this.butaca;
+    }
   },
 }
 /* function guardarButacas(butacas)
