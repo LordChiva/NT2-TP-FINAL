@@ -16,15 +16,15 @@
           <div v-for="(butaca,index) in butacas" :key="index">
             <h4>{{butaca.fila}}{{butaca.columna}}</h4>
           </div>          
-          <h3>Combos Seleccionados: </h3>
-           <div v-for="(combo) in combos" :key="combo">
-            <h4>{{combo}}</h4>
+          <h3>Combos Seleccionados: ${{precioTotalcombos}}</h3>
+           <div v-for="(combo) in combos" :key="combo">       
+            <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
           </div>
         </td>  
       </tr>
     </table> 
       <b-input-group-append class="contenedorB">
-        <b-button class="boton"><router-link to="/PantallaProductos">Volver</router-link></b-button>
+        <b-button class="boton" @click="combosenNull()"><router-link to="/PantallaProductos">Volver</router-link></b-button>
         <b-button class="boton"><router-link to="/QrCode">Confirmar</router-link></b-button>   
       </b-input-group-append>
   </div>
@@ -37,7 +37,16 @@ export default {
       pelicula: this.$store.getters.pelicula,
       fecha: this.$store.getters.fecha,
       butacas: this.$store.getters.butacas,
-      combos: this.$store.getters.combos
+      combos: this.$store.getters.combos,
+      precioTotalcombos: this.$store.getters.precioTotalcombos
+    }
+  },
+  methods: {
+    combosenNull() {
+      this.$store.state.precioTotalcombos=null;           
+      this.$store.dispatch('agregarPrecioTotalcombos',null);
+      this.$store.state.combos=null;           
+      this.$store.dispatch('agregarCombos',null);
     }
   },
  

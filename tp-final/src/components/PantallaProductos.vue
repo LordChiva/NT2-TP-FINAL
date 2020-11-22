@@ -3,14 +3,7 @@
         <div class="contenedorCombos">     
             <div class="combos">
 
-                <!--  ESTE ES EL ORIGINAL
-                <b-form-checkbox-group
-                    id="checkbox-group-1"
-                    v-model="selected"
-                    :options="options"
-                    name="flavour-1"
-                ></b-form-checkbox-group> -->
-
+                <!--
                 <b-form-group label="Using options array:">
                     <b-form-checkbox-group
                         id="checkbox-group-1"
@@ -18,12 +11,30 @@
                         :options="options"
                         style="columns: 2">
                     </b-form-checkbox-group>
-                </b-form-group>
+                </b-form-group>-->
 
+                <td v-for="(option,index) in options" :key="index">
+                    <li>
+                        <img alt="imagen"  v-bind:src="option.imagen"  class="imagenProducto">
+                        <div class="descripcion">
+                            <h3>{{option.nombre}}</h3>
+                            <br>
+                            <h5>{{option.descripcion}}</h5>
+                            <br>
+                            <h6>Precio: ${{option.precio}}</h6>
+                            <br>
+                            <b-button class="boton" @click="agregarASeleccionados(option)">Agregar</b-button>
+                            <div class="sacarBoton" v-if="option.cant > 0">
+                                <b-button class="boton" @click="sacarASeleccionados(option)">Quitar</b-button>
+                                <h6>{{option.cant}}</h6>
+                            </div> 
+                        </div>  
+                    </li>
+                </td>
 
                 <!-- <td v-for="(producto,index) in productos" :key="index"
 
-            @click="calcularTotal(index)":id='producto'+index">
+                     @click="calcularTotal(index)":id='producto'+index">
 
                     <li>
                         <img alt="imagen"  v-bind:src="options.imagen"  class="imagenProducto">
@@ -37,20 +48,18 @@
                     </li>  
                 </td>-->
 
-                 
-                  
-
-                <div v-if="$store.getters.usuario.vip == true">
+                <!-- <div v-if="$store.getters.usuario.vip == true">
                     <h3>Descuento</h3>
-                </div>
+                </div> -->
 
+            </div>           
+            <div class="precio">
+                <h6>Total: <strong>${{ getPrecioTotal(seleccionados) }}</strong> </h6>
             </div>
-            <div>Total: <strong>{{ getPrecioTotal(seleccionados) }}</strong></div>
-           <!--  <div>asda: <strong>{{ options }}</strong></div> -->
         </div>
 
         <b-input-group-append class="contenedorB">
-            <b-button class="boton"><router-link to="/SalaCine">Volver</router-link></b-button>
+            <b-button class="boton" @click="salaCineEnNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
             <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
         </b-input-group-append>
     </div>
@@ -68,7 +77,6 @@ export default {
         return{
             seleccionados: [],
             options:[]
-            
         }
     },
     mounted() {
@@ -90,31 +98,42 @@ export default {
         productosSeleccionada (seleccionados) {  
             this.$store.state.combos=seleccionados;           
             this.$store.dispatch('agregarCombos',seleccionados);
+            this.$store.state.precioTotalcombos = this.getPrecioTotal(seleccionados);           
+            this.$store.dispatch('agregarPrecioTotalcombos',this.getPrecioTotal(seleccionados));            
+        },
+        salaCineEnNull() {
+            this.$store.state.butacas=null;           
+            this.$store.dispatch('agregarButacas',null);
         },
         getOptions () {
             const options = [
-                { text: 'Combo Nacho',
-                  value: 379.99,
+                { id: 1,
+                  nombre: 'Combo Nacho',
+                  precio: 380,
                   descripcion:'El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.',
-                  imagen:comboNacho
+                  imagen:comboNacho,
+                  cant: 0
                 },
-                { text: 'Combo Pancho',
-                  value: 459.99,
-                  precio: 459.99,
+                { id: 2,
+                  nombre: 'Combo Pancho',
+                  precio: 460,
                   descripcion:'El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.',
-                  imagen:comboPancho
+                  imagen:comboPancho,
+                  cant: 0
                 },
-                { text: 'Combo Super',
-                  value: 699.99,
-                  precio: 699.99,
+                { id: 3,
+                  nombre: 'Combo Super',
+                  precio: 700,
                   descripcion:'El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).',
-                  imagen:comboSuper
+                  imagen:comboSuper,
+                  cant: 0
                 },
-                { text: 'Combo Teriyaki',
-                  value: 549.99,
-                  precio: 549,
+                { id: 4,
+                  nombre: 'Combo Teriyaki',
+                  precio: 550,
                   descripcion:'El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.',
-                  imagen:comboTeriyaqui
+                  imagen:comboTeriyaqui,
+                  cant: 0
                 }   
             ]
             return options
@@ -122,18 +141,31 @@ export default {
         getPrecioTotal(seleccionados) {
             var total = 0;
             for (let index = 0; index < seleccionados.length; index++) {
-                total = total + seleccionados[index];
+                total = total + (seleccionados[index].precio * seleccionados[index].cant);
             }
             return total;
+        },        
+        agregarASeleccionados(option) {                    
+            option.cant = option.cant + 1;
+            if (this.seleccionados.length == 0) {
+                this.seleccionados.push(option)
+            } else {
+                for (let index = 0; index < this.seleccionados.length; index++) {
+                    if (this.seleccionados[index] != option) {
+                        this.seleccionados.push(option)
+                    } 
+                    if (this.seleccionados[index] == option) {
+                        index == this.seleccionados.length
+                    }
+                }
+            }     
         },
-        getNombres(options) {
-            var nombres = " "
-            for (let index = 0; index < options.length; index++) {
-                nombres = nombres + options[index].text;
+        sacarASeleccionados(option) {
+            option.cant=option.cant-1
+            if (option.cant == 0) {
+                this.seleccionados.pop(option)
             }
-            return nombres;
         }
-            
     } 
 }
 </script>
@@ -191,6 +223,19 @@ export default {
 
 .descripcion > h6{
   font-size: 20px;
+  color: #9FADBD;
+  text-align: center;
+}
+
+.sacarBoton {
+    display: inline-block;
+    justify-content: center;
+    width: 85%;
+    margin: 10px;
+}
+
+.precio > h6 {
+  font-size: 25px;
   color: #9FADBD;
   text-align: center;
 }

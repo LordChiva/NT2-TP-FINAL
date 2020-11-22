@@ -222,72 +222,64 @@ export default {
 </script>
 
 <style>
-    .contenedorPeliculas{
-        display: inline-block;
-        width: 91%;
-        height: 100%;
-        margin: 0px;
-        padding: 15px;
-    }
+.contenedorPeliculas{
+    display: inline-block;
+    width: 91%;
+    height: 100%;
+    margin: 0px;
+    padding: 15px;
+}
 
-    .contenedorPeliculas > table > tr {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 37%);
-        grid-auto-rows: 350px 350px;
-        justify-content: center;
-        margin: 0px 0px 0px 100px;
-        
-    }
+.contenedorPeliculas > table > tr {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 37%);
+    grid-auto-rows: 350px 350px;
+    justify-content: center;
+    margin: 0px 0px 0px 100px;
+    
+}
 
-    .tableContainer{
-        width: 100%;
-        justify-content: center;
-        display: inline-flex;
-    }
+.tableContainer{
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+}
 
-    .contenedor {
-        height: 300px;
-        width: 300px;
-        margin: 5px 25px 5px 25px;
-    }
+.contenedor {
+    height: 300px;
+    width: 300px;
+    margin: 5px 25px 5px 25px;
+}
 
-    .carta {
-        height: 300px;
-        width: 300px;
-        position: relative;
-        transform-style: preserve-3d;
-        transition: 0.7s;
-        box-shadow: 0px 0px 5px black;
-    }
-    /**120deg */
-    .carta:hover {
-        transform: rotateY(170deg);
-    }
+.carta {
+    height: 300px;
+    width: 300px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 0.7s;
+    box-shadow: 0px 0px 5px black;
+}
+/**120deg */
+.carta:hover {
+    transform: rotateY(170deg);
+}
 
-    .imagen{
-        width: 300px;
-        height: 300px;
-    }
+.imagen{
+    width: 300px;
+    height: 300px;
+}
 
-    .lado {
-        height: 100%;
-        width: 100%;
-        backface-visibility: hidden;
-        position: absolute;  
-        background-color: rgb(21, 34, 50);
-        color: #9FADBD;     
-    }
+.lado {
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    position: absolute;  
+    background-color: rgb(21, 34, 50);
+    color: #9FADBD;     
+}
 
-    .atras {
-        transform: rotateY(200deg);
-    }
-
-    .btn {
-        margin: 0px 0px 0px 0px;
-    }
-
-    .btn-secondary {
-        margin: 0px 0px 0px 0px;
-    }
+.atras {
+    transform: rotateY(200deg);
+}
 </style>
