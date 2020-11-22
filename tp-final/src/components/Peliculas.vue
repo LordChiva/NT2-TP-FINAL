@@ -2,7 +2,7 @@
     <div class="contenedorPeliculas">       
         <table class="tableContainer">
             <tr>
-                <td v-for="(pelicula,index) in peliculas" :key="index">
+                <td v-for="(pelicula,peliP) in peliculas" :key="'peliculasPrim'+peliP">
                     <div class="carta">
                         <div class="lado">
                             <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">						

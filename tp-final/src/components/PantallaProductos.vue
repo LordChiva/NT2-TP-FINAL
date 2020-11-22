@@ -13,7 +13,7 @@
                     </b-form-checkbox-group>
                 </b-form-group>-->
 
-                <td v-for="(option,index) in options" :key="index">
+                <td v-for="(option,p) in options" :key="'productos'+p">
                     <li>
                         <img alt="imagen"  v-bind:src="option.imagen"  class="imagenProducto">
                         <div class="descripcion">

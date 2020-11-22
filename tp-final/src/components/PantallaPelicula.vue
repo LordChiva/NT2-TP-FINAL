@@ -19,7 +19,7 @@
           <br>
           <h3>{{$store.getters.pelicula.nombre}}</h3>
         </td> 
-        <td v-for="(fecha,index) in $store.getters.pelicula.fechas" :key="index"> 
+        <td v-for="(fecha,pe) in $store.getters.pelicula.fechas" :key="'peliculaselec'+pe"> 
           <h3>{{$store.getters.pelicula.dia}} {{$store.getters.pelicula.horario}}</h3>           
           <b-button class="boton" @click="fechaSeleccionada(fecha.fecha)">{{fecha.fecha}}</b-button>
           <b-button class="boton" @click="fechaSeleccionada(fecha.fecha2)">{{fecha.fecha2}}</b-button>

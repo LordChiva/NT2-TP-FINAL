@@ -13,11 +13,11 @@
           <h3>Horario: </h3>
           <h4>{{pelicula.horario}}</h4>
           <h3>Butacas Seleccionadas: </h3>
-          <div v-for="(butaca,index) in butacas" :key="index">
+          <div v-for="(butaca,c) in butacas" :key="'confirmar'+c">
             <h4>{{butaca.fila}}{{butaca.columna}}</h4>
           </div>          
           <h3>Combos Seleccionados: ${{precioTotalcombos}}</h3>
-           <div v-for="(combo) in combos" :key="combo">       
+           <div v-for="(combo,cs) in combos" :key="'comboSelecc'+cs">       
             <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
           </div>
         </td>  
@@ -40,6 +40,10 @@ export default {
       combos: this.$store.getters.combos,
       precioTotalcombos: this.$store.getters.precioTotalcombos
     }
+  },
+  mounted()
+  {
+    console.log("Confirmar")
   },
   methods: {
     combosenNull() {
