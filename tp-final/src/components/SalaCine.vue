@@ -80,7 +80,7 @@
             <img alt="Pantalla"  :src="pantalla.imagen"  class="imagenPantalla">
         </div>
         <b-input-group-append class="contenedorB">
-            <b-button class="boton"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
+            <b-button class="boton" @click="pantallaPeliculaenNull()"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
             <b-button class="boton"  @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
         </b-input-group-append>
     </div>
@@ -190,6 +190,10 @@ export default {
             asientoSeleccion(butacasSeleccionados) {
                 this.$store.state.butacas=butacasSeleccionados;           
            this.$store.dispatch('agregarButacas',butacasSeleccionados);
+            },
+            pantallaPeliculaenNull() {
+                this.$store.state.fecha=null;           
+                this.$store.dispatch('agregarFecha',null);
             }
         
     }

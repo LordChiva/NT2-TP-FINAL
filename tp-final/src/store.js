@@ -15,6 +15,7 @@ export default new Vuex.Store(
             fecha: null,
             butacas: null,
             combos: null,
+            precioTotalcombos: null,
             usuario: null,
             
 
@@ -39,6 +40,9 @@ export default new Vuex.Store(
             agregarUsuario(state, payload) {
                 state.usuario = payload;                        
             },
+            agregarPrecioTotalcombos(state, payload) {
+                state.precioTotalcombos = payload;                        
+            },
         },
 
         actions: {
@@ -59,6 +63,9 @@ export default new Vuex.Store(
             },
             agregarUsuario({ commit }, payload) {
                 commit('agregarUsuario', payload);
+            },
+            agregarPrecioTotalcombos({ commit }, payload) {
+                commit('agregarPrecioTotalcombos', payload);
             },
         },
         
@@ -83,6 +90,9 @@ export default new Vuex.Store(
             },
             usuario(state) {
                 return state.usuario;
+            },
+            precioTotalcombos(state) {
+                return state.precioTotalcombos;
             },
         }        
     }

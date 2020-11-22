@@ -28,7 +28,7 @@
       </tr>
     </table> 
     <b-input-group-append class="contenedorB">
-      <b-button class="boton Volver"> <router-link to="/">Volver</router-link></b-button>	
+      <b-button class="boton Volver" @click="peliculaenNull()"> <router-link to="/">Volver</router-link></b-button>	
       <div class="login">
         <div v-if="$store.getters.usuario == null">
           <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
@@ -65,6 +65,10 @@ data() {
     fechaSeleccionada (fecha) {  
       this.$store.state.fecha=fecha;           
       this.$store.dispatch('agregarFecha',fecha);
+    },
+    peliculaenNull() {
+      this.$store.state.pelicula=null;           
+      this.$store.dispatch('agregarPelicula',null);
     }
   },
   

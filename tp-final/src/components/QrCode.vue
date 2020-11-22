@@ -13,11 +13,14 @@ import VueQrcode from 'vue-qrcode'
 export default {
   data() {
     return {
-      compra: ["Pelicula: ", this.$store.getters.pelicula.nombre, 
+      compra: [
+        " Pelicula: ", this.$store.getters.pelicula.nombre, 
       " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
       " Horario: ", this.$store.getters.pelicula.horario,
       " Butacas: ", this.$store.getters.butacas,
-      " Combos: ", this.$store.getters.combos],
+      " Combos: ", this.$store.getters.combos,
+      " Total Combo: $", this.$store.getters.precioTotalcombos],
+      butaca: []
     }
   },
   components: {
@@ -25,6 +28,15 @@ export default {
     /* QrcodeStream,
     QrcodeDropZone,
     QrcodeCapture */
+  },
+  methods: {
+    butacas() {
+      
+      for (let index = 0; index < this.$store.getters.butacas.length; index++) {
+          this.butaca.push(this.$store.getters.butacas[index].fila, this.$store.getters.butacas[index].columna);
+      }
+      return this.butaca;
+    }
   },
 }
 </script>
