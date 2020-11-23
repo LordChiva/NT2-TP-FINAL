@@ -15,7 +15,7 @@
                         <b-button class="boton" variant="outline-primary"><router-link to="/Cuenta">Cuenta</router-link></b-button>
 					</td>
                     <td>
-                        <h3><router-link to="/">Peliculas:</router-link></h3>
+                        <h3>Peliculas:</h3>
                         <table>
                             <tr>
                                 <td>
@@ -35,7 +35,7 @@
                         </table>                                      
 					</td>
                     <td>
-                        <h3><router-link to="/Productos">Combos:</router-link></h3>
+                        <h3>Combos:</h3>
                         <table>
                             <tr>
                                 <td>
