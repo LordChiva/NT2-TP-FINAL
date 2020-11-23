@@ -41,6 +41,7 @@
                                 <td>
                                     <span :ref="'asiento' + asiento.id" @click="setearOcupado :id="asiento.id">										(asiento)" :id="asiento.id" >
                                         <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
+                                    </span>
                                 </td>
                             }>
                         </tr>
