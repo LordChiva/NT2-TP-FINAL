@@ -77,9 +77,11 @@
 }
 
 .pestaniaFooter{
-    display: inline-block;
-    width: 40%;
-    margin-left: 150px;
+    display: inline-flex;
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+    justify-content: space-between;
+    margin: 0px 5px 0px 5px;
 }
 
 .pestaniaFooter > table{
@@ -92,7 +94,9 @@
     width: 100%;    
 }
 
-.pestaniaFooter > table , tr, td{
-    margin-right: 55px;
+.logo {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0px 0px 0px;
 }
 </style>

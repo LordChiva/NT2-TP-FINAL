@@ -1,8 +1,11 @@
 <template>
-<div>
-  <vue-qrcode :value="compra" />
-</div>
+  <div>
+    <br>
+    <vue-qrcode :value="compra" />
+    <br>
+  </div>
 </template>
+
 <script>
 import VueQrcode from 'vue-qrcode'
 /* import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader' */

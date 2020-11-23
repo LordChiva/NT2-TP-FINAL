@@ -19,7 +19,7 @@
                     </td>	
                 </div>
             </div>  --> 
-            <table >
+            <table class="tabla">
                 <tbody class="tBodyContenedor">
                     <tr class="contenedorNum">
                         <td> | </td>
@@ -34,33 +34,26 @@
                         <td>9</td>
                         <td>10</td>
                     </tr>
-                    <!-- <tr>
+                    <!-- while(x = 0 < letras.length){
+                        <tr>
+                            <td>{{ letra.length[x] }}</td>
+                            <for(x = 0; x -> 10; x){
+                                <td>
+                                    <span :ref="'asiento' + asiento.id" @click="setearOcupado :id="asiento.id">										(asiento)" :id="asiento.id" >
+                                        <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
+                                </td>
+                            }>
+                        </tr>
+                    } -->
+
+                    <tr>
                         <td>A</td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                        <td><i class="fas fa-couch"></i></td>
-                    </tr> -->
-                    <tr class="contenedorNum">
-                        <td>A</td>
-                    </tr>
-                    <tr class="asiento">
-                        <!-- <td>A</td> -->
-                        <!-- <div class="asiento"> -->
-                            <td v-for="(asiento,p) in salas" :key="'asientos'+p">
-                                <span :ref="'asiento'+asiento.id" @click="setearOcupado(asiento)" :id="asiento.id" >
-                                    <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
-                                </span>
-                            </td>
-                        <!-- </div> -->
-                    </tr>
-                    <tr class="contenedorNum">
+                        <td class="asiento" v-for="(asiento,p) in salas" :key="'asientos'+ p">
+                            <span :ref="'asiento' + asiento.id" @click="setearOcupado(asiento)" :id="asiento.id" >
+                                <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
+                            </span>
+                        </td>
+                    <tr>
                         <td>B</td>
                     </tr>
                 </tbody>
@@ -234,6 +227,11 @@ td {
     width: 100%;
 }
 
+.tabla {
+    display: inline-block;
+    widows: 55%;
+}
+
 .contenedorNum > td {
     margin: 0px 10px 0px 10px;
 }
@@ -253,12 +251,12 @@ td {
 
 .letras {
     display: inline-flex;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .asiento {
     width: 100%;
-    display: inline-grid;
+    display: inline-flex;
     grid-template-columns: repeat(10, 9%);
     justify-content: center;
     margin: 0px 10px;

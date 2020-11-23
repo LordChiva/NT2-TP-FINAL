@@ -87,7 +87,7 @@ export default {
 .titulo{
   display: inline-flex;
   width: 67%;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .titulo > h1{
