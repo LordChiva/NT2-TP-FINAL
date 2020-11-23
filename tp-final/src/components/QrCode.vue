@@ -16,9 +16,12 @@ export default {
       " Horario: ", this.$store.getters.pelicula.horario,
       " Butacas: ", this.butacas(),
       " Combos: ", this.combos(),
-      " Total Combo: $", JSON.stringify(this.$store.getters.precioTotalcombos).replace('[','').replace(']','')],
+      " Total Combo: ", this.precioTotalCombo()
+      //JSON.stringify(this.$store.getters.precioTotalcombos).replace('[','').replace(']','')
+      ],
       combo: null,
-      butaca: null
+      butaca: null,
+      precioTotal: null
     }
    
 
@@ -53,7 +56,19 @@ console.log("QR")
         }
       }
       return this.combo;
-    }
+    },
+    precioTotalCombo() {
+      if (this.$store.getters.dolar == 1) {   
+        this.precioTotal = this.$store.getters.precioTotalcombos + "u$d "        
+      }
+      if (this.$store.getters.dolar == 0) {
+         this.precioTotal = " $" + this.$store.getters.precioTotalcombos
+      }
+      if (this.$store.getters.usuario.vip == true) {
+        this.precioTotal = this.precioTotal + " *Incluye descuento del 10% por ser Cliente VIP"
+      }
+      return this.precioTotal;
+    }     
   },
 }
 /* function guardarButacas(butacas)

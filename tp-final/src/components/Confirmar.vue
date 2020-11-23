@@ -16,9 +16,18 @@
           <div v-for="(butaca,c) in butacas" :key="'confirmar'+c">
             <h4>{{butaca.fila}}{{butaca.columna}}</h4>
           </div>          
-          <h3>Combos Seleccionados: ${{precioTotalcombos}}</h3>
-           <div v-for="(combo,cs) in combos" :key="'comboSelecc'+cs">       
+          <h3>Combos Seleccionados:  <div v-if="this.$store.getters.dolar == 1">{{this.$store.getters.precioTotalcombos}}u$d</div>
+          <div v-if="this.$store.getters.dolar == 0">${{this.$store.getters.precioTotalcombos}}</div></h3>
+           
+          
+          
+          
+          <div v-for="(combo,cs) in this.$store.getters.combos" :key="'comboSelecc'+cs">       
             <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
+          </div>
+
+          <div v-if="this.$store.getters.usuario.vip == true">
+            <h6>*Incluye descuento del 10% por ser Cliente VIP</h6>
           </div>
         </td>  
       </tr>
@@ -38,7 +47,6 @@ export default {
       fecha: this.$store.getters.fecha,
       butacas: this.$store.getters.butacas,
       combos: this.$store.getters.combos,
-      precioTotalcombos: this.$store.getters.precioTotalcombos
     }
   },
   mounted()
@@ -51,6 +59,8 @@ export default {
       this.$store.dispatch('agregarPrecioTotalcombos',null);
       this.$store.state.combos=null;           
       this.$store.dispatch('agregarCombos',null);
+      this.$store.state.dolar = 0;           
+      this.$store.dispatch('agregarDolar',0);
     }
   },
 
