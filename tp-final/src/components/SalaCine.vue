@@ -105,6 +105,7 @@ export default {
             salas:  crearAsientos(),
             pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
+           
 
             letras:[                    
                 'A','B','C','D','E','F','G','H'
@@ -192,15 +193,18 @@ export default {
             
             var asientos =[];
             var letras=['A','B','C','D','E','F','G','H'];
-           
+          
              var id=0;
                 letras.forEach(letra => {
+                   
                     
                     for (var i =1;i<=10;i++)
                     {
                             asientos.push({id:id,ocupado:false,color:'#409EFF',fila:letra,columna:i});
                             id++;
                     }
+                    
+
                 }); 
             
 
