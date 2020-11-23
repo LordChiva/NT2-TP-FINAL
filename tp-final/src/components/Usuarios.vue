@@ -52,6 +52,7 @@
                         this.$store.dispatch('agregarUsuario',this.usuarios[i]);
                         this.usuarios.length = i;
                         this.error = true;
+                        this.$router.push('/');
                     } 
                     else {
                         console.log("No esta")
