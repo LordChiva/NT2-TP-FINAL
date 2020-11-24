@@ -46,6 +46,9 @@
                             }
                         </tr>
                     } -->
+                    
+             
+
 
                     <tr>
                         <td>A</td>
@@ -58,6 +61,13 @@
                         <td>B</td>
                     </tr>
                 </tbody>
+            </table>
+
+            <table>
+                <tr v-for="fila in filas" :key="fila.fila">
+                    <td>{{fila.fila}}</td>
+                    <td v-for="(asiento, index) in fila.asientos" :key="index">{{asiento.numero}}</td>
+                </tr>
             </table>
         </div>
 
@@ -100,6 +110,11 @@ export default {
             salas:  crearAsientos(),
             pantalla: {imagen:pantallaPng},
             numeros:[1,2,3,4,5,6,7,8,9,10],
+             filas : [
+                { fila: "a", asientos: [{ numero: 1 }, { numero: 2 }, { numero: 3 }] },
+                { fila: "b", asientos: [{ numero: 1 }, { numero: 2 }, { numero: 3 }] },
+            ],
+
            
 
             letras:[                    
