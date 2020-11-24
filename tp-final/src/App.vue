@@ -24,7 +24,6 @@
     </div>
     <Navegador />
     <router-view/>
-    <!-- <Publicidad /> -->
     <Footer />
   </div>
 </template>
@@ -32,14 +31,12 @@
 <script>
 import Navegador from './components/Navegador.vue'
 import Footer from './components/Footer.vue'
-/* import Publicidad from './components/Publicidad.vue' */
 
 export default {
   name: 'App',
   components: {
       Navegador,
-      Footer/* ,
-      Publicidad */
+      Footer
   },
   methods: {
     cerrar() {

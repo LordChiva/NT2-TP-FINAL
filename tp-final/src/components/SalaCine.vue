@@ -37,13 +37,13 @@
                     <!-- while(x = 0 < letras.length){
                         <tr>
                             <td>{{ letra.length[x] }}</td>
-                            <for(x = 0; x -> 10; x){
+                            for(x = 0; x < 10; x){
                                 <td>
-                                    <span :ref="'asiento' + asiento.id" @click="setearOcupado :id="asiento.id">										(asiento)" :id="asiento.id" >
+                                    <span :ref="'asiento' + asiento.id" @click="setearOcupado(asiento)" :id="asiento.id" >
                                         <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
                                     </span>
                                 </td>
-                            }>
+                            }
                         </tr>
                     } -->
 
@@ -69,6 +69,7 @@
             <b-button class="boton" @click="pantallaPeliculaenNull()"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
             <b-button class="boton" @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
         </b-input-group-append>
+        <!-- <Publicidad /> -->
     </div>
     <!--    <i class="fas fa-couch" style="color: #DA4127;"></i>
             <font-awesome-icon :icon="['fas', 'couch']"/>

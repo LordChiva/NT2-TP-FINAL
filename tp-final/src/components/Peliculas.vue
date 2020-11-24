@@ -7,25 +7,29 @@
                         <div class="lado">
                             <img alt="Peli foto"  v-bind:src="pelicula.imagen" class="imagen">						
                         </div>  
-                        <router-link  :to="`/PantallaPelicula/${pelicula.id}`"><div class="lado atras" @click="peliculaSeleccionada(pelicula)">                           
-                            
-                            <h3>{{pelicula.nombre}} </h3>	
-                            <small>{{pelicula.sinopsis}} </small>	
-                            <hr>                                
-                            <small> Duracion: {{pelicula.duracion}} </small>                            
-                            
-                        </div></router-link>
+                        <router-link  :to="`/PantallaPelicula/${pelicula.id}`">
+                            <div class="lado atras" @click="peliculaSeleccionada(pelicula)">
+                                <h3>{{pelicula.nombre}} </h3>	
+                                <small>{{pelicula.sinopsis}} </small>	
+                                <hr>                                
+                                <small> Duracion: {{pelicula.duracion}} </small>   
+                            </div>
+                        </router-link>
                     </div>
                 </td>
             </tr>            
-        </table>     
-    </div>    
+        </table>  
+        <Publicidad />
+    </div>
+    <!-- <router-link to="/"></router-link> -->
+    
 </template> 
 
 <script>
 /*
 <app-item :title="pelicula.nombre" :sub="pelicula.sinopsis" ></app-item>
 */
+import Publicidad from "../components/Publicidad.vue"
 import starwars from "../assets/starWars.jpg"
 import reyleon from "../assets/reyLeon.jpg"
 import elorigen from "../assets/elOrigen.jpg"
@@ -39,12 +43,8 @@ import jurassicWorld from "../assets/jurassicWorld.jpg"
 
 export default {
     name:"peliculas",
-    /**cambienle el tipo de la prop. Esa prop esta para algo?
-     *  el título devuelve un número? Tiene metodos? */
     components: {
-  },
-    props:{
-        titulo:Number
+        Publicidad
     },
     mounted() {
         //console.log("mounted")

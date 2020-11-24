@@ -41,18 +41,13 @@
 </template>
 
 <script>
-/* import Peliculas  from "../components/Peliculas.vue"  */
-/*import reyleon from "../assets/reyLeon.jpg" */
-/* mport Publicidad from "../components/Publicidad.vue" */
-/* import Peliculas from "../components/Peliculas.vue" */
-
 export default {
-data() {
-    return{
-       id:this.$route.params.id, 
-       amigo:''
-    }
-},
+  data() {
+      return{
+        id:this.$route.params.id, 
+        amigo:''
+      }
+  },
   methods:{
 
     addAmigo()
@@ -79,10 +74,6 @@ data() {
   },
   name: 'pantallaPelicula',
   
-  components: {
-      /*  Peliculas  */
-
-  },
   
 
   }
