@@ -69,6 +69,8 @@
         <b-input-group-append class="contenedorB">
             <b-button class="boton" @click="salaCineEnNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
             <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
+            <b-button class="boton" @click="consultandoMockApi()">MockApi</b-button>
+            
         </b-input-group-append>
     </div>
 </template>
@@ -98,7 +100,7 @@ export default {
 
     },
     mounted() {
-    this.options = this.getOptions();
+    /* this.options = this.getOptions(); */
       console.log("Aca esta el mounted")
     axios.get('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then((response)=> {
@@ -126,6 +128,39 @@ export default {
             var elemento =document.getElementById("producto"+id)
             total=elemento.precio+total
         },*/
+
+         consultandoMockApi()
+        {
+            
+        axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Combos')
+        .then((response)=> {
+            
+   const respuesta = response.data
+   this.option=respuesta
+   let pepe =1
+   for(let i = 0; i < this.option.length; i++)
+   {
+       console.log("Esto es pepe "+pepe)
+       console.log("Esto es id"+this.option[i].id)
+    if (this.option[i].id==pepe) {
+        console.log("Q ondaaa")
+        this.option[i].push (comboNacho)
+         console.log("Pasa por aca")
+        pepe++
+        console.log("Prueba mockApi "+respuesta[i].id)
+      return {respuesta}    
+    } 
+    else {
+      console.log("No funco")
+    }
+   }
+      
+    })
+        },
+
+
+
+
         productosSeleccionada (seleccionados) {  
             this.$store.state.combos=seleccionados;           
             this.$store.dispatch('agregarCombos',seleccionados);
@@ -220,6 +255,7 @@ export default {
         getExchangeValue(dolar)
         {
             this.totalEnDolar = this.getPrecioTotal(this.seleccionados) / dolar
+            this.totalEnDolar =this.totalEnDolar.toFixed(2);
             return this.totalEnDolar;
         }
    
