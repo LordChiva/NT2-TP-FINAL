@@ -15,7 +15,19 @@
 
                 <td v-for="(option,p) in options" :key="'productos'+p">
                     <li>
-                        <img alt="imagen"  v-bind:src="option.imagen"  class="imagenProducto">
+                        <div v-if="p == 0">
+                            <img alt="imagen"  src="../assets/comboNacho.png"  class="imagenProducto">
+                        </div>
+                        <div v-if="p == 1">
+                            <img alt="imagen"  src="../assets/comboPancho.png"  class="imagenProducto">
+                        </div>
+                        <div v-if="p == 2">
+                            <img alt="imagen"  src="../assets/comboSuper.png"  class="imagenProducto">
+                        </div>
+                        <div v-if="p == 3">
+                            <img alt="imagen"  src="../assets/comboTeriyaqui.png"  class="imagenProducto">
+                        </div>
+                        
                         <div class="descripcion">
                             <h3>{{option.nombre}}</h3>
                             <br>
@@ -69,7 +81,6 @@
         <b-input-group-append class="contenedorB">
             <b-button class="boton" @click="salaCineEnNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
             <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
-            <b-button class="boton" @click="consultandoMockApi()">MockApi</b-button>
             
         </b-input-group-append>
     </div>
@@ -77,10 +88,6 @@
 
 
 <script>
-import comboNacho from "../assets/comboNacho.png"
-import comboPancho from "../assets/comboPancho.png"
-import comboSuper from "../assets/comboSuper.png"
-import comboTeriyaqui from "../assets/comboTeriyaqui.png"
 import axios from 'axios'
 
 
@@ -100,7 +107,7 @@ export default {
 
     },
     mounted() {
-    /* this.options = this.getOptions(); */
+    this.options = this.consultandoMockApi(); 
       console.log("Aca esta el mounted")
     axios.get('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then((response)=> {
@@ -129,33 +136,12 @@ export default {
             total=elemento.precio+total
         },*/
 
-         consultandoMockApi()
-        {
-            
-        axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Combos')
-        .then((response)=> {
-            
-   const respuesta = response.data
-   this.option=respuesta
-   let pepe =1
-   for(let i = 0; i < this.option.length; i++)
-   {
-       console.log("Esto es pepe "+pepe)
-       console.log("Esto es id"+this.option[i].id)
-    if (this.option[i].id==pepe) {
-        console.log("Q ondaaa")
-        this.option[i].push (comboNacho)
-         console.log("Pasa por aca")
-        pepe++
-        console.log("Prueba mockApi "+respuesta[i].id)
-      return {respuesta}    
-    } 
-    else {
-      console.log("No funco")
-    }
-   }
-      
-    })
+         consultandoMockApi() {
+            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Combos')
+            .then((response)=> {
+                const respuesta = response.data
+                this.options=respuesta
+            })
         },
 
 
@@ -177,40 +163,7 @@ export default {
         salaCineEnNull() {
             this.$store.state.butacas=null;           
             this.$store.dispatch('agregarButacas',null);
-        },
-        getOptions () {
-            const options = [
-                { id: 1,
-                  nombre: 'Combo Nacho',
-                  precio: 380,
-                  descripcion:'El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.',
-                  imagen:comboNacho,
-                  cant: 0
-                },
-                { id: 2,
-                  nombre: 'Combo Pancho',
-                  precio: 460,
-                  descripcion:'El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.',
-                  imagen:comboPancho,
-                  cant: 0
-                },
-                { id: 3,
-                  nombre: 'Combo Super',
-                  precio: 700,
-                  descripcion:'El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).',
-                  imagen:comboSuper,
-                  cant: 0
-                },
-                { id: 4,
-                  nombre: 'Combo Teriyaki',
-                  precio: 550,
-                  descripcion:'El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.',
-                  imagen:comboTeriyaqui,
-                  cant: 0
-                }   
-            ]
-            return options
-        },
+        },       
         getPrecioTotal(seleccionados) {
             var total = 0;
             for (let index = 0; index < seleccionados.length; index++) {

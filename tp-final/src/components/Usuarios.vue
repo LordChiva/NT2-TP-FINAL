@@ -16,36 +16,24 @@
 </template>
 
 <script>
+import axios from 'axios'
     export default {
         data ()  {
             return{
                 usuarioCargado:'',
                 contraseñaCargada:'',
-                usuarios:[
-                {
-                    usuario:'admin',
-                    contraseña:'admin',
-                    vip: true
-                },
-                {
-                    usuario:'seba',
-                    contraseña:'pirulo',
-                    vip: false
-                },
-                {
-                    usuario:'vip',
-                    contraseña:'vip',
-                    vip: true
-                },
-                ],  
+                usuarios:[],
                 error: null,
             }                
+        },
+        mounted() {
+            this.usuarios = this.consultandoMockApi(); 
         },
         methods: {
             verificarUsuario (usu,cont) {
                 console.log(this.usuarios[1].usuario)
                 for (var i =0;i<this.usuarios.length;i++) {                                         
-                    if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contraseña == cont)) {                        
+                    if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contrasenia == cont)) {                        
                         console.log(usu)
                         console.log("for "+this.usuarios[i].usuario)
                         this.$store.state.usuario=this.usuarios[i];           
@@ -59,7 +47,15 @@
                         this.error = false;
                     }
                 }
-            }
+            },
+            consultandoMockApi() {
+            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
+            .then((response)=> {
+                const respuesta = response.data
+                this.usuarios=respuesta
+                console.log(this.usuarios)
+            })
+        },
         }
     }
 </script>
