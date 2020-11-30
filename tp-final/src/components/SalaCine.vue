@@ -77,7 +77,12 @@
         </div>
         <b-input-group-append class="contenedorB">
             <b-button class="boton" @click="pantallaPeliculaenNull()"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
-            <b-button class="boton" @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
+            <div v-if="this.butacasSeleccionados.length > 0">
+                <b-button class="boton" @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
+            </div>  
+            <div v-if="this.butacasSeleccionados.length == 0">
+                <h3>Tiene que seleccionar una butaca para poder reservar la pelicula: {{this.$store.getters.pelicula.nombre}}</h3>
+            </div>            
         </b-input-group-append>
         <!-- <Publicidad /> -->
     </div>

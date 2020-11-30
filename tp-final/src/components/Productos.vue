@@ -2,9 +2,20 @@
     <div class="contenedorProductos">
         <div class="contenedorCombos">     
             <div class="combos">
-                <td v-for="(producto,index) in productos" :key="index">
+                <td v-for="(producto,p) in productos" :key="'productos'+p">
                     <li>
-                        <img alt="imagen"  v-bind:src="producto.imagen"  class="imagenProducto">
+                        <div v-if="p == 0">
+                            <img alt="imagen"  src="../assets/comboNacho.png"  class="imagenProducto">
+                        </div>
+                        <div v-if="p == 1">
+                            <img alt="imagen"  src="../assets/comboPancho.png"  class="imagenProducto">
+                        </div>
+                        <div v-if="p == 2">
+                            <img alt="imagen"  src="../assets/comboSuper.png"  class="imagenProducto">
+                        </div>
+                        <div v-if="p == 3">
+                            <img alt="imagen"  src="../assets/comboTeriyaqui.png"  class="imagenProducto">
+                        </div>
                         <div class="descripcion">
                             <h3>{{producto.nombre}}</h3>
                             <br>
@@ -24,10 +35,7 @@
 
 
 <script>
-import comboNacho from "../assets/comboNacho.png"
-import comboPancho from "../assets/comboPancho.png"
-import comboSuper from "../assets/comboSuper.png"
-import comboTeriyaqui from "../assets/comboTeriyaqui.png"
+import axios from 'axios'
 
 export default {
     data: () => {
@@ -40,29 +48,11 @@ export default {
     },
     methods: {
         getProductos() {
-             const Productos = [
-                { nombre: "Combo Nacho",
-                  precio: "$379.99",
-                  descripcion:"El combo nacho contiene una bandeja con nachos y cheddar (opcional), más una gaseosa tamaño mediano.",
-                  imagen:comboNacho
-                },
-                { nombre: "Combo Pancho",
-                  precio: "$459.99",
-                  descripcion:"El combo pancho contiene una gaseosa de tamaño mediano, un balde de pochoclos grande, y un super pancho.",
-                  imagen:comboPancho
-                },
-                { nombre: "Combo Super",
-                  precio: "$699.99",
-                  descripcion:"El combo super contiene dos gaseosas de tamaño medianas, pochoclos tamaño grande, bandeja con papas Lays, un super pancho y una hamburguesa (carne, tomate, lechuga).",
-                  imagen:comboSuper
-                },
-                { nombre: "Combo Teriyaki",
-                  precio: "$549.99",
-                  descripcion:"El combo teriyaki contiene dos gaseosas de tamaño mediano, más dos sandwiches de pollo estilo teriyaki.",
-                  imagen:comboTeriyaqui
-                }   
-            ]
-            return Productos
+            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Combos')
+            .then((response)=> {
+                const respuesta = response.data
+                this.productos=respuesta
+            })
         }
     }
 }

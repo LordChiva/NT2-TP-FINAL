@@ -1,7 +1,7 @@
 <template>
   <div>
     <br>
-    <vue-qrcode :value="JSON.stringify(compra)" />
+    <vue-qrcode :value="compra" />
     <br>
   </div>
 </template>
@@ -13,26 +13,14 @@ import VueQrcode from 'vue-qrcode'
 export default {
   data() {
     return {
-      compra: {
-        Usuario: this.$store.getters.usuario.usuario, 
-       Pelicula:  this.$store.getters.pelicula.nombre, 
-       Dia:  this.$store.getters.pelicula.dia + ' ' + this.$store.getters.fecha, 
-       Horario:  this.$store.getters.pelicula.horario,
-       Butacas:  this.butacas(),
-       Combos:  this.combos(),
-       TotalCombo:  this.precioTotalCombo()
-      //JSON.stringify(this.$store.getters.precioTotalcombos).replace('[','').replace(']','')
-      },
+      compra: this.compraFinal(),
       combo: null,
       butaca: null,
-      precioTotal: null
+      precioTotal: null,
     }
-   
-
   },
-  mounted()
-  {
-console.log("QR")
+  mounted() {
+    //console.log("QR")
   },
   components: {
     VueQrcode,
@@ -40,7 +28,16 @@ console.log("QR")
     QrcodeDropZone,
     QrcodeCapture */
   },
-  methods: {
+  methods: {    
+    compraFinal() {      
+      return JSON.stringify( "Usuario: " + this.$store.getters.usuario.usuario + 
+       " Pelicula: " +  this.$store.getters.pelicula.nombre + 
+       " Dia: " +  this.$store.getters.pelicula.dia + '' + this.$store.getters.fecha +
+       " Horario: " +  this.$store.getters.pelicula.horario +
+       " Butacas: " +  this.butacas() +
+       " Combos: " +  this.combos() +
+       " TotalCombo " +  this.precioTotalCombo() + '').replace('[','').replace(']','').replace('{','').replace('}','').replace('"','').replace('"','')
+    },
     butacas() {
       for (let index = 0; index < this.$store.getters.butacas.length; index++) {
         if (index == 0) {
@@ -69,10 +66,10 @@ console.log("QR")
          this.precioTotal = " $" + this.$store.getters.precioTotalcombos
       }
       if (this.$store.getters.usuario.vip == true) {
-        this.precioTotal = this.precioTotal + " *Incluye descuento del 10% por ser Cliente VIP"
+        this.precioTotal = this.precioTotal + " *Incluye descuento del 10% por ser Cliente VIP "
       }
       return this.precioTotal;
-    }     
+    } 
   },
 }
 /* function guardarButacas(butacas)
