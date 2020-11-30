@@ -9,6 +9,9 @@
         <div v-if="this.usuario.vip == true">
         <h3>Es Vip</h3>
         </div>
+        <h3>Nombre: {{usuario.nombre}}</h3>
+        <h3>Apellido: {{usuario.apellido}}</h3>
+        <h3>Cantidad de Peliculas Vistas: {{usuario.cantPelisVistas}}</h3>
       </div>    
     </div> 
   </div>

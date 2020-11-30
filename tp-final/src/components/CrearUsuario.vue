@@ -8,15 +8,21 @@
             <h1>Ingrese Contraseña</h1>
             <input type="text" v-model="contraseñaCargada" id="contraseña"  >
         </div>
-        <button @click="verificarUsuario(usuarioCargado,contraseñaCargada)" >Ingresar</button>
+         <div class ="nombre"> 
+            <h1>Ingrese Nombre</h1>
+            <input type="text" v-model="nombreCargado" id="nombre"  >
+        </div>
+         <div class ="apellido"> 
+            <h1>Ingrese Apellido</h1>
+            <input type="text" v-model="apellidoCargado" id="apellido"  >
+        </div>
         <div v-if="this.error == false">
             <h3>Has introducido un usuario o contraseña invalidos.</h3>
         </div>
-          <b-button class="boton"><router-link to="/CrearUsuario">Crear Usuario</router-link></b-button>
-        
+      
+        <b-button class="boton" @click="verificarUsuario(usuarioCargado,contraseñaCargada)">Confirmar</b-button>
     </div>
 </template>
-
 <script>
 import axios from 'axios'
     export default {
@@ -24,10 +30,11 @@ import axios from 'axios'
             return{
                 usuarioCargado:'',
                 contraseñaCargada:'',
+                nombreCargado:'',
+                apellidoCargado:'',
                 usuarios:[],
                 error: null,
                 valorEncontrado:false,
-                
             }                
         },
         mounted() {
@@ -35,32 +42,40 @@ import axios from 'axios'
         },
         methods: {
             verificarUsuario (usu,cont) {
-                console.log("que es this.lenght "+this.usuarios.length)
                 console.log(this.usuarios[1].usuario)
-                let i =0;
-                this.valorEncontrado=false; 
-                   
-                while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) {      
-
+                var i=0;
+                console.log(" Y aca")
+                 while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) {
+                     
+                     if((usu=='')&&(cont==''))
+                     { 
+                     this.valorEncontrado=true;
+                     this.error = false; 
+                     }
+                     else{        
                     if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contrasenia == cont)) {                        
-                        this.$store.state.usuario=this.usuarios[i];           
-                        this.$store.dispatch('agregarUsuario',this.usuarios[i]);
-                        this.usuarios.length = i;
-                        this.error = true;
-                        this.valorEncontrado=true;
-                        this.$router.push('/');
+                      this.valorEncontrado=true;
+                      this.error = false;
                         
                     } 
                     else {
-                        console.log("No esta")
-                        i++;
-                        this.error = false;
+                        i++
                     }
+                     }
+                     
                 }
-              
-
+                if((this.valorEncontrado==false))
+                {
+                this.cargarUsuario()
+                }
             },
-            
+            cargarUsuario()
+            {
+                /* this.$store.state.usuario=this.usuarios[i];           
+                this.$store.dispatch('agregarUsuario',this.usuarios[i]); */
+                this.$router.push('/Usuarios');
+            },
+
             consultandoMockApi() {
             axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
             .then((response)=> {

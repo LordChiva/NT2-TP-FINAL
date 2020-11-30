@@ -34,12 +34,13 @@
     </table> 
       <b-input-group-append class="contenedorB">
         <b-button class="boton" @click="combosenNull()"><router-link to="/PantallaProductos">Volver</router-link></b-button>
-        <b-button class="boton"><router-link to="/QrCode">Confirmar</router-link></b-button>   
+        <b-button class="boton" @click="sumarPeliUsuario()"><router-link to="/QrCode">Confirmar</router-link></b-button>   
       </b-input-group-append>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -47,11 +48,13 @@ export default {
       fecha: this.$store.getters.fecha,
       butacas: this.$store.getters.butacas,
       combos: this.$store.getters.combos,
+      usuarios:[],
     }
   },
   mounted()
   {
     console.log("Confirmar")
+     this.usuarios = this.consultandoMockApi(); 
   },
   methods: {
     combosenNull() {
@@ -61,11 +64,22 @@ export default {
       this.$store.dispatch('agregarCombos',null);
       this.$store.state.dolar = 0;           
       this.$store.dispatch('agregarDolar',0);
-    }
-  },
-
+    },
+    sumarPeliUsuario()
+    {
+        this.usuarios.cantPelisVistas++
+        //hacer un post o got video ultimo del profe
+    },
+    consultandoMockApi() {
+            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
+            .then((response)=> {
+                const respuesta = response.data
+                this.usuarios=respuesta
+                
+            })
+        }
+  }
 }
-
 </script>
 
 <style>

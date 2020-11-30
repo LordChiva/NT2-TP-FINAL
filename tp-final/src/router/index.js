@@ -64,6 +64,11 @@ const routes = [
   name: 'QrCode',
   component: () => import('../components/QrCode.vue')
 },
+{
+  path: '/CrearUsuario',
+  name: 'CrearUsuario',
+  component: () => import('../components/CrearUsuario.vue')
+},
 
  
 ]
