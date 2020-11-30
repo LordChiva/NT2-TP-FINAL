@@ -1,7 +1,7 @@
 <template>
   <div>
     <br>
-    <vue-qrcode :value="compra" />
+    <vue-qrcode :value="JSON.stringify(compra)" />
     <br>
   </div>
 </template>
@@ -13,15 +13,16 @@ import VueQrcode from 'vue-qrcode'
 export default {
   data() {
     return {
-      compra: [
-      "Pelicula: ", this.$store.getters.pelicula.nombre, 
-      " Dia: ", this.$store.getters.pelicula.dia ,this.$store.getters.fecha, 
-      " Horario: ", this.$store.getters.pelicula.horario,
-      " Butacas: ", this.butacas(),
-      " Combos: ", this.combos(),
-      " Total Combo: ", this.precioTotalCombo()
+      compra: {
+        Usuario: this.$store.getters.usuario.usuario, 
+       Pelicula:  this.$store.getters.pelicula.nombre, 
+       Dia:  this.$store.getters.pelicula.dia + ' ' + this.$store.getters.fecha, 
+       Horario:  this.$store.getters.pelicula.horario,
+       Butacas:  this.butacas(),
+       Combos:  this.combos(),
+       TotalCombo:  this.precioTotalCombo()
       //JSON.stringify(this.$store.getters.precioTotalcombos).replace('[','').replace(']','')
-      ],
+      },
       combo: null,
       butaca: null,
       precioTotal: null
