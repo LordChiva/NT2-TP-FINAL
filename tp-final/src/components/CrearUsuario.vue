@@ -6,7 +6,7 @@
         </div>
         <div class ="contraseña"> 
             <h1>Ingrese Contraseña</h1>
-            <input type="text" v-model="contraseñaCargada" id="contraseña"  >
+            <input type="password" v-model="contraseñaCargada" id="contraseña"  >
         </div>
          <div class ="nombre"> 
             <h1>Ingrese Nombre</h1>
@@ -19,12 +19,12 @@
         <div v-if="this.error == false">
             <h3>Has introducido un usuario o contraseña invalidos.</h3>
         </div>
-      
+        <b-button class="boton"><router-link to="/Usuarios">Volver</router-link></b-button>
         <b-button class="boton" @click="verificarUsuario(usuarioCargado,contraseñaCargada)">Confirmar</b-button>
     </div>
 </template>
 <script>
-import axios from 'axios'
+    import axios from 'axios'
     export default {
         data ()  {
             return{
@@ -45,49 +45,42 @@ import axios from 'axios'
                 console.log(this.usuarios[1].usuario)
                 var i=0;
                 console.log(" Y aca")
-                 while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) {
-                     
-                     if((usu=='')&&(cont==''))
-                     { 
-                     this.valorEncontrado=true;
-                     this.error = false; 
-                     }
-                     else{        
-                    if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contrasenia == cont)) {                        
-                      this.valorEncontrado=true;
-                      this.error = false;
-                        
-                    } 
-                    else {
-                        i++
-                    }
-                     }
-                     
+                while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) {
+                    if((usu=='')&&(cont=='')) {                        
+                        this.valorEncontrado=true;
+                        this.error = false; 
+                    } else {
+                        if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contrasenia == cont)) {      
+                            this.valorEncontrado=true;
+                            this.error = false;
+                        } else {
+                            i++
+                        }
+                    }                     
                 }
-                if((this.valorEncontrado==false))
-                {
-                this.cargarUsuario()
+                if((this.valorEncontrado==false)) {
+                    this.cargarUsuario()
                 }
             },
-            cargarUsuario()
-            {
-                /* this.$store.state.usuario=this.usuarios[i];           
-                this.$store.dispatch('agregarUsuario',this.usuarios[i]); */
-                this.$router.push('/Usuarios');
+            async cargarUsuario() {
+                try {
+                    const un = {usuario:this.usuarioCargado,contrasenia:this.contraseñaCargada,vip:false,
+                    nombre:this.nombreCargado, apellido:this.apellidoCargado}
+                    const res = await axios.post('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios',un);
+                    console.log(res.data)
+                    this.$router.push('/Usuarios');
+                } catch (error) {
+                    alert("Error")
+                }                
             },
-
             consultandoMockApi() {
-            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
-            .then((response)=> {
-                const respuesta = response.data
-                this.usuarios=respuesta
-                console.log(this.usuarios)
-            })
-        },
+                axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
+                .then((response)=> {
+                    const respuesta = response.data
+                    this.usuarios=respuesta
+                    console.log(this.usuarios)
+                })
+            },
         }
     }
 </script>
- 
-<style>
- 
-</style>

@@ -18,10 +18,7 @@
           </div>          
           <h3>Combos Seleccionados:  <div v-if="this.$store.getters.dolar == 1">{{this.$store.getters.precioTotalcombos}}u$d</div>
           <div v-if="this.$store.getters.dolar == 0">${{this.$store.getters.precioTotalcombos}}</div></h3>
-           
-          
-          
-          
+
           <div v-for="(combo,cs) in this.$store.getters.combos" :key="'comboSelecc'+cs">       
             <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
           </div>
@@ -34,86 +31,79 @@
     </table> 
       <b-input-group-append class="contenedorB">
         <b-button class="boton" @click="combosenNull()"><router-link to="/PantallaProductos">Volver</router-link></b-button>
-        <b-button class="boton" @click="sumarPeliUsuario()"><router-link to="/QrCode">Confirmar</router-link></b-button>   
+        <b-button class="boton"><router-link to="/QrCode">Confirmar</router-link></b-button>   
       </b-input-group-append>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  data() {
-    return {
-      pelicula: this.$store.getters.pelicula,
-      fecha: this.$store.getters.fecha,
-      butacas: this.$store.getters.butacas,
-      combos: this.$store.getters.combos,
-      usuarios:[],
-    }
-  },
-  mounted()
-  {
-    console.log("Confirmar")
-     this.usuarios = this.consultandoMockApi(); 
-  },
-  methods: {
-    combosenNull() {
-      this.$store.state.precioTotalcombos=null;           
-      this.$store.dispatch('agregarPrecioTotalcombos',null);
-      this.$store.state.combos=null;           
-      this.$store.dispatch('agregarCombos',null);
-      this.$store.state.dolar = 0;           
-      this.$store.dispatch('agregarDolar',0);
+  import axios from 'axios'
+  export default {
+    data() {
+      return {
+        pelicula: this.$store.getters.pelicula,
+        fecha: this.$store.getters.fecha,
+        butacas: this.$store.getters.butacas,
+        combos: this.$store.getters.combos,
+        usuarios:[],
+      }
     },
-    sumarPeliUsuario()
+    mounted()
     {
-        this.usuarios.cantPelisVistas++
-        //hacer un post o got video ultimo del profe
+      console.log("Confirmar")
+      this.usuarios = this.consultandoMockApi(); 
     },
-    consultandoMockApi() {
-            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
-            .then((response)=> {
-                const respuesta = response.data
-                this.usuarios=respuesta
-                
-            })
-        }
+    methods: {
+      combosenNull() {
+        this.$store.state.precioTotalcombos=null;           
+        this.$store.dispatch('agregarPrecioTotalcombos',null);
+        this.$store.state.combos=null;           
+        this.$store.dispatch('agregarCombos',null);
+        this.$store.state.dolar = 0;           
+        this.$store.dispatch('agregarDolar',0);
+      },    
+      consultandoMockApi() {
+        axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
+        .then((response)=> {
+          const respuesta = response.data
+          this.usuarios=respuesta
+        })
+      }
+    }
   }
-}
 </script>
 
 <style>
+  .tr {
+    justify-content: center;
+  }
 
-.tr {
-  justify-content: center;
-}
+  .tr td {
+    margin-left: 50px;
+  }
 
-.tr td {
-  margin-left: 50px;
-}
-
-a {
+  a {
     color: #9FADBD;
     text-decoration: none;
-}
+  }
 
-a :hover {
+  a :hover {
     text-decoration: none;
-}
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #9FADBD;
-  text-decoration: none;
-}
+  #nav a {
+    font-weight: bold;
+    color: #9FADBD;
+    text-decoration: none;
+  }
 
-.contenedorB{
+  .contenedorB{
     padding: 20px;
     display: inline-flex;
     justify-content: center;
-}
+  }
 
-.boton {
+  .boton {
     padding: 5px;
     border: 1px solid rgba(21, 34, 50, 0.7);
     border-radius: 10px;
@@ -122,10 +112,10 @@ a :hover {
     color: #9FADBD;
     background-color: rgba(21, 34, 50, 0.3);
     font-weight: bold;
-}
+  }
 
-.boton :hover{ 
+  .boton :hover{ 
     color: #C7D5E5;
     background-color: none;
-}
+  }
 </style>

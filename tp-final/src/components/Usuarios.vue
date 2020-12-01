@@ -6,19 +6,19 @@
         </div>
         <div class ="contraseña"> 
             <h1>Ingrese Contraseña</h1>
-            <input type="text" v-model="contraseñaCargada" id="contraseña"  >
+            <input type="password" v-model="contraseñaCargada" id="contraseña"  >
         </div>
-        <button @click="verificarUsuario(usuarioCargado,contraseñaCargada)" >Ingresar</button>
         <div v-if="this.error == false">
             <h3>Has introducido un usuario o contraseña invalidos.</h3>
         </div>
-          <b-button class="boton"><router-link to="/CrearUsuario">Crear Usuario</router-link></b-button>
+        <button @click="verificarUsuario(usuarioCargado,contraseñaCargada)" >Ingresar</button>
+        <b-button class="boton"><router-link to="/CrearUsuario">Crear Usuario</router-link></b-button>
         
     </div>
 </template>
 
 <script>
-import axios from 'axios'
+    import axios from 'axios'
     export default {
         data ()  {
             return{
@@ -26,8 +26,7 @@ import axios from 'axios'
                 contraseñaCargada:'',
                 usuarios:[],
                 error: null,
-                valorEncontrado:false,
-                
+                valorEncontrado:false,    
             }                
         },
         mounted() {
@@ -38,41 +37,30 @@ import axios from 'axios'
                 console.log("que es this.lenght "+this.usuarios.length)
                 console.log(this.usuarios[1].usuario)
                 let i =0;
-                this.valorEncontrado=false; 
-                   
-                while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) {      
-
-                    if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contrasenia == cont)) {                        
+                this.valorEncontrado=false;                    
+                while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) { 
+                    if((this.usuarios[i].usuario == usu) && (this.usuarios[i].contrasenia == cont)) {                          
                         this.$store.state.usuario=this.usuarios[i];           
                         this.$store.dispatch('agregarUsuario',this.usuarios[i]);
                         this.usuarios.length = i;
                         this.error = true;
                         this.valorEncontrado=true;
                         this.$router.push('/');
-                        
-                    } 
-                    else {
+                    } else {
                         console.log("No esta")
                         i++;
                         this.error = false;
                     }
                 }
-              
-
-            },
-            
+            },            
             consultandoMockApi() {
-            axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
-            .then((response)=> {
-                const respuesta = response.data
-                this.usuarios=respuesta
-                console.log(this.usuarios)
-            })
-        },
+                axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios')
+                .then((response)=> {
+                    const respuesta = response.data
+                    this.usuarios=respuesta
+                    console.log(this.usuarios)
+                })
+            },
         }
     }
 </script>
- 
-<style>
- 
-</style>
