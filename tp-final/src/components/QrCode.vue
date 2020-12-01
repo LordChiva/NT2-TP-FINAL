@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import Axios from 'axios'
 import VueQrcode from 'vue-qrcode'
 /* import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader' */
  
@@ -17,10 +18,12 @@ export default {
       combo: null,
       butaca: null,
       precioTotal: null,
+      url: 'https://5fbc46e9c09c200016d4192c.mockapi.io/Confirmar'
     }
   },
   mounted() {
     //console.log("QR")
+    this.guardarEnApi();
   },
   components: {
     VueQrcode,
@@ -29,7 +32,7 @@ export default {
     QrcodeCapture */
   },
   methods: {    
-    compraFinal() {      
+    compraFinal() {            
       return JSON.stringify( "Usuario: " + this.$store.getters.usuario.usuario + 
        " Pelicula: " +  this.$store.getters.pelicula.nombre + 
        " Dia: " +  this.$store.getters.pelicula.dia + '' + this.$store.getters.fecha +
@@ -69,7 +72,19 @@ export default {
         this.precioTotal = this.precioTotal + " *Incluye descuento del 10% por ser Cliente VIP "
       }
       return this.precioTotal;
-    } 
+    },
+    async guardarEnApi() {
+      try {
+        const un = {Usuario:this.$store.getters.usuario.usuario,Pelicula:this.$store.getters.pelicula.nombre,
+        Dia: this.$store.getters.pelicula.dia, fecha: this.$store.getters.fecha,Horario: this.$store.getters.pelicula.horario,
+        Butacas: this.$store.getters.butacas, Combos: this.$store.getters.combos, TotalCombo: this.$store.getters.precioTotalcombos}
+        const res = await Axios.post(this.url,un);
+        console.log(res.data)
+      } catch (error) {
+        alert("Error")
+      }
+      
+    }
   },
 }
 /* function guardarButacas(butacas)
