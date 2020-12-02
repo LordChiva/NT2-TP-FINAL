@@ -34,8 +34,6 @@
         },
         methods: {
             verificarUsuario (usu,cont) {
-                console.log("que es this.lenght "+this.usuarios.length)
-                console.log(this.usuarios[1].usuario)
                 let i =0;
                 this.valorEncontrado=false;                    
                 while ( (i<this.usuarios.length)&&(this.valorEncontrado==false)) { 
@@ -46,8 +44,8 @@
                         this.error = true;
                         this.valorEncontrado=true;
                         this.$router.push('/');
-                    } else {
-                        console.log("No esta")
+                    } 
+                    else {
                         i++;
                         this.error = false;
                     }
@@ -58,7 +56,6 @@
                 .then((response)=> {
                     const respuesta = response.data
                     this.usuarios=respuesta
-                    console.log(this.usuarios)
                 })
             },
         }

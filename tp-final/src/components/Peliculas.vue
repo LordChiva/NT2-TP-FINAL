@@ -21,14 +21,10 @@
         </table>  
         <Publicidad />
     </div>
-    <!-- <router-link to="/"></router-link> -->
     
 </template> 
 
 <script>
-/*
-<app-item :title="pelicula.nombre" :sub="pelicula.sinopsis" ></app-item>
-*/
 import Publicidad from "../components/Publicidad.vue"
 import starwars from "../assets/starWars.jpg"
 import reyleon from "../assets/reyLeon.jpg"
@@ -47,7 +43,6 @@ export default {
         Publicidad
     },
     mounted() {
-        //console.log("mounted")
         this.peliculas = this.getPeliculas()
     },
     data: () => {

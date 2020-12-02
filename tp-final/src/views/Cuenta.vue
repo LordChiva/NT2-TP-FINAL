@@ -1,8 +1,10 @@
 <template>
   <div class="cuenta">
     <div class="login">
-      <div v-if="usuario == null">
+      
+          <div v-if="usuario == null">
         <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
+        <h3>No has ingresado un Usuario</h3>
       </div> 
       <div v-if="usuario != null">
         <h3>Usuario: {{usuario.usuario}}</h3>
@@ -12,7 +14,7 @@
         <h3>Nombre: {{usuario.nombre}}</h3>
         <h3>Apellido: {{usuario.apellido}}</h3>
         <h3>Cantidad de Peliculas Vistas: {{cantPelisVistas}}</h3>
-      </div>    
+      </div>   
 
       <div v-if="usuario.usuario == 'admin'">   
         <h1>Reservas</h1>
@@ -24,11 +26,11 @@
               <h4>Dia: {{reserva.Dia}} {{reserva.fecha}}</h4>
               <h4>Horario: {{reserva.Horario}}</h4>
               <h4>Butacas Seleccionadas: </h4>
-              <div v-for="(butaca,c) in reserva.Butacas" :key="'confirmar'+c">
+              <div v-for="(butaca,c) in reserva.Butacas" :key="'butacasSeleccionadas'+c">
                 <h4>{{butaca.fila}}{{butaca.columna}}</h4>
               </div>          
               <h4>Combos: </h4>
-              <div v-for="(combo,c) in reserva.Combos" :key="'confirmar'+c">
+              <div v-for="(combo,c) in reserva.Combos" :key="'combos'+c">
                 <h4>x{{combo.cant}} {{combo.nombre}}</h4>
               </div>
               <h4>Total Combo: {{reserva.TotalCombo}}</h4> 
@@ -50,22 +52,23 @@
               <button @click="eliminarUsuario(usuario)">Eliminar Usuario</button>              
             </td>  
           </tr>
-        </table> 
+        </table>
+        <b-button class="boton"><router-link to="/Informe">Informe</router-link></b-button>
       </div>
       
       <div v-if="usuario.usuario != 'admin'">   
         <h1>Reservas</h1>
-          <div v-for="(reserva,r) in reservas" :key="'reserva'+r">
+          <div v-for="(reserva,r) in reservas" :key="'reservaAdmin'+r">
             <div v-if="reserva.Usuario == usuario.usuario">
               <h4>Pelicula: {{reserva.Pelicula}}</h4>	
               <h4>Dia: {{reserva.Dia}} {{reserva.fecha}}</h4>
               <h4>Horario: {{reserva.Horario}}</h4>
               <h4>Butacas Seleccionadas: </h4>
-              <div v-for="(butaca,c) in reserva.Butacas" :key="'confirmar'+c">
+              <div v-for="(butaca,c) in reserva.Butacas" :key="'butacasS'+c">
                 <h4>{{butaca.fila}}{{butaca.columna}}</h4>
               </div>          
               <h4>Combos: </h4>
-              <div v-for="(combo,c) in reserva.Combos" :key="'confirmar'+c">
+              <div v-for="(combo,c) in reserva.Combos" :key="'CombosS'+c">
                 <h4>x{{combo.cant}} {{combo.nombre}}</h4>
               </div>
               <h4>Total Combo: {{reserva.TotalCombo}}</h4>

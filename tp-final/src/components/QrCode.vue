@@ -9,7 +9,6 @@
 <script>
 import Axios from 'axios'
 import VueQrcode from 'vue-qrcode'
-/* import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader' */
  
 export default {
   data() {
@@ -22,14 +21,10 @@ export default {
     }
   },
   mounted() {
-    //console.log("QR")
     this.guardarEnApi();
   },
   components: {
     VueQrcode,
-    /* QrcodeStream,
-    QrcodeDropZone,
-    QrcodeCapture */
   },
   methods: {    
     compraFinal() {            
@@ -87,15 +82,5 @@ export default {
     }
   },
 }
-/* function guardarButacas(butacas)
-      {
-        let butacasFila='';
-        console.log("guardar Butacas "+butacasFila.length)
-        for (var i =0;i<butacas.length;i++)
-        {
-            butacasFila=butacas[i].fila
-            console.log(butacasFila)
-        }
-        return butacasFila;
-      } */
+
 </script>

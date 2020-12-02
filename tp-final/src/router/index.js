@@ -69,6 +69,11 @@ const routes = [
   name: 'CrearUsuario',
   component: () => import('../components/CrearUsuario.vue')
 },
+{
+  path: '/Informe',
+  name: 'Informe',
+  component: () => import('../components/Informe.vue')
+},
 
  
 ]

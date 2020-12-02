@@ -2,17 +2,6 @@
     <div class="contenedorProductos">
         <div class="contenedorCombos">     
             <div class="combos">
-
-                <!--
-                <b-form-group label="Using options array:">
-                    <b-form-checkbox-group
-                        id="checkbox-group-1"
-                        v-model="seleccionados"
-                        :options="options"
-                        style="columns: 2">
-                    </b-form-checkbox-group>
-                </b-form-group>-->
-
                 <td v-for="(option,p) in options" :key="'productos'+p">
                     <li>
                         <div v-if="p == 0">
@@ -43,27 +32,6 @@
                         </div>  
                     </li>
                 </td>
-
-                <!-- <td v-for="(producto,index) in productos" :key="index"
-
-                     @click="calcularTotal(index)":id='producto'+index">
-
-                    <li>
-                        <img alt="imagen"  v-bind:src="options.imagen"  class="imagenProducto">
-                        <div class="descripcion">
-                            <h3>{{options.text}}</h3>
-                            <br>
-                            <h5>{{options.descripcion}}</h5>
-                            <br>
-                            <h6>Precio: ${{options.precio}}</h6>
-                        </div>
-                    </li>  
-                </td>-->
-
-                <!-- <div v-if="$store.getters.usuario.vip == true">
-                    <h3>Descuento</h3>
-                </div> -->
-
             </div> 
             <div v-if="this.seleccionados.length > 0">
                 <b-button class="boton" @click="getExchangeValue(dolar)">Pagar U$S</b-button>                                
@@ -115,9 +83,9 @@ export default {
 
         const filteredUsdData = response.data.find((exchange)=> exchange.casa.nombre.toLowerCase() === "dolar oficial")
     if (filteredUsdData) {
-        console.log("Q es esto papi "+filteredUsdData.casa.venta)
+        
        let usd=Number(filteredUsdData.casa.venta.replace(',','.'))
-       console.log("Esto no es coca papi "+usd)
+       
        this.dolar=usd
       return {usd}    
     } 
@@ -130,11 +98,6 @@ export default {
   },
     
      methods: {
-       /* calcularTotal(id)
-        {
-            var elemento =document.getElementById("producto"+id)
-            total=elemento.precio+total
-        },*/
 
          consultandoMockApi() {
             axios.get('https://5fbc46e9c09c200016d4192c.mockapi.io/Combos')
