@@ -12,6 +12,8 @@
           <h4>{{pelicula.dia}} {{fecha}}</h4>
           <h3>Horario: </h3>
           <h4>{{pelicula.horario}}</h4>
+          <h3>Precio Pelicula: </h3>
+          <h4>${{precioPelicula}}</h4>
           <h3>Butacas Seleccionadas: </h3>
           <div v-for="(butaca,c) in butacas" :key="'confirmar'+c">
             <h4>{{butaca.fila}}{{butaca.columna}}</h4>
@@ -22,6 +24,9 @@
           <div v-for="(combo,cs) in this.$store.getters.combos" :key="'comboSelecc'+cs">       
             <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
           </div>
+          <h3>Total: </h3>
+          <h4>${{total}}</h4>
+          
 
           <div v-if="this.$store.getters.usuario.vip == true">
             <h6>*Incluye descuento del 10% por ser Cliente VIP</h6>
@@ -46,12 +51,16 @@
         butacas: this.$store.getters.butacas,
         combos: this.$store.getters.combos,
         usuarios:[],
+        precioPelicula:this.$store.getters.precioPelicula,
+        total:0,
+        pepe:'hola'
       }
     },
     mounted()
     {
       console.log("Confirmar")
       this.usuarios = this.consultandoMockApi(); 
+       this.total=this.sumarTodo()
     },
     methods: {
       combosenNull() {
@@ -68,6 +77,27 @@
           const respuesta = response.data
           this.usuarios=respuesta
         })
+      },
+      sumarTodo()
+      {
+        if(this.$store.getters.usuario.vip==false)
+        {
+          
+           this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula
+           this.$store.state.precioTotal = this.total;           
+          this.$store.dispatch('agregarTotal',this.total); 
+          return this.total
+        }
+        else
+        {
+          console.log("Cuanto hay aca Pelicula "+ this.$store.state.precioPelicula)
+          console.log("Cuanto hay aca TotalCombos "+ this.$store.state.precioTotalcombos)
+
+          this.total= this.$store.state.precioTotalcombos+(this.$store.state.precioPelicula-this.$store.state.precioPelicula*0.1)
+          this.$store.state.precioTotal = this.total;           
+          return this.total
+        }
+        
       }
     }
   }

@@ -12,7 +12,9 @@ export default new Vuex.Store(
             combos: null,
             precioTotalcombos: null,
             usuario: null,
-            dolar:0         
+            dolar:0,
+            precioPelicula:500,
+            precioTotal:0         
 
         },
 
@@ -38,6 +40,9 @@ export default new Vuex.Store(
             agregarDolar(state, payload) {
                 state.dolar = payload;                        
             },
+            agregarTotal(state, payload) {
+                state.precioTotal = payload;                        
+            },
         },
 
         actions: {
@@ -61,6 +66,9 @@ export default new Vuex.Store(
             },
             agregarDolar({ commit }, payload) {
                 commit('agregarDolar', payload);
+            },
+            agregarTotal({ commit }, payload) {
+                commit('agregarTotal', payload);
             },
         },
         
@@ -86,6 +94,13 @@ export default new Vuex.Store(
             dolar(state) {
                 return state.dolar;
             },
+            precioPelicula(state) {
+                return state.precioPelicula;
+            },
+            precioTotal(state) {
+                return state.precioTotal;
+            },
+
         }        
     }
 )

@@ -34,7 +34,8 @@ export default {
        " Horario: " +  this.$store.getters.pelicula.horario +
        " Butacas: " +  this.butacas() +
        " Combos: " +  this.combos() +
-       " TotalCombo " +  this.precioTotalCombo() + '').replace('[','').replace(']','').replace('{','').replace('}','').replace('"','').replace('"','')
+       " TotalCombo " +  this.precioTotalCombo() + '' +
+       " Total: $" + this.$store.getters.precioTotal ).replace('[','').replace(']','').replace('{','').replace('}','').replace('"','').replace('"','')
     },
     butacas() {
       for (let index = 0; index < this.$store.getters.butacas.length; index++) {
@@ -72,7 +73,7 @@ export default {
       try {
         const un = {Usuario:this.$store.getters.usuario.usuario,Pelicula:this.$store.getters.pelicula.nombre,
         Dia: this.$store.getters.pelicula.dia, fecha: this.$store.getters.fecha,Horario: this.$store.getters.pelicula.horario,
-        Butacas: this.$store.getters.butacas, Combos: this.$store.getters.combos, TotalCombo: this.$store.getters.precioTotalcombos}
+        Butacas: this.$store.getters.butacas, Combos: this.$store.getters.combos, TotalCombo: this.$store.getters.precioTotalcombos,Total: this.$store.getters.precioTotal}
         const res = await Axios.post(this.url,un);
         console.log(res.data)
       } catch (error) {
