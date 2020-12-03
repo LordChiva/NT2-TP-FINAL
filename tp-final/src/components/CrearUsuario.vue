@@ -17,7 +17,9 @@
         </div>
         <b-input-group-append class="contenedorB">
             <b-button class="boton"><router-link to="/Usuarios">Volver</router-link></b-button>
-            <b-button class="boton" @click="verificarUsuario(usuarioCargado,contraseñaCargada)">Confirmar</b-button>
+            <div v-if="this.usuarioCargado != '' && this.contraseñaCargada != '' && this.nombreCargado != '' && this.apellidoCargado != ''">
+                <b-button class="boton" @click="verificarUsuario(usuarioCargado,contraseñaCargada)">Confirmar</b-button>
+            </div>            
         </b-input-group-append>
     </div>
 </template>

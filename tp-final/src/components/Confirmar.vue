@@ -54,7 +54,8 @@
         precioPelicula:this.$store.getters.precioPelicula,
         total:0,
         dolar:87,
-        subTotal:0
+        subTotal:0,
+        ticketVip:(this.$store.getters.precioPelicula-(this.$store.getters.precioPelicula*10/100))
       }
     },
     mounted()
@@ -84,9 +85,9 @@
         if(this.$store.getters.usuario.vip==false)
         {
            if (this.$store.getters.dolar == 1) {  
-            this.total= (this.$store.state.precioTotalcombos%100+ this.$store.state.precioPelicula/this.dolar ) 
+            this.total= (this.$store.state.precioTotalcombos%100+ (this.$store.state.precioPelicula*this.butacas.length)/this.dolar ) 
           } else {
-            this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula
+            this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula*this.butacas.length
           }
           console.log(this.total ) 
           this.$store.dispatch('agregarTotal',this.total); 
@@ -95,11 +96,11 @@
         else
         {
            if (this.$store.getters.dolar == 1) {               
-            this.total= (this.$store.state.precioTotalcombos%100+ this.$store.state.precioPelicula/this.dolar ) 
-            this.subTotal =this.total*10/100
+            this.total= (this.$store.state.precioTotalcombos%100+ (this.ticketVip*this.butacas.length)/this.dolar ) 
             this.total= this.total-this.subTotal
           } else {
-            this.total= this.$store.state.precioTotalcombos+(this.$store.state.precioPelicula-this.$store.state.precioPelicula*0.1) 
+            this.total= this.$store.state.precioTotalcombos+this.ticketVip*this.butacas.length
+            console.log(this.ticketVip*this.butacas.length) 
           }           
           this.$store.dispatch('agregarTotal',this.total); 
           return this.total
