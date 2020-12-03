@@ -8,8 +8,8 @@
       <div class="titulo">
         <h1>CinePOP</h1>
       </div>
-
-      <div class="login">
+      <!-- Por algun motivo el boton de Sign In se pasa por el culo lo que le modifico del css -->
+      <b-input-group-append class="contenedorB">
         <div v-if="$store.getters.usuario == null">
           <b-button class="boton" variant="outline-primary"><router-link to="/Usuarios">Sign In</router-link></b-button>
         </div> 
@@ -20,7 +20,7 @@
           </div>
           <b-button class="boton" variant="outline-primary" @click="cerrar()"><router-link to="/">Log Out</router-link></b-button>
         </div>
-      </div>
+      </b-input-group-append>
     </div>
     <Navegador />
     <router-view/>
@@ -71,7 +71,7 @@ export default {
   align-items: center;
 }
 
-.logo{
+.logo {
   display: inline-block;
   width: 13%;
 }
@@ -99,11 +99,32 @@ export default {
   color: #9FADBD;
 } */
 
-.btn{
+a {
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+a :hover {
+  text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+  padding: 20px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.boton {
   padding: 5px;
   border: 1px solid rgba(21, 34, 50, 0.7);
   border-radius: 10px;
-  margin: 0px 20px 0px 20px;
+  margin: 0px 50px 0px 50px;
   width: 100px;
   color: #9FADBD;
   background-color: rgb(21, 34, 50, 0.3);
@@ -112,5 +133,6 @@ export default {
 
 .boton :hover{ 
   color: #C7D5E5;
+  background-color: none;
 }
 </style>
