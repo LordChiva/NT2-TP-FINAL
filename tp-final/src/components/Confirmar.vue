@@ -53,11 +53,12 @@
         usuarios:[],
         precioPelicula:this.$store.getters.precioPelicula,
         total:0,
-        pepe:'hola'
+        dolar:87,
+        subTotal:0
       }
     },
     mounted()
-    {
+    {      
       console.log("Confirmar")
       this.usuarios = this.consultandoMockApi(); 
        this.total=this.sumarTodo()
@@ -82,19 +83,25 @@
       {
         if(this.$store.getters.usuario.vip==false)
         {
-          
-           this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula
-           this.$store.state.precioTotal = this.total;           
+           if (this.$store.getters.dolar == 1) {  
+            this.total= (this.$store.state.precioTotalcombos%100+ this.$store.state.precioPelicula/this.dolar ) 
+          } else {
+            this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula
+          }
+          console.log(this.total ) 
           this.$store.dispatch('agregarTotal',this.total); 
           return this.total
         }
         else
         {
-          console.log("Cuanto hay aca Pelicula "+ this.$store.state.precioPelicula)
-          console.log("Cuanto hay aca TotalCombos "+ this.$store.state.precioTotalcombos)
-
-          this.total= this.$store.state.precioTotalcombos+(this.$store.state.precioPelicula-this.$store.state.precioPelicula*0.1)
-          this.$store.state.precioTotal = this.total;           
+           if (this.$store.getters.dolar == 1) {               
+            this.total= (this.$store.state.precioTotalcombos%100+ this.$store.state.precioPelicula/this.dolar ) 
+            this.subTotal =this.total*10/100
+            this.total= this.total-this.subTotal
+          } else {
+            this.total= this.$store.state.precioTotalcombos+(this.$store.state.precioPelicula-this.$store.state.precioPelicula*0.1) 
+          }           
+          this.$store.dispatch('agregarTotal',this.total); 
           return this.total
         }
         

@@ -34,6 +34,7 @@
                 <h4>x{{combo.cant}} {{combo.nombre}}</h4>
               </div>
               <h4>Total Combo: {{reserva.TotalCombo}}</h4> 
+              <h4>Total: {{reserva.Total}}</h4> 
               <button @click="eliminarReserva(reserva)">Eliminar Reserva</button>
             </td>  
           </tr>
@@ -72,6 +73,7 @@
                 <h4>x{{combo.cant}} {{combo.nombre}}</h4>
               </div>
               <h4>Total Combo: {{reserva.TotalCombo}}</h4>
+              <h4>Total: {{reserva.Total}}</h4> 
             </div>
           </div>
       </div>

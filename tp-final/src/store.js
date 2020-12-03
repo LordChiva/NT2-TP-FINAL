@@ -10,7 +10,7 @@ export default new Vuex.Store(
             fecha: null,
             butacas: null,
             combos: null,
-            precioTotalcombos: null,
+            precioTotalcombos: 0,
             usuario: null,
             dolar:0,
             precioPelicula:500,

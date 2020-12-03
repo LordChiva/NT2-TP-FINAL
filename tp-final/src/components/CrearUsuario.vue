@@ -6,7 +6,7 @@
         </div>
         <div class ="contraseña"> 
             <h1>Ingrese Contraseña</h1>
-            <input type="password" v-model="contraseñaCargada" id="contraseña"  >
+            <input type="password" v-model="contraseñaCargada" id="contraseña" ><button id="ojo" @click="mostrarContrasena()"><i class="fas fa-eye"></i></button>
         </div>
          <div class ="nombre"> 
             <h1>Ingrese Nombre</h1>
@@ -80,6 +80,14 @@
                     this.usuarios=respuesta
                     console.log(this.usuarios)
                 })
+            },
+            mostrarContrasena(){
+                var tipo = document.getElementById("contraseña");
+                if(tipo.type == "password"){
+                    tipo.type = "text";
+                }else{
+                    tipo.type = "password";
+                }
             },
         }
     }
