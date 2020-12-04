@@ -13,7 +13,26 @@
           <h3>Horario: </h3>
           <h4>{{pelicula.horario}}</h4>
           <h3>Precio Pelicula: </h3>
-          <h4>${{precioPelicula}}</h4>
+          <h4>
+            <div v-if="this.$store.getters.dolar == 1">
+              <div v-if="this.$store.getters.usuario.vip == true">
+                {{(((precioPelicula-precioPelicula*10/100)/87)*this.butacas.length).toFixed(2)}}u$d
+              </div>
+              <div v-if="this.$store.getters.usuario.vip == false">
+                {{((precioPelicula/87)*this.butacas.length).toFixed(2)}}u$d
+              </div>
+              
+            </div>
+            <div v-if="this.$store.getters.dolar == 0">
+              <div v-if="this.$store.getters.usuario.vip == true">
+                ${{precioPelicula-precioPelicula*10/100}}
+              </div>
+              <div v-if="this.$store.getters.usuario.vip == false">
+                ${{precioPelicula}}
+              </div>
+            </div>
+          </h4>
+
           <h3>Butacas Seleccionadas: </h3>
           <div v-for="(butaca,c) in butacas" :key="'confirmar'+c">
             <h4>{{butaca.fila}}{{butaca.columna}}</h4>
@@ -25,7 +44,8 @@
             <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
           </div>
           <h3>Total: </h3>
-          <h4>${{total}}</h4>
+          <h4><div v-if="this.$store.getters.dolar == 1">{{total.toFixed(2)}}u$d</div>
+          <div v-if="this.$store.getters.dolar == 0">${{total}}</div></h4>
           
 
           <div v-if="this.$store.getters.usuario.vip == true">

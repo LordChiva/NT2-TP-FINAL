@@ -3,60 +3,60 @@
         <div class="container-table container-table-edit">
             <div class="table--title table-title-edit">Informe</div>   
             <div class="table--header">Película</div>   
-            <div class="table--header">Cantidad de veces vista</div>  
+            <div class="table--header">Butacas Vendidas</div>  
             <div class="table--header">Recaudación por Tickets</div> 
             <div class="table--header">Recaudación por Combos</div>  
             <div class="table--header">Total Recaudación</div> 
             <div class="table--item"> <h3>El Rey León</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[0].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[0].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[0].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[0].totalRecaudado+this.cantPelisVistas[0].TotalCombo}}</div>  
+            <div class="table--item"> ${{this.cantPelisVistas[0].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[0].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[0].totalComboMasRecaudado.toFixed(2)}}</div>  
             <div class="table--item"> <h3>El origen</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[1].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[1].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[1].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[1].totalRecaudado+this.cantPelisVistas[1].TotalCombo}}</div> 
+            <div class="table--item"> ${{this.cantPelisVistas[1].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[1].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[1].totalComboMasRecaudado.toFixed(2)}}</div> 
             <div class="table--item"> <h3>Star Wars: Episodio IX</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[2].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[2].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[2].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[2].totalRecaudado+this.cantPelisVistas[2].TotalCombo}}</div>
+            <div class="table--item"> ${{this.cantPelisVistas[2].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[2].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[2].totalComboMasRecaudado.toFixed(2)}}</div>
             <div class="table--item"> <h3>Avatar</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[3].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[3].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[3].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[3].totalRecaudado+this.cantPelisVistas[3].TotalCombo}}</div>
+            <div class="table--item"> ${{this.cantPelisVistas[3].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[3].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[3].totalComboMasRecaudado.toFixed(2)}}</div>
             <div class="table--item"> <h3>Jumanji</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[4].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[4].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[4].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[4].totalRecaudado+this.cantPelisVistas[4].TotalCombo}}</div>
+            <div class="table--item"> ${{this.cantPelisVistas[4].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[4].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[4].totalComboMasRecaudado.toFixed(2)}}</div>
             <div class="table--item"> <h3>Rapidos y Furiosos</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[5].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[5].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[5].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[5].totalRecaudado+this.cantPelisVistas[5].TotalCombo}}</div>
+            <div class="table--item"> ${{this.cantPelisVistas[5].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[5].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[5].totalComboMasRecaudado.toFixed(2)}}</div>
             <div class="table--item"> <h3>Guerra Mundial Z</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[6].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[6].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[6].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[6].totalRecaudado+this.cantPelisVistas[6].TotalCombo}}</div>
+            <div class="table--item"> ${{this.cantPelisVistas[6].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[6].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[6].totalComboMasRecaudado.toFixed(2)}}</div>
             <div class="table--item"> <h3>Deadpool</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[7].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[7].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[7].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[7].totalRecaudado+this.cantPelisVistas[7].TotalCombo}}</div> 
+            <div class="table--item"> ${{this.cantPelisVistas[7].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[7].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[7].totalComboMasRecaudado.toFixed(2)}}</div> 
             <div class="table--item"> <h3>Jurassic World</h3> </div>  
             <div class="table--item"> {{this.cantPelisVistas[8].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[8].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[8].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[8].totalRecaudado+this.cantPelisVistas[8].TotalCombo}}</div>  
+            <div class="table--item"> ${{this.cantPelisVistas[8].totalRecaudado.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[8].TotalCombo.toFixed(2)}}</div>    
+            <div class="table--item"> ${{this.cantPelisVistas[8].totalComboMasRecaudado.toFixed(2)}}</div>  
             <div class="table--item total">Total</div>  
             <div class="table--item total">{{this.totalCant}}</div>               
-            <div class="table--item total">${{this.totalRecaudado}}</div>  
-            <div class="table--item total">${{this.totalSnacks}}</div>  
-            <div class="table--item total">${{this.total}}</div>  
+            <div class="table--item total">${{this.totalRecaudado.toFixed(2)}}</div>  
+            <div class="table--item total">${{this.totalSnacks.toFixed(2)}}</div>  
+            <div class="table--item total">${{this.total.toFixed(2)}}</div>  
         </div>   
         <b-button class="boton"><router-link to="/Cuenta">Volver</router-link></b-button>
     </div>
@@ -68,15 +68,15 @@ export default {
     data() {
         return {
             reservas: this.getReservas(),
-            cantPelisVistas: [{TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0}],
+            cantPelisVistas: [{TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0}],
             totalCant: 0,totalRecaudado :0,totalSnacks:0,total:0,dolar:87,subTotalCant: 0,
             ticketVip:(this.$store.getters.precioPelicula-(this.$store.getters.precioPelicula*10/100))
         }
@@ -105,6 +105,7 @@ export default {
                     } else {
                         this.cantPelisVistas[0].totalRecaudado = this.cantPelisVistas[0].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[0].totalComboMasRecaudado = (this.cantPelisVistas[0].totalRecaudado + this.cantPelisVistas[0].TotalCombo) 
                 }     
                 if (this.reservas[i].Pelicula == "El origen") {
                     this.cantPelisVistas[1].cantPeli = this.cantPelisVistas[1].cantPeli + this.reservas[i].Butacas.length 
@@ -118,6 +119,7 @@ export default {
                     } else {
                         this.cantPelisVistas[1].totalRecaudado = this.cantPelisVistas[1].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[1].totalComboMasRecaudado = (this.cantPelisVistas[1].totalRecaudado + this.cantPelisVistas[1].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Star Wars: Episodio IX") {
                     this.cantPelisVistas[2].cantPeli = this.cantPelisVistas[2].cantPeli + this.reservas[i].Butacas.length 
@@ -131,6 +133,7 @@ export default {
                     } else {
                         this.cantPelisVistas[2].totalRecaudado = this.cantPelisVistas[2].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[2].totalComboMasRecaudado = (this.cantPelisVistas[2].totalRecaudado + this.cantPelisVistas[2].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Avatar") {
                     this.cantPelisVistas[3].cantPeli = this.cantPelisVistas[3].cantPeli + this.reservas[i].Butacas.length 
@@ -144,6 +147,7 @@ export default {
                     } else {
                         this.cantPelisVistas[3].totalRecaudado = this.cantPelisVistas[3].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[3].totalComboMasRecaudado = (this.cantPelisVistas[3].totalRecaudado + this.cantPelisVistas[3].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Jumanji") {
                     this.cantPelisVistas[4].cantPeli = this.cantPelisVistas[4].cantPeli + this.reservas[i].Butacas.length 
@@ -157,6 +161,7 @@ export default {
                     } else {
                         this.cantPelisVistas[4].totalRecaudado = this.cantPelisVistas[4].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[4].totalComboMasRecaudado = (this.cantPelisVistas[4].totalRecaudado + this.cantPelisVistas[4].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Rapidos y Furiosos") {
                     this.cantPelisVistas[5].cantPeli = this.cantPelisVistas[5].cantPeli + this.reservas[i].Butacas.length 
@@ -170,6 +175,7 @@ export default {
                     } else {
                         this.cantPelisVistas[5].totalRecaudado = this.cantPelisVistas[5].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[5].totalComboMasRecaudado = (this.cantPelisVistas[5].totalRecaudado + this.cantPelisVistas[5].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Guerra Mundial Z") {
                     this.cantPelisVistas[6].cantPeli = this.cantPelisVistas[6].cantPeli + this.reservas[i].Butacas.length 
@@ -183,6 +189,7 @@ export default {
                     } else {
                         this.cantPelisVistas[6].totalRecaudado = this.cantPelisVistas[6].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[6].totalComboMasRecaudado = (this.cantPelisVistas[6].totalRecaudado + this.cantPelisVistas[6].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Deadpool") {
                     this.cantPelisVistas[7].cantPeli = this.cantPelisVistas[7].cantPeli + this.reservas[i].Butacas.length 
@@ -196,6 +203,7 @@ export default {
                     } else {
                         this.cantPelisVistas[7].totalRecaudado = this.cantPelisVistas[7].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }
+                this.cantPelisVistas[7].totalComboMasRecaudado = (this.cantPelisVistas[7].totalRecaudado + this.cantPelisVistas[7].TotalCombo) 
                 }  
                 if (this.reservas[i].Pelicula == "Jurassic World") {
                     this.cantPelisVistas[8].cantPeli = this.cantPelisVistas[8].cantPeli + this.reservas[i].Butacas.length 
@@ -209,7 +217,8 @@ export default {
                     } else {
                         this.cantPelisVistas[8].totalRecaudado = this.cantPelisVistas[8].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
                     }                  
-                }  
+                }
+                this.cantPelisVistas[8].totalComboMasRecaudado = (this.cantPelisVistas[8].totalRecaudado + this.cantPelisVistas[8].TotalCombo) 
                 this.totalCant = this.reservas.length 
             }  
         },
@@ -219,7 +228,7 @@ export default {
                 this.totalCant = this.subTotalCant
                 this.totalRecaudado = this.totalRecaudado + this.cantPelisVistas[i].totalRecaudado  
                 this.totalSnacks = this.totalSnacks + this.cantPelisVistas[i].TotalCombo   
-                this.total = this.totalSnacks + this.totalRecaudado
+                this.total = this.total + this.cantPelisVistas[i].totalComboMasRecaudado
             }            
         }
     },        
