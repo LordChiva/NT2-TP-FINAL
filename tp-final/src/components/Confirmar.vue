@@ -90,11 +90,16 @@
         }
         else
         {
-          console.log("Cuanto hay aca Pelicula "+ this.$store.state.precioPelicula)
-          console.log("Cuanto hay aca TotalCombos "+ this.$store.state.precioTotalcombos)
+          console.log("Cuanto hay aca Pelicula 1 "+ this.$store.state.precioPelicula)
+          console.log("Cuanto hay aca TotalCombos 1 "+ this.$store.state.precioTotalcombos)
+          console.log("Cuanto hay aca total 1 "+ this.total)
 
           this.total= this.$store.state.precioTotalcombos+(this.$store.state.precioPelicula-this.$store.state.precioPelicula*0.1)
-          this.$store.state.precioTotal = this.total;           
+          this.$store.state.precioTotal = this.total;
+          
+          console.log("Cuanto hay aca Pelicula 2 "+ this.$store.state.precioPelicula)
+          console.log("Cuanto hay aca TotalCombos 2 "+ this.$store.state.precioTotalcombos)
+          console.log("Cuanto hay aca total 2 "+ this.total)
           return this.total
         }
         
