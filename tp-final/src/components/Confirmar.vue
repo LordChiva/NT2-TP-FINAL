@@ -1,63 +1,74 @@
 <template>
-  <div class="contenedorPrincipal">   
-    <h1>Confirmar</h1>
-    <table class="tableContainer">
-      <tr class="tr">
-        <td>
-          <img alt="Peli foto"  :src="pelicula.imagen" class="imagen">
+  <div class="contenedorConfirmar">
+    <table class="tablaConfirmar">
+      <tr>
+        <td class="tituloConfirmar">
+          <h1>Confirmar</h1>
+        </td>
+      </tr>
+      <tr>
+        <td class="imagenConfirmar">
+          <img alt="Peli foto"  :src="pelicula.imagen" class="imagen"><br>
           <h1>{{pelicula.nombre}}</h1>
         </td> 
-        <td> 
+        <td class="descripcionConfirmar"> 
           <h3>Dia: </h3>
-          <h4>{{pelicula.dia}} {{fecha}}</h4>
+            <h5>{{pelicula.dia}} {{fecha}}</h5>
           <h3>Horario: </h3>
-          <h4>{{pelicula.horario}}</h4>
+            <h5>{{pelicula.horario}}</h5>
           <h3>Precio Pelicula: </h3>
-          <h4>
-            <div v-if="this.$store.getters.dolar == 1">
-              <div v-if="this.$store.getters.usuario.vip == true">
-                {{(((precioPelicula-precioPelicula*10/100)/87)*this.butacas.length).toFixed(2)}}u$d
-              </div>
-              <div v-if="this.$store.getters.usuario.vip == false">
-                {{((precioPelicula/87)*this.butacas.length).toFixed(2)}}u$d
-              </div>
-              
+          <div v-if="this.$store.getters.dolar == 1">
+            <div class="confirmar" v-if="this.$store.getters.usuario.vip == true">
+              <h5>{{(((precioPelicula-precioPelicula*10/100)/87)*this.butacas.length).toFixed(2)}}u$d</h5>
             </div>
-            <div v-if="this.$store.getters.dolar == 0">
-              <div v-if="this.$store.getters.usuario.vip == true">
-                ${{precioPelicula-precioPelicula*10/100}}
-              </div>
-              <div v-if="this.$store.getters.usuario.vip == false">
-                ${{precioPelicula}}
-              </div>
+            <div class="confirmar" v-if="this.$store.getters.usuario.vip == false">
+              <h5>{{((precioPelicula/87)*this.butacas.length).toFixed(2)}}u$d</h5>
             </div>
-          </h4>
-
-          <h3>Butacas Seleccionadas: </h3>
-          <div v-for="(butaca,c) in butacas" :key="'confirmar'+c">
-            <h4>{{butaca.fila}}{{butaca.columna}}</h4>
-          </div>          
-          <h3>Combos Seleccionados:  <div v-if="this.$store.getters.dolar == 1">{{this.$store.getters.precioTotalcombos}}u$d</div>
-          <div v-if="this.$store.getters.dolar == 0">${{this.$store.getters.precioTotalcombos}}</div></h3>
-
-          <div v-for="(combo,cs) in this.$store.getters.combos" :key="'comboSelecc'+cs">       
-            <h4>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h4>            
           </div>
-          <h3>Total: </h3>
-          <h4><div v-if="this.$store.getters.dolar == 1">{{total.toFixed(2)}}u$d</div>
-          <div v-if="this.$store.getters.dolar == 0">${{total}}</div></h4>
-          
-
-          <div v-if="this.$store.getters.usuario.vip == true">
-            <h6>*Incluye descuento del 10% por ser Cliente VIP</h6>
+          <div v-if="this.$store.getters.dolar == 0">
+            <div class="confirmar" v-if="this.$store.getters.usuario.vip == true">
+              <h5>${{precioPelicula-precioPelicula*10/100}}</h5>
+            </div>
+            <div class="confirmar" v-if="this.$store.getters.usuario.vip == false">
+              <h5>${{precioPelicula}}</h5>
+            </div>
+          </div>
+          <h3>Butacas Seleccionadas: </h3>
+          <div class="confirmar" v-for="(butaca,c) in butacas" :key="'confirmar'+c">
+            <h5>{{butaca.fila}}{{butaca.columna}}</h5>
+          </div>          
+          <h3>Combos Seleccionados:  </h3>
+          <div class="confirmar" v-if="this.$store.getters.dolar == 1">
+            <h5>{{this.$store.getters.precioTotalcombos}}u$d</h5>
+          </div>
+          <div class="confirmar" v-if="this.$store.getters.dolar == 0">
+            <h5>${{this.$store.getters.precioTotalcombos}}</h5>
+          </div>
+          <div class="confirmar" v-for="(combo,cs) in this.$store.getters.combos" :key="'comboSelecc'+cs">       
+            <h5>x{{combo.cant}} {{combo.nombre}} = ${{combo.precio * combo.cant}}</h5>            
           </div>
         </td>  
       </tr>
-    </table> 
-      <b-input-group-append class="contenedorB">
-        <b-button class="boton" @click="combosenNull()"><router-link to="/PantallaProductos">Volver</router-link></b-button>
-        <b-button class="boton"><router-link to="/QrCode">Confirmar</router-link></b-button>   
-      </b-input-group-append>
+      <tr>
+        <td class="totalConfirmacion">
+          <h3>Total: </h3>
+          <div class="confirmar" v-if="this.$store.getters.dolar == 1">
+            <h5>{{total.toFixed(2)}}u$d</h5>
+          </div>
+          <div class="confirmar" v-if="this.$store.getters.dolar == 0">
+            <h5>${{total}}</h5>
+          </div>
+          <div class="confirmarDetalle" v-if="this.$store.getters.usuario.vip == true">
+            <h6>*Incluye descuento del 10% por ser Cliente VIP</h6>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <b-input-group-append class="contenedorB">
+      <b-button class="boton" @click="combosenNull()"><router-link to="/PantallaProductos">Volver</router-link></b-button>
+      <b-button class="boton"><router-link to="/QrCode">Confirmar</router-link></b-button>   
+    </b-input-group-append>
   </div>
 </template>
 
@@ -131,49 +142,109 @@
   }
 </script>
 
-<style>
-  .tr {
-    justify-content: center;
-  }
+<style scoped>
+.contenedorConfirmar {
+  display: inline-block;
+  justify-content: center;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
 
-  .tr td {
-    margin-left: 50px;
-  }
+.tablaConfirmar {
+  display: inline-block;
+  margin: 30px;
+  background-color: #111E2E;
+  border: 1px solid rgba(21, 34, 50, 0.7);
+  border-radius: 10px;
+}
 
-  a {
-    color: #9FADBD;
-    text-decoration: none;
-  }
+.tituloConfirmar > h1{
+  margin: 15px;
+  font-size: 38px;
+  color: #9FADBD;
+  text-align: center;
+}
 
-  a :hover {
-    text-decoration: none;
-  }
+.imagenConfirmar {
+  display: inline-block;
+  text-align: center;
+  color: #9FADBD;
+  margin: 0px 20px 0px 20px;
+}
 
-  #nav a {
-    font-weight: bold;
-    color: #9FADBD;
-    text-decoration: none;
-  }
+.descripcionConfirmar {
+  display: inline-block;
+  text-align: justify;
+  margin: 20px 20px 20px 10px;
+}
 
-  .contenedorB{
-    padding: 20px;
-    display: inline-flex;
-    justify-content: center;
-  }
+.descripcionConfirmar > h3 {
+  font-size: 27px;
+  color: #C7D5E5;
+}
 
-  .boton {
-    padding: 5px;
-    border: 1px solid rgba(21, 34, 50, 0.7);
-    border-radius: 10px;
-    margin: 0px 50px 0px 50px;
-    width: 100px;
-    color: #9FADBD;
-    background-color: rgba(21, 34, 50, 0.3);
-    font-weight: bold;
-  }
+.descripcionConfirmar > h5 {
+  font-size: 23px;
+  color: #9FADBD;
+}
 
-  .boton :hover{ 
-    color: #C7D5E5;
-    background-color: none;
-  }
+.confirmar > h5{
+  font-size: 23px;
+  color: #9FADBD;
+}
+
+.totalConfirmacion {
+  display: inline-block;
+  text-align: center;
+  margin: 0px 0px 20px 0px;
+}
+
+.totalConfirmacion > h3 {
+  font-size: 27px;
+  text-align: center;
+  color: #C7D5E5;
+}
+
+.confirmarDetalle > h6 {
+  font-size: 17px;
+  color: #9FADBD;
+}
+
+a {
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+a :hover {
+  text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+  padding: 30px 0px 50px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.boton {
+  padding: 5px;
+  border: 1px solid rgba(21, 34, 50, 0.7);
+  border-radius: 10px;
+  margin: 0px 50px 0px 50px;
+  width: 100px;
+  color: #9FADBD;
+  background-color: rgba(21, 34, 50, 0.3);
+  font-weight: bold;
+}
+
+.boton :hover{ 
+  color: #C7D5E5;
+  background-color: none;
+}
 </style>

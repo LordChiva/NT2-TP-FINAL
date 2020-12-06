@@ -1,8 +1,7 @@
 <template>
   <div class="cuenta">
     <div class="login">
-      
-          <div v-if="usuario == null">
+      <div v-if="usuario == null">
         <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
         <h3>No has ingresado un Usuario</h3>
       </div> 
@@ -164,3 +163,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+</style>

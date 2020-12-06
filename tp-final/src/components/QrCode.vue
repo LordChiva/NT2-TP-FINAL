@@ -1,8 +1,13 @@
 <template>
-  <div>
+  <div class="contenedorQR">
+    <h1>¡Escanee el código QR!</h1>
     <br>
-    <vue-qrcode :value="compra" />
+    <vue-qrcode class="imagenQR" :value="compra"/>
     <br>
+    <h1>¡Gracias por su compra!</h1>
+    <b-input-group-append class="contenedorB">
+      <b-button class="boton" variant="outline-primary"><router-link to="/">Inicio</router-link></b-button>
+    </b-input-group-append>
   </div>
 </template>
 
@@ -115,3 +120,60 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.contenedorQR{
+  display: inline-block;
+  width: 100%;
+  margin: 20px 0px 20px;
+  padding: 0px;
+}
+
+.contenedorQR > h1{
+  font-size: 27px;
+  color: #C7D5E5;
+}
+
+.imagenQR {
+  width: 150px;
+  height: 150px;
+  margin: 0px 0px 20px;
+}
+
+a {
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+a :hover {
+  text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+  padding: 30px 0px 50px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.boton {
+  padding: 5px;
+  border: 1px solid rgba(21, 34, 50, 0.7);
+  border-radius: 10px;
+  margin: 0px 50px 0px 50px;
+  width: 100px;
+  color: #9FADBD;
+  background-color: rgba(21, 34, 50, 0.3);
+  font-weight: bold;
+}
+
+.boton :hover{ 
+  color: #C7D5E5;
+  background-color: none;
+}
+</style>
