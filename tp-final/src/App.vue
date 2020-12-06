@@ -15,8 +15,8 @@
         </div> 
         <div class="usuario" v-if="$store.getters.usuario != null">
           <h4>{{$store.getters.usuario.usuario}}</h4>
-          <div v-if="$store.getters.usuario.vip == true">
-            <i class="fas fa-star" style="color:#E5FF07;" ></i>
+          <div class="estrellaUsuario" v-if="$store.getters.usuario.vip == true">
+            <i class="fas fa-star" style="color:#FFF1AA;" ></i>
           </div>
           <b-button class="boton" variant="outline-primary" @click="cerrar()"><router-link to="/">Log Out</router-link></b-button>
         </div>
@@ -135,5 +135,9 @@ a :hover {
   font-size: 25px;
   color: #DA4127;
   text-align: center;
+}
+
+.estrellaUsuario {
+  margin: 0px 0px 10px 0px;
 }
 </style>

@@ -239,6 +239,7 @@ export default {
     width: 100%;
     justify-content: center;
     display: inline-flex;
+    margin: 20px 0px 0px 0px;
 }
 
 .contenedor {
