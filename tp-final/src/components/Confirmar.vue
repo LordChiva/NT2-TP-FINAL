@@ -53,11 +53,13 @@
         usuarios:[],
         precioPelicula:this.$store.getters.precioPelicula,
         total:0,
-        pepe:'hola'
+        dolar:87,
+        subTotal:0,
+        ticketVip:(this.$store.getters.precioPelicula-(this.$store.getters.precioPelicula*10/100))
       }
     },
     mounted()
-    {
+    {      
       console.log("Confirmar")
       this.usuarios = this.consultandoMockApi(); 
        this.total=this.sumarTodo()
@@ -82,24 +84,25 @@
       {
         if(this.$store.getters.usuario.vip==false)
         {
-          
-           this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula
-           this.$store.state.precioTotal = this.total;           
+           if (this.$store.getters.dolar == 1) {  
+            this.total= (this.$store.state.precioTotalcombos%100+ (this.$store.state.precioPelicula*this.butacas.length)/this.dolar ) 
+          } else {
+            this.total= this.$store.state.precioTotalcombos+this.$store.state.precioPelicula*this.butacas.length
+          }
+          console.log(this.total ) 
           this.$store.dispatch('agregarTotal',this.total); 
           return this.total
         }
         else
         {
-          console.log("Cuanto hay aca Pelicula 1 "+ this.$store.state.precioPelicula)
-          console.log("Cuanto hay aca TotalCombos 1 "+ this.$store.state.precioTotalcombos)
-          console.log("Cuanto hay aca total 1 "+ this.total)
-
-          this.total= this.$store.state.precioTotalcombos+(this.$store.state.precioPelicula-this.$store.state.precioPelicula*0.1)
-          this.$store.state.precioTotal = this.total;
-          
-          console.log("Cuanto hay aca Pelicula 2 "+ this.$store.state.precioPelicula)
-          console.log("Cuanto hay aca TotalCombos 2 "+ this.$store.state.precioTotalcombos)
-          console.log("Cuanto hay aca total 2 "+ this.total)
+           if (this.$store.getters.dolar == 1) {               
+            this.total= (this.$store.state.precioTotalcombos%100+ (this.ticketVip*this.butacas.length)/this.dolar ) 
+            this.total= this.total-this.subTotal
+          } else {
+            this.total= this.$store.state.precioTotalcombos+this.ticketVip*this.butacas.length
+            console.log(this.ticketVip*this.butacas.length) 
+          }           
+          this.$store.dispatch('agregarTotal',this.total); 
           return this.total
         }
         

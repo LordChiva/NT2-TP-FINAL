@@ -8,6 +8,7 @@
                             <b-button class="boton" variant="outline-primary"><router-link to="/">Inicio</router-link></b-button>
                             <b-button class="boton" variant="outline-primary"><router-link to="/Productos">Productos</router-link></b-button>
                             <b-button class="boton" variant="outline-primary"><router-link to="/Cuenta">Cuenta</router-link></b-button>
+                           
                         </b-input-group-append>
                     </div>
                 </tr>      

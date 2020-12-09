@@ -31,6 +31,7 @@ export default {
       return JSON.stringify( "Usuario: " + this.$store.getters.usuario.usuario + 
        " Pelicula: " +  this.$store.getters.pelicula.nombre + 
        " Dia: " +  this.$store.getters.pelicula.dia + '' + this.$store.getters.fecha +
+       " Precio Pelicula: $" + this.$store.state.precioPelicula +
        " Horario: " +  this.$store.getters.pelicula.horario +
        " Butacas: " +  this.butacas() +
        " Combos: " +  this.combos() +
@@ -73,7 +74,8 @@ export default {
       try {
         const un = {Usuario:this.$store.getters.usuario.usuario,Pelicula:this.$store.getters.pelicula.nombre,
         Dia: this.$store.getters.pelicula.dia, fecha: this.$store.getters.fecha,Horario: this.$store.getters.pelicula.horario,
-        Butacas: this.$store.getters.butacas, Combos: this.$store.getters.combos, TotalCombo: this.$store.getters.precioTotalcombos,Total: this.$store.getters.precioTotal}
+        Butacas: this.$store.getters.butacas, Combos: this.$store.getters.combos, TotalCombo: this.$store.getters.precioTotalcombos,
+        Total: this.$store.getters.precioTotal,Dolar:this.$store.getters.dolar,Vip:this.$store.getters.usuario.vip}
         const res = await Axios.post(this.url,un);
         console.log(res.data)
       } catch (error) {
@@ -83,5 +85,4 @@ export default {
     }
   },
 }
-
 </script>

@@ -66,7 +66,13 @@
             <table>
                 <tr v-for="fila in filas" :key="fila.fila">
                     <td>{{fila.fila}}</td>
-                    <td v-for="(asiento, index) in fila.asientos" :key="index">{{asiento.numero}}</td>
+                    <td v-for="(asiento, index) in fila.asientos" :key="index">
+                    <!-- <td v-for="(asiento,p) in salas" :key="'asientos'+ p"> -->
+                        <!-- {{asiento.numero}} -->
+                        <span :ref="'asiento' + asiento.id" @click="setearOcupado(asiento)" :id="asiento.id" >
+                            <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
+                        </span>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -193,7 +199,7 @@ export default {
             } ,
             asientoSeleccion(butacasSeleccionados) {
                 this.$store.state.butacas=butacasSeleccionados;           
-           this.$store.dispatch('agregarButacas',butacasSeleccionados);
+                this.$store.dispatch('agregarButacas',butacasSeleccionados);
             },
             pantallaPeliculaenNull() {
                 this.$store.state.fecha=null;           
