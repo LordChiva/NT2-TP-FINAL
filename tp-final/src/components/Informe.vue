@@ -1,62 +1,24 @@
 <template>
-    <div>
+    <div>        
         <div class="container-table container-table-edit">
             <div class="table--title table-title-edit">Informe</div>   
             <div class="table--header">Película</div>   
-            <div class="table--header">Cantidad de veces vista</div>  
+            <div class="table--header">Butacas Vendidas</div>  
             <div class="table--header">Recaudación por Tickets</div> 
             <div class="table--header">Recaudación por Combos</div>  
-            <div class="table--header">Total Recaudación</div> 
-            <div class="table--item"> <h3>El Rey León</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[0].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[0].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[0].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[0].totalRecaudado+this.cantPelisVistas[0].TotalCombo}}</div>  
-            <div class="table--item"> <h3>El origen</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[1].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[1].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[1].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[1].totalRecaudado+this.cantPelisVistas[1].TotalCombo}}</div> 
-            <div class="table--item"> <h3>Star Wars: Episodio IX</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[2].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[2].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[2].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[2].totalRecaudado+this.cantPelisVistas[2].TotalCombo}}</div>
-            <div class="table--item"> <h3>Avatar</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[3].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[3].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[3].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[3].totalRecaudado+this.cantPelisVistas[3].TotalCombo}}</div>
-            <div class="table--item"> <h3>Jumanji</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[4].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[4].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[4].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[4].totalRecaudado+this.cantPelisVistas[4].TotalCombo}}</div>
-            <div class="table--item"> <h3>Rapidos y Furiosos</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[5].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[5].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[5].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[5].totalRecaudado+this.cantPelisVistas[5].TotalCombo}}</div>
-            <div class="table--item"> <h3>Guerra Mundial Z</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[6].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[6].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[6].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[6].totalRecaudado+this.cantPelisVistas[6].TotalCombo}}</div>
-            <div class="table--item"> <h3>Deadpool</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[7].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[7].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[7].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[7].totalRecaudado+this.cantPelisVistas[7].TotalCombo}}</div> 
-            <div class="table--item"> <h3>Jurassic World</h3> </div>  
-            <div class="table--item"> {{this.cantPelisVistas[8].cantPeli}}</div> 
-            <div class="table--item"> ${{this.cantPelisVistas[8].totalRecaudado}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[8].TotalCombo}}</div>    
-            <div class="table--item"> ${{this.cantPelisVistas[8].totalRecaudado+this.cantPelisVistas[8].TotalCombo}}</div>  
+            <div class="table--header">Total Recaudación</div>             
+            <div class="table--contenedor" v-for="(cant,index) in cantPelisVistas" :key="'cantPelisVistas'+index">
+                <div class="table"> <h3>{{cant.nombre}}</h3></div> 
+                <div class="table"> {{cant.cantPeli}}</div> 
+                <div class="table"> ${{cant.totalRecaudado.toFixed(2)}}</div>    
+                <div class="table"> ${{cant.TotalCombo.toFixed(2)}}</div>    
+                <div class="table"> ${{cant.totalComboMasRecaudado.toFixed(2)}}</div>    
+            </div>            
             <div class="table--item total">Total</div>  
             <div class="table--item total">{{this.totalCant}}</div>               
-            <div class="table--item total">${{this.totalRecaudado}}</div>  
-            <div class="table--item total">${{this.totalSnacks}}</div>  
-            <div class="table--item total">${{this.total}}</div>  
+            <div class="table--item total">${{this.totalRecaudado.toFixed(2)}}</div>  
+            <div class="table--item total">${{this.totalSnacks.toFixed(2)}}</div>  
+            <div class="table--item total">${{this.total.toFixed(2)}}</div>  
         </div>   
         <b-button class="boton"><router-link to="/Cuenta">Volver</router-link></b-button>
     </div>
@@ -68,15 +30,15 @@ export default {
     data() {
         return {
             reservas: this.getReservas(),
-            cantPelisVistas: [{TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0},
-            {TotalCombo: 0,cantPeli:0,totalRecaudado :0}],
+            cantPelisVistas: [{nombre:"El Rey León",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"El origen",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Star Wars: Episodio IX",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Avatar",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Jumanji",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Rapidos y Furiosos",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Guerra Mundial Z",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Deadpool",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0},
+            {nombre:"Jurassic World",TotalCombo: 0,cantPeli:0,totalRecaudado :0,totalComboMasRecaudado:0}],
             totalCant: 0,totalRecaudado :0,totalSnacks:0,total:0,dolar:87,subTotalCant: 0,
             ticketVip:(this.$store.getters.precioPelicula-(this.$store.getters.precioPelicula*10/100))
         }
@@ -93,123 +55,22 @@ export default {
         },
         sumar() {
             for (let i = 0; i < this.reservas.length; i++) {
-                if (this.reservas[i].Pelicula == "El Rey León") {
-                    this.cantPelisVistas[0].cantPeli = this.cantPelisVistas[0].cantPeli + this.reservas[i].Butacas.length                  
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[0].TotalCombo = this.cantPelisVistas[0].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[0].TotalCombo = this.cantPelisVistas[0].TotalCombo + this.reservas[i].TotalCombo
-                    }                    
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[0].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[0].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[0].totalRecaudado = this.cantPelisVistas[0].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }     
-                if (this.reservas[i].Pelicula == "El origen") {
-                    this.cantPelisVistas[1].cantPeli = this.cantPelisVistas[1].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[1].TotalCombo = this.cantPelisVistas[1].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[1].TotalCombo = this.cantPelisVistas[1].TotalCombo + this.reservas[i].TotalCombo
+                for (let x = 0; x < this.cantPelisVistas.length; x++) {
+                    if (this.reservas[i].Pelicula == this.cantPelisVistas[x].nombre) {
+                        this.cantPelisVistas[x].cantPeli = this.cantPelisVistas[x].cantPeli + this.reservas[i].Butacas.length                  
+                        if (this.reservas[i].Dolar == 1) {
+                            this.cantPelisVistas[x].TotalCombo = this.cantPelisVistas[x].TotalCombo + this.reservas[i].TotalCombo*this.dolar
+                        } else {
+                            this.cantPelisVistas[x].TotalCombo = this.cantPelisVistas[x].TotalCombo + this.reservas[i].TotalCombo
+                        }                    
+                        if (this.reservas[i].Vip == true) {
+                            this.cantPelisVistas[x].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[x].totalRecaudado
+                        } else {
+                            this.cantPelisVistas[x].totalRecaudado = this.cantPelisVistas[x].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
+                        }
+                        this.cantPelisVistas[x].totalComboMasRecaudado = (this.cantPelisVistas[x].totalRecaudado + this.cantPelisVistas[x].TotalCombo) 
                     } 
-                   if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[1].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[1].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[1].totalRecaudado = this.cantPelisVistas[1].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Star Wars: Episodio IX") {
-                    this.cantPelisVistas[2].cantPeli = this.cantPelisVistas[2].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[2].TotalCombo = this.cantPelisVistas[2].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[2].TotalCombo = this.cantPelisVistas[2].TotalCombo + this.reservas[i].TotalCombo
-                    } 
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[2].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[2].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[2].totalRecaudado = this.cantPelisVistas[2].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Avatar") {
-                    this.cantPelisVistas[3].cantPeli = this.cantPelisVistas[3].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[3].TotalCombo = this.cantPelisVistas[3].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[3].TotalCombo = this.cantPelisVistas[3].TotalCombo + this.reservas[i].TotalCombo
-                    } 
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[3].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[3].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[3].totalRecaudado = this.cantPelisVistas[3].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Jumanji") {
-                    this.cantPelisVistas[4].cantPeli = this.cantPelisVistas[4].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[4].TotalCombo = this.cantPelisVistas[4].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[4].TotalCombo = this.cantPelisVistas[4].TotalCombo + this.reservas[i].TotalCombo
-                    }                   
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[4].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[4].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[4].totalRecaudado = this.cantPelisVistas[4].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Rapidos y Furiosos") {
-                    this.cantPelisVistas[5].cantPeli = this.cantPelisVistas[5].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[5].TotalCombo = this.cantPelisVistas[5].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[5].TotalCombo = this.cantPelisVistas[5].TotalCombo + this.reservas[i].TotalCombo
-                    } 
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[5].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[5].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[5].totalRecaudado = this.cantPelisVistas[5].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Guerra Mundial Z") {
-                    this.cantPelisVistas[6].cantPeli = this.cantPelisVistas[6].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[6].TotalCombo = this.cantPelisVistas[6].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[6].TotalCombo = this.cantPelisVistas[6].TotalCombo + this.reservas[i].TotalCombo
-                    } 
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[6].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[6].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[6].totalRecaudado = this.cantPelisVistas[6].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Deadpool") {
-                    this.cantPelisVistas[7].cantPeli = this.cantPelisVistas[7].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[7].TotalCombo = this.cantPelisVistas[7].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[7].TotalCombo = this.cantPelisVistas[7].TotalCombo + this.reservas[i].TotalCombo
-                    } 
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[7].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[7].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[7].totalRecaudado = this.cantPelisVistas[7].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }
-                }  
-                if (this.reservas[i].Pelicula == "Jurassic World") {
-                    this.cantPelisVistas[8].cantPeli = this.cantPelisVistas[8].cantPeli + this.reservas[i].Butacas.length 
-                    if (this.reservas[i].Dolar == 1) {
-                        this.cantPelisVistas[8].TotalCombo = this.cantPelisVistas[8].TotalCombo + this.reservas[i].TotalCombo*this.dolar
-                    } else {
-                        this.cantPelisVistas[8].TotalCombo = this.cantPelisVistas[8].TotalCombo + this.reservas[i].TotalCombo
-                    } 
-                    if (this.reservas[i].Vip == true) {
-                        this.cantPelisVistas[8].totalRecaudado = this.reservas[i].Butacas.length*this.ticketVip + this.cantPelisVistas[8].totalRecaudado
-                    } else {
-                        this.cantPelisVistas[8].totalRecaudado = this.cantPelisVistas[8].totalRecaudado + this.reservas[i].Butacas.length*this.$store.getters.precioPelicula
-                    }                  
-                }  
+                }                    
                 this.totalCant = this.reservas.length 
             }  
         },
@@ -219,7 +80,7 @@ export default {
                 this.totalCant = this.subTotalCant
                 this.totalRecaudado = this.totalRecaudado + this.cantPelisVistas[i].totalRecaudado  
                 this.totalSnacks = this.totalSnacks + this.cantPelisVistas[i].TotalCombo   
-                this.total = this.totalSnacks + this.totalRecaudado
+                this.total = this.total + this.cantPelisVistas[i].totalComboMasRecaudado
             }            
         }
     },        
@@ -250,19 +111,35 @@ export default {
 	font-size: 1.9em;
 }
 
+.table--contenedor {
+    grid-column-start: 1;
+	grid-column-end: 6;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .table--header, .table--item {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .table--header{
 	font-weight: bold;
 	font-size: 1.5em;
 }
+
 .table--item {
 	padding: 10px;
 	font-size: 1.2em;
-}    
+}  
+  
+.table {
+    padding: 10px;
+	font-size: 1.2em;
+}
+
 .total {
 	background: rgba(40,65,120,1);
 	color: white;

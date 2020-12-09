@@ -34,22 +34,19 @@
                 </td>
             </div> 
             <div v-if="this.seleccionados.length > 0">
-                <b-button class="boton" @click="getExchangeValue(dolar)">Pagar U$S</b-button>                                
+                <b-button class="boton" @click="getExchangeValue(dolar)">Pagar U$S</b-button><br>
+            </div>                             
             <div class="precio" v-if="this.totalEnDolar == 0">
-                <h1>Total <strong>${{ getPrecioTotal(seleccionados) }}</strong> </h1>
+                <h5>Total <strong>${{ getPrecioTotal(seleccionados) }}</strong></h5>
             </div> 
-            <div v-if="this.totalEnDolar > 0">
-                <h1>Dolar {{dolar}}</h1> 
-                <h1>Total {{totalEnDolar}}U$S</h1>
+            <div class="precio" v-if="this.totalEnDolar > 0">
+                <h5>Dolar {{dolar}}</h5> 
+                <h5>Total {{totalEnDolar}}U$S</h5>
             </div>            
-            </div>          
-            
         </div>
-
         <b-input-group-append class="contenedorB">
             <b-button class="boton" @click="salaCineEnNull()"><router-link to="/SalaCine">Volver</router-link></b-button>
             <b-button class="boton" @click="productosSeleccionada(seleccionados)"><router-link to="/Confirmar">Siguiente</router-link></b-button>
-            
         </b-input-group-append>
     </div>
 </template>
@@ -252,7 +249,7 @@ export default {
     margin: 10px;
 }
 
-.precio > h6 {
+.precio > h5 {
   font-size: 25px;
   color: #9FADBD;
   text-align: center;

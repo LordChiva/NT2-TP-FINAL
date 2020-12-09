@@ -1,8 +1,7 @@
 <template>
   <div class="cuenta">
     <div class="login">
-      
-          <div v-if="usuario == null">
+      <div v-if="usuario == null">
         <b-button class="botton"><router-link to="/Usuarios">Login/Registro</router-link></b-button>
         <h3>No has ingresado un Usuario</h3>
       </div> 
@@ -33,8 +32,10 @@
               <div v-for="(combo,c) in reserva.Combos" :key="'combos'+c">
                 <h4>x{{combo.cant}} {{combo.nombre}}</h4>
               </div>
-              <h4>Total Combo: {{reserva.TotalCombo}}</h4> 
-              <h4>Total: {{reserva.Total}}</h4> 
+              <h4>Total Combo: <div v-if="reserva.Dolar == 1">{{reserva.TotalCombo}}u$d</div>
+              <div v-if="reserva.Dolar == 0">${{reserva.TotalCombo}}</div></h4> 
+              <h4>Total: <div v-if="reserva.Dolar == 1">{{reserva.Total}}u$d</div>
+              <div v-if="reserva.Dolar == 0">${{reserva.Total}}</div></h4> 
               <button @click="eliminarReserva(reserva)">Eliminar Reserva</button>
             </td>  
           </tr>
@@ -162,3 +163,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+</style>

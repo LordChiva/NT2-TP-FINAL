@@ -10,15 +10,15 @@
       img-height="480"
     >
       <b-carousel-slide
-        caption="First slide"
+        caption=" "
         img-src="https://picsum.photos/1024/480/?image=10"
       ></b-carousel-slide>
       <b-carousel-slide
-        caption="Second Slide"
+        caption=" "
         img-src="https://picsum.photos/1024/480/?image=12"
       ></b-carousel-slide>
       <b-carousel-slide
-        caption="Third Slide"
+        caption=" "
         img-src="https://picsum.photos/1024/480/?image=22"
       ></b-carousel-slide>
     </b-carousel>
@@ -30,5 +30,9 @@
   width: 55%;
   justify-content: center;
   display: inline-block;
+  margin: 0px 0px 20px 0px;
+  background-color: #111E2E;
+  border: 2px solid rgba(21, 34, 50, 0.7);
+  border-radius: 10px;
 }
 </style>

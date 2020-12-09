@@ -4,7 +4,7 @@
       <tr class="tr">
         <td>
           <img alt="Peli foto" v-bind:src="$store.getters.pelicula.imagen" class="imagen">
-          <br>
+          <hr>
           <h3>{{$store.getters.pelicula.nombre}}</h3>
         </td> 
         <td v-for="(fecha,pe) in $store.getters.pelicula.fechas" :key="'peliculaselec'+pe"> 
@@ -68,19 +68,18 @@ export default {
   display: inline-block;
   justify-content: center;
   width: 100%;
-  margin: 5px;
-  padding: 15px;
+  padding: 10px;
 }
 
 .pantallaPelicula > table > tr {
-  width: 100%;
+  width: 50%;
   display: inline-flex;
   justify-content: center;
-  margin: 5px 0px 0px 0px;
+  margin: 10px 0px 10px 0px;
 }
 
 .tableContainer {
-  display: table-caption;
+  display: inline-flex;
   justify-content: center;
   width: 100%;
 }
@@ -122,7 +121,7 @@ a :hover {
     border: 1px solid rgba(21, 34, 50, 0.7);
     border-radius: 10px;
     margin: 0px 50px 0px 50px;
-    width: 100px;
+    width: 50%;
     color: #9FADBD;
     background-color: rgb(21, 34, 50, 0.3);
     font-weight: bold;
