@@ -10,6 +10,8 @@
             <b-form-input v-model="nombreCargado" type="text" debounce="500" id="nombre"></b-form-input>
             <h3>Ingrese Apellido</h3>
             <b-form-input v-model="apellidoCargado" type="text" debounce="500" id="apellido"></b-form-input>
+            <h3>Vip</h3>
+            <input v-model="vip" type="checkbox" id="vip">
         </div>
         <br>
         <div class="error" v-if="this.error == false">
@@ -32,6 +34,7 @@
                 contraseñaCargada:'',
                 nombreCargado:'',
                 apellidoCargado:'',
+                vip:false,
                 usuarios:[],
                 error: null,
                 valorEncontrado:false,
@@ -64,7 +67,7 @@
             },
             async cargarUsuario() {
                 try {
-                    const un = {usuario:this.usuarioCargado,contrasenia:this.contraseñaCargada,vip:false,
+                    const un = {usuario:this.usuarioCargado,contrasenia:this.contraseñaCargada,vip:this.vip,
                     nombre:this.nombreCargado, apellido:this.apellidoCargado}
                     const res = await axios.post('https://5fbc46e9c09c200016d4192c.mockapi.io/Usuarios',un);
                     console.log(res.data)

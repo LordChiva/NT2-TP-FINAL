@@ -7,7 +7,7 @@
                         <b-input-group-append class="contenedorB">
                             <b-button class="boton" variant="outline-primary"><router-link to="/">Inicio</router-link></b-button>
                             <b-button class="boton" variant="outline-primary"><router-link to="/Productos">Productos</router-link></b-button>
-                            <b-button class="boton" variant="outline-primary"><router-link to="/Cuenta">Cuenta</router-link></b-button>
+                            <b-button v-if="this.$store.getters.usuario != null" class="boton" variant="outline-primary"><router-link to="/Cuenta">Cuenta</router-link></b-button>
                         </b-input-group-append>
                     </div>
                 </tr>      

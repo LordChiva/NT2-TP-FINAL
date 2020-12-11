@@ -106,13 +106,15 @@
                 <div class="userH5" v-for="(combo,c) in reserva.Combos" :key="'CombosS'+c">
                   <h5>x{{combo.cant}} {{combo.nombre}}</h5>
                 </div>
-                <h5>Total Combo: {{reserva.TotalCombo}}</h5>
-                <h5>Total: {{reserva.Total}}</h5> 
+                <h5>Total Combo:<div class="confirmar" v-if="reserva.Dolar == 1">{{reserva.TotalCombo}}u$d</div>
+                <div class="confirmar" v-if="reserva.Dolar == 0">${{reserva.TotalCombo}}</div></h5>
+                <h5>Total: <div class="confirmar" v-if="reserva.Dolar == 1">{{reserva.Total}}u$d</div>
+                <div class="confirmar" v-if="reserva.Dolar == 0">${{reserva.Total}}</div></h5> 
+                <h5>-----------------------------</h5>
               </div>
             </div>
         </div>
-      </div>
-      
+      </div>      
     </div> 
   </div>
 </template>
