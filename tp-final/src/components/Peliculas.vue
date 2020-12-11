@@ -58,7 +58,7 @@ export default {
         getPeliculas() {
             const peliculas = [
             {id: 1,
-            nombre: "El Rey León",
+            nombre: "El rey leon",
             sinopsis: "Trata del Reinado de Mufasa el Rey León en una selva de Africa que gobierna con justicia en su territorio,con su leona Sarabi tienen un pequeño cachorro llamado Simba, siempre libra una batalla con su hermano Scar quien no podrá ser rey más aún con el nacimiento de su sobrino.",
             duracion: "1h 29m",
             imagen:reyleon,
@@ -92,7 +92,7 @@ export default {
             },
 
             {id: 3,
-            nombre: "Star Wars: Episodio IX", 
+            nombre: "Star Wars Episodio IX", 
             sinopsis: "La Resistencia sobreviviente se enfrenta a la Primera Orden, y Rey, Finn, Poe y el resto de los héroes encararán nuevos retos y una batalla final con la sabiduría de las generaciones anteriores.",  
             duracion: "2h 22m", 
             imagen:starwars,
