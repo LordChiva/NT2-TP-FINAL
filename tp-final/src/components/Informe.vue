@@ -19,8 +19,10 @@
             <div class="table--item total">${{this.totalRecaudado.toFixed(2)}}</div>  
             <div class="table--item total">${{this.totalSnacks.toFixed(2)}}</div>  
             <div class="table--item total">${{this.total.toFixed(2)}}</div>  
-        </div>   
-        <b-button class="boton"><router-link to="/Cuenta">Volver</router-link></b-button>
+        </div>  
+        <b-input-group-append class="contenedorB">
+            <b-button class="boton"><router-link to="/Cuenta">Volver</router-link></b-button>
+        </b-input-group-append>
     </div>
 </template>
 
@@ -92,7 +94,7 @@ export default {
 	width: 90%;
 	background: white;
 	margin: 50px auto;
-	box-shadow: 0 0 20px #333;
+	box-shadow: 0px 0px 10px rgb(21, 34, 50);
 
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -102,8 +104,8 @@ export default {
 .table--title {
 	grid-column-start: 1;
 	grid-column-end: 6;
-	background: rgba(40,65,120,1);
-	color: white;
+	background-color: rgba(21, 34, 50, 1);
+	color: #9FADBD;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -117,6 +119,7 @@ export default {
     display: flex;
 	justify-content: center;
 	align-items: center;
+    background-color: rgba(11, 22, 34, 1);
 }
 
 .table--header, .table--item {
@@ -128,6 +131,8 @@ export default {
 .table--header{
 	font-weight: bold;
 	font-size: 1.5em;
+    color: #C7D5E5;
+    background-color: rgba(11, 22, 34, 1);
 }
 
 .table--item {
@@ -138,10 +143,49 @@ export default {
 .table {
     padding: 10px;
 	font-size: 1.2em;
+    color: #9FADBD;
+    background-color: rgba(11, 22, 34, 1);
 }
 
 .total {
-	background: rgba(40,65,120,1);
-	color: white;
+	background-color:rgba(21, 34, 50, 1);
+	color: #9FADBD;
+}
+
+a {
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+a :hover {
+  text-decoration: none;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #9FADBD;
+  text-decoration: none;
+}
+
+.contenedorB{
+  padding: 20px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.boton {
+  padding: 5px;
+  border: 1px solid rgba(21, 34, 50, 0.7);
+  border-radius: 10px;
+  margin: 0px 50px 0px 50px;
+  width: 100px;
+  color: #9FADBD;
+  background-color: rgba(21, 34, 50, 0.3);
+  font-weight: bold;
+}
+
+.boton :hover{ 
+  color: #C7D5E5;
+  background-color: none;
 }
 </style>
