@@ -49,15 +49,6 @@
                             </td>
                            
                         </tr>
-                        
-                         <td class="letras"><h6>A</h6></td>
-                         <td class="letras"><h6>B</h6></td>
-                         <td class="letras"><h6>C</h6></td>
-                         <td class="letras"><h6>D</h6></td>
-                         <td class="letras"><h6>E</h6></td>
-                         <td class="letras"><h6>F</h6></td>
-                         <td class="letras"><h6>G</h6></td>
-                         <td class="letras"><h6>H</h6></td>
                     </tbody>
                     
                 </table>
@@ -71,42 +62,18 @@
             <b-button class="boton" @click="pantallaPeliculaenNull()"><router-link :to="`/PantallaPelicula/${id}`">Volver</router-link></b-button>
             <div v-if="this.butacasSeleccionados.length > 0">
                 <b-button class="boton" @click="asientoSeleccion(butacasSeleccionados)"><router-link to="/PantallaProductos">Siguiente</router-link></b-button>
-            </div>  
+            </div> 
             <div class="noSeleccionado" v-if="this.butacasSeleccionados.length == 0">
                 <h3>Tiene que seleccionar una butaca para poder reservar la pelicula: {{this.$store.getters.pelicula.nombre}}</h3>
             </div>            
         </b-input-group-append>
         
     </div>
-    <!-- <table>
-                <tr v-for="fila in filas" :key="fila.fila">
-                    <td>{{fila.fila}}</td>
-                    <td v-for="(asiento, index) in fila.asientos" :key="index">
-                    <td v-for="(asiento,p) in salas" :key="'asientos'+ p">
-                        {{asiento.numero}}
-                        <span :ref="'asiento' + asiento.id" @click="setearOcupado(asiento)" :id="asiento.id" >
-                            <i class="fas fa-couch" :style="'color:'+asiento.color"></i>
-                        </span>
-                    </td>
-                </tr>
-            </table> -->
-
-    <!--    <i class="fas fa-couch" style="color: #DA4127;"></i>
-            <font-awesome-icon :icon="['fas', 'couch']"/>
-            <div class="contenedorAsiento">
-                <td v-for="(asiento,index) in salas" :key="index">                                                                 
-                    <img v-bind:src="asiento.Imagen"  class="imagen" v-on:click="setearOcupado(asiento)" >
-                </td>	
-            </div> 
-          -->  
 </template>
 
 <script>
 import pantallaPng from "../assets/pantallaPng.png"
 import axios from 'axios'
-
-
-/* var pepe = document.getElementsByClassName("fa-couch") */
 
 export default {
 
@@ -114,20 +81,8 @@ export default {
 
 
     created()
-    {
-        console.log("Created")
-        console.log(this.$store.getters.pelicula.nombre)
-        console.log("Pelicula fecha"+this.$store.getters.fecha)
-        
+    {    
        this.consultandoMockApi(this.$store.getters.pelicula.nombre,this.$store.getters.fecha.replace('/','%2F').replace('/','%2F').trim());
-     
-
-    },
-    mounted()
-    {
-         console.log("Mounted")
-        this.asientosOcupados(this.salas);
-        console.log(this.salas)
     },
     data ()  {
         return{
@@ -155,21 +110,7 @@ export default {
         }        
     },
     methods: {
-        //Para que se autoComplete los ocupados de la sala
-         asientosOcupados(salas)
-        {
-            console.log("Salas "+this.$refs.[salas.id])
-            for(var i =0;i<=salas.length;i++)
-            {
-                if(salas[i].ocupado==true)
-                {
-                    salas[i].color='#DA4127'
-
-                }
-               
-
-            }
-        }, 
+        //Para que se autoComplete los ocupados de la sala 
         getColor(asiento)
         {
             if(this.$store.getters.usuario.vip==true)
@@ -211,12 +152,8 @@ export default {
         },
 //Para subir al MockApi los seleccionados de la sala
         setearOcupado(asiento) {
-                console.log(this.$refs['asiento'+asiento.id])
-                console.log(asiento.id)
                 var index;
                 index=this.butacasSeleccionados.findIndex( a => a.id == asiento.id)
-                console.log("index")
-                console.log(index)
                 if(this.$store.getters.usuario.vip==false &&asiento.vip==true)
                  {
                      return ;
@@ -229,12 +166,7 @@ export default {
                 {
                     asiento.ocupado=false  
                     this.$refs['asiento'+asiento.id][0].children[0].style.color='#409EFF'
-                    console.log("Antes")
-                    console.log(this.butacasSeleccionados)
                     this.butacasSeleccionados.splice(index,1);
-                    console.log("Desp")
-                    console.log(this.butacasSeleccionados)
-                    console.log("Borrado")
                     this.setearAsientosMockApi(asiento)
                     
                 }
@@ -245,28 +177,12 @@ export default {
                     asiento.ocupado=true            
                     this.$refs['asiento'+asiento.id][0].children[0].style.color='#DA4127'
                     this.butacasSeleccionados.push(asiento);
-                    console.log("Agregado")
                     this.setearAsientosMockApi(asiento)
                     
                     }
                 }
-                 
-
-                 
-                 
-                 
-                
-                
-                console.log(asiento.ocupado)
-                /* this.$refs.asiento1.style.color='red' */
-            
-            
-            /*  console.log(asiento) */
-
         },
         asientoSeleccion(butacasSeleccionados) {
-            console.log("Al apretar siguiete")
-            console.log(butacasSeleccionados)
                 this.$store.state.butacas=butacasSeleccionados;           
                 this.$store.dispatch('agregarButacas',butacasSeleccionados);
         },
@@ -277,21 +193,13 @@ export default {
          crearAsientos () {    
         var asientos =[];
         var letrasV=['A','B','C','D','E','F','G','H'];
-         /* var letras=['A','B','C','D','E','F','G','H'];  */
-        
             var id=0;
-            /* var bloqueado =0; */
             var filasVip=['A','B','C','D']
             var columnasVip=[4,5,6,7]
-            
-                
-               
+   
                 if(this.$store.getters.usuario.vip ==true){
-                    console.log("Entraste al vip mono2 ?" + this.$store.getters.usuario)
                  letrasV.forEach(async letra => {
-                    
-                    
-               
+         
                 for (var i =1;i<=10;i++)
                 {
                     var bloqueado=false
@@ -300,52 +208,13 @@ export default {
                     {
                         bloqueado=true
                     }
-                    
-                    
-                    this.cargarAsiento({id:id,ocupado:false,color:'#409EFF',fila:letra,columna:i,vip:bloqueado});
+                                 
+                     this.cargarAsiento({id:id,ocupado:false,color:'#409EFF',fila:letra,columna:i,vip:bloqueado}); 
                     await new Promise(r => setTimeout(r, 35000));
                     id++;
                 }
                 })
                 }
-                
-
-                
-/*                 if(this.$store.getters.usuario.vip ==false)
-                { 
-                    console.log("El diego")
-                    letras.forEach(letra => 
-                    {
-
-                    for (var i =1;i<=10;i++)
-                {
-                    bloqueado++
-                    if((bloqueado>=31)&&(bloqueado<=40))
-                    {
-                    
-                    asientos.push({id:id,ocupado:false,color:'#FFF1AA',fila:letra,columna:i});
-                    id++;
-                    }
-                    else
-                    {
-                        asientos.push({id:id,ocupado:false,color:'#409EFF',fila:letra,columna:i});
-                         id++;
-
-                    }
-
-                } 
-                    })
-
-                } */
-                
-                
-               /*  for(var i =1;i<=asientosUsados.length;i++)
-                  if ((asientos!=null)&&(this.$store.getters.pelicula==asientosUsados.pelicula))
-                {
-                    
-                }   */
-        
-        console.log(asientos[79].fila)
         return asientos;
         },
        /*  async cargarAsiento(asiento) {
@@ -357,10 +226,7 @@ export default {
                 }                
             }, */
          consultandoMockApi(pelicula,fecha) {
-             console.log('consultandoMockApi')
              var url='http://localhost:8081/asientos/pelicula/'+pelicula+'/fecha/'+fecha;
-             console.log(fecha)
-             console.log(url)
                  axios.get(url)
                 .then((response)=> {
                     this.salas=response.data
@@ -378,14 +244,7 @@ export default {
 
 
 <style>
-.letras
-{
- 
-  right: 50%;
-  position: relative;
-  
- 
-}
+
 .contenedorSalaPelicula {
     display: inline-block;
     width: 100%;
@@ -443,10 +302,18 @@ export default {
   color: #9FADBD;
 }
 
+.contenedorNum
+{
+    padding-left: 15px;
+
+}
+
 .contenedorNum > td {
     width: 4%;
     margin: 0px 10px 0px 10px;
     padding: 0px 0px 0px 0px;
+    padding-left: 0px;
+    padding-right:1.5px;
     text-align: end;
 }
 

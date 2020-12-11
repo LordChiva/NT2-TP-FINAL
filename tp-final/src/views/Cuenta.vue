@@ -182,11 +182,25 @@ export default {
     },
     async eliminarReserva(reserva) {      
       let i =0;
+      var butacasAux=[]
+      butacasAux =reserva.Butacas
+      console.log("butacasAux")
+      console.log(butacasAux)
+      for(var b=0; b<butacasAux.length;b++)
+      {
+        var butacaId=0;
+        var asiento={}
+        butacasAux[b].ocupado=false;
+        butacaId=butacasAux[b].id;
+        asiento=butacasAux[b];
+        await axios.put('http://localhost:8081/asientos/'+butacaId,asiento) 
+
+      }
       this.valorEncontrado=false; 
       while ( (i<this.reservas.length)&&(this.valorEncontrado==false)) {      
         if(this.reservas[i].id == reserva.id) {                        
           await axios.delete('https://5fbc46e9c09c200016d4192c.mockapi.io/Confirmar'+"/"+reserva.id);
-         /*  axios.put('http://localhost:8081/asientos/'+asiento.id,asiento) */
+         
           i=this.reservas.length
           console.log(reserva)
           this.$router.push('/');

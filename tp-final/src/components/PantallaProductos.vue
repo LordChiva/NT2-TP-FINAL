@@ -73,10 +73,9 @@ export default {
     },
     mounted() {
     this.options = this.consultandoMockApi(); 
-      console.log("Aca esta el mounted")
     axios.get('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
     .then((response)=> {
-        console.log("response.data "+response.data)
+        
 
         const filteredUsdData = response.data.find((exchange)=> exchange.casa.nombre.toLowerCase() === "dolar oficial")
     if (filteredUsdData) {
