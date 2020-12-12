@@ -12,7 +12,7 @@
                         <h3>Navegacion:</h3>
                         <router-link to="/">Inicio</router-link><br>
                         <router-link to="/Productos">Productos</router-link><br>
-                        <router-link to="/Cuenta">Cuenta</router-link>
+                        <router-link to="/Cuenta" v-if="this.$store.getters.usuario != null">Cuenta</router-link>
 					</td>
                     <td>
                         <div class="peliculas">
