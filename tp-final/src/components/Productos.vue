@@ -21,7 +21,7 @@
                             <br>
                             <h5>{{producto.descripcion}}</h5>
                             <br>
-                            <h6>Precio: {{producto.precio}}</h6>
+                            <h6>Precio: ${{producto.precio}}</h6>
                         </div>  
                     </li>  
                 </td>

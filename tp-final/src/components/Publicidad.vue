@@ -6,20 +6,20 @@
       style="text-shadow: 0px 0px 2px #000"
       fade
       indicators
-      img-width="1024"
-      img-height="480"
-    >
+      img-width="420"
+      img-height="280"
+    > 
       <b-carousel-slide
-        caption=" "
-        img-src="https://picsum.photos/1024/480/?image=10"
+        caption="$380"
+        img-src="https://i.imgur.com/LjNrqoo.png"
       ></b-carousel-slide>
       <b-carousel-slide
-        caption=" "
-        img-src="https://picsum.photos/1024/480/?image=12"
+        caption="$460"
+        img-src="https://i.imgur.com/oKVazEt.png"
       ></b-carousel-slide>
       <b-carousel-slide
-        caption=" "
-        img-src="https://picsum.photos/1024/480/?image=22"
+        caption="$700"
+        img-src="https://i.imgur.com/dy7aucx.png"
       ></b-carousel-slide>
     </b-carousel>
   </div>
@@ -27,7 +27,7 @@
 
 <style scoped>
 .contenedorCarrusel {
-  width: 55%;
+  width: 30%;
   justify-content: center;
   display: inline-block;
   margin: 0px 0px 20px 0px;
